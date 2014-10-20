@@ -38,7 +38,7 @@ public class UsuarioDao {
 					user.setNombreUsuario(result.getString("NOMBRES_USUARIO"));
 					user.setApellidosUsuario(result.getString("APELLIDOS_USUARIO"));
 					user.setDireccionUsuario(result.getString("DIRECCION_USUARIO"));
-					user.setTelefonoUsuario(Integer.parseInt(result.getString("TELEFONO_USUARIO")));
+					user.setTelefonoUsuario(Long.parseLong(result.getString("TELEFONO_USUARIO")));
 					user.setTipoUsuario(result.getString("TIPO_USUARIO").charAt(0));
 					user.setNickname(result.getString("NICKNAME_USUARIO"));
 					user.setContraseña(result.getString("CONTRASENA"));
