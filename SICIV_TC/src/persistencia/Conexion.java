@@ -81,8 +81,7 @@ public class Conexion {
             }else{
                 System.out.println("Conexion Fallida!");                
             }
-			
-				
+							
 		}catch(SQLException e){
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
