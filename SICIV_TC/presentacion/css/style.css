@@ -14,7 +14,7 @@
 
 	body
 	{
-		background: #fff;
+		background: #FFFFFF;
 	}
 
 		body.is-loading *
@@ -33,17 +33,18 @@
 
 	body,input,textarea,select
 	{
-		font-family: 'Source Sans Pro', sans-serif;
+		font-family:  Tahoma; 
 		font-size: 19pt;
 		font-weight: 300;
 		line-height: 1.75em;
-		color: #888;
+		color: #000000;
 	}
 
 	h1,h2,h3,h4,h5,h6
 	{
+		font-family: Trebuchet MS;
 		font-weight: 300;
-		color: #666;
+		color: #000000;
 		line-height: 1.5em;
 	}
 	
@@ -102,7 +103,7 @@
 	
 	em, i
 	{
-		font-style: italic;
+		font-style: Trebuchet MS;
 	}
 
 	a
@@ -203,12 +204,12 @@
 				width: 100%;
 			}
 			
-			.image.avatar48
+			/*.image.avatar48
 			{
 				width: 48px;
 				height: 48px;
 				background: #f00;
-			}
+			}*/
 			
 				.image.avatar48 img
 				{
@@ -488,27 +489,27 @@
 /*cuadro*/
 
 .a_demo_four {
-    background-color:#4b3f39;
+    background-color:#B22222; /*color del boton (#4b3f39 cafe)*/
     font-family: 'Open Sans', sans-serif;
     font-size:12px;
     text-decoration:none;
-    color:#fff;
+    color:#fff; /*color blanco de la letra*/
     position:relative;
     padding:10px 20px;
     padding-right:50px;
     background-image: linear-gradient(bottom, rgb(62,51,46) 0%, rgb(101,86,78) 100%);
     border-radius: 5px;
-    box-shadow: inset 0px 1px 0px #9e8d84, 0px 5px 0px 0px #322620, 0px 10px 5px #999;
+    box-shadow: inset 0px 1px 0px #9e8d84, 0px 5px 0px 0px #322620 /*color de 3d cafe*/, 0px 10px 5px /*sombra del boton #999 */ #262626;
 }
  
 .a_demo_four:active {
     top:3px;
     background-image: linear-gradient(bottom, rgb(62,51,46) 100%, rgb(101,86,78) 0%);
-    box-shadow: inset 0px 1px 0px #9e8d84, 0px 2px 0px 0px #322620, 0px 5px 3px #999;
+    box-shadow: inset 0px 1px 0px #9e8d84, 0px 2px 0px 0px #322620, 0px 5px 3px /*sombra del boton #999*/ #262626;
 }
  
 .a_demo_four::before {
-    background-color:#322620;
+    background-color:#322620; /*color cafe del cilculo*/
     background-image:url(../images/right_arrow.png);
     background-repeat:no-repeat;
     background-position:center center;
@@ -647,7 +648,7 @@
 			line-height: 1em;
 		}
 	
-		#logo p
+		#logo p /*estilo del texto superior izquierdo debajos del nombre del grerete*/
 		{
 			position: relative;
 			display: block;
@@ -728,14 +729,24 @@
 /* Footer                                                                        */
 /*********************************************************************************/
 	
-	#footer
+/*
+		#footer
 	{
-		margin-left: 375px;
+		margin-left: 75px;
 		text-align: center;
 		background-color: #dce3e2;
-		padding: 3em 0 4em 0;
+		
 		box-shadow: inset 0 1px 0 0 rgba(0,0,0,0.05), inset 0 0.1em 0.1em 0 rgba(0,0,0,0.025);
 		font-size: 0.8em;
+	}
+	
+*/
+
+	
+	#footer
+	{
+		text-align: center;
+		background-color: #FFFFFF;
 	}
 
 		#footer .copyright
@@ -743,7 +754,7 @@
 			cursor: default;
 			margin: 0;
 		}
-			
+			/*
 			#footer .copyright li
 			{
 				display: inline-block;
@@ -752,6 +763,7 @@
 				padding: 0 0 0 0.5em;
 				margin: 0 0 0 0.5em;
 			}
+			*/
 			
 			#footer .copyright li:first-child
 			{
@@ -815,22 +827,24 @@
 		
 			#main > section.one
 			{
-				background-color: #81918E;
+				background-color: #FFFFFF;
 				background-image: url('../images/cabecera.png');
 				
 			}
 
 			#main > section.two
 			{
-				background-color: #f5fafa;
+				background-color: #FFFFFF;
 			}
 		
 			#main > section.three
 			{
-				background-color: #ecf1f1;
+				background-color: #FFFFFF;
 			}
 		
 			#main > section.four
 			{
-				background-color: #e8edec;
+				background-color: #FFFFFF;
 			}
+			
+			/* color fondo   #f5fafa, #81918E, #f5fafa, #ecf1f1, #e8edec*/
