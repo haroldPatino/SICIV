@@ -9,7 +9,7 @@ import persistencia.UsuarioDao;
 import logica.Usuario;
 
 /**
- * @author Lenovo Pc
+ * @author Harold Patiño
  *
  */
 public class GestionUsuarios {
@@ -19,7 +19,7 @@ public class GestionUsuarios {
 //Building----------------------------------
 	public GestionUsuarios(){
 		dao=new UsuarioDao();
-		usuarios=dao.cargaUsuarios();
+		usuarios=dao.selecionarUsuarios();
 	}
 //Methods-----------------------------------
 	/**
