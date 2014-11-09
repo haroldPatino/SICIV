@@ -61,13 +61,8 @@ public class LoginManagement implements Serializable {
     		    } else {
     		      logeado = false;
     		      msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error",
-    		                             "Password Erroneo");
+    		                             "Usuario o contraseña Erroneos");
     		    }
-    }else{
-    	logeado = false;
-	      msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error",
-	                             "El usuario no esta en la Base de Datos");
-    }
     		    FacesContext.getCurrentInstance().addMessage(null, msg);
     		    context.addCallbackParam("estaLogeado", logeado);
     		    if (logeado){
@@ -78,6 +73,12 @@ public class LoginManagement implements Serializable {
     		    		context.addCallbackParam("view", "../Gerente.html");
     		    	}
     		    }
+    }
+    else{
+    	logeado = false;
+	      msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error",
+	                             "Usuario o contraseña Erroneos");
+    }
     		      
   }
   public Usuario buscarUser(String nickname){

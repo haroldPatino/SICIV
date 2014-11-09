@@ -78,6 +78,7 @@ public class Conexion {
 			
 			if(getConexion() != null){
                 resp = true;
+                System.out.println("-----------------------------Conecto-----------------------------------");
             }else{
                 System.out.println("Conexion Fallida!");                
             }

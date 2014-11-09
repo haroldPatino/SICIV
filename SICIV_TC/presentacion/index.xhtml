@@ -9,15 +9,12 @@
 <link rel="stylesheet" href="../css/skel.css" />
 <link rel="stylesheet" href="../css/style.css" />
 <link rel="stylesheet" href="../css/style-wide.css" />
-		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-		<script src="../js/jquery.min.js"></script>
-		<script src="../js/jquery.scrolly.min.js"></script>
-		<script src="../js/jquery.scrollzer.min.js"></script>
-		<script src="../js/skel.min.js"></script>
-		<script src="../js/skel-layers.min.js"></script>
-		<script src="../js/init.js"></script>
-		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
-		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.scrolly.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.scrollzer.min.js"></script>
+		<script type="text/javascript" src="../js/skel.min.js"></script>
+		<script type="text/javascript" src="../js/skel-layers.min.js"></script>
+		<script type="text/javascript" src="../js/init.js"></script>
 	</h:head>
 	<h:body>
 
@@ -95,16 +92,20 @@
            
             <section id="login" class="three">
             <div class="container">
-<pr:growl id="mensajes" showDetail="true" life="2000" />
+<pr:growl id="mensajes" showDetail="true" life="4000" />
        <h:form class="login">
-       <pr:panel header="Login" style="position:relative; left:300px; width:350px">
-      <h:panelGrid columns="2" cellpadding="9" styleClass="panelGridCenter">
+       <header>
+			<h2>LOGIN SICIV</h2>
+	   </header>
+       <pr:panel style="position:relative; left:300px; width:350px">
+      
         <h:outputLabel for="username" value="Usuario:" />
-        <pr:inputText value="#{loginBean.nombre}" id="username" required="true" label="username" placeholder="nickname" />
+        <pr:inputText value="#{loginManagement.nombre}" id="username" required="true" label="username" placeholder="nickname" />
         <h:outputLabel for="password" value="Clave:" />
-        <pr:password value="#{loginBean.clave}" id="password" required="true" label="password" />
-        <pr:commandButton id="loginButton" value="Ingresar" actionListener="#{loginBean.login}" update=":mensajes" oncomplete="manejarLogin(xhr, status, args)" />
-        <pr:commandButton id="ClearButton" value="Limpiar" actionListener="#{loginBean.login}" update=":mensajes" oncomplete="manejarLogin(xhr, status, args)" />
+        <pr:password value="#{loginManagement.clave}" id="password" required="true" label="password" />
+        <h:panelGrid columns="2" cellpadding="9" styleClass="panelGridCenter">
+        <pr:commandButton id="loginButton" value="Ingresar" actionListener="#{loginManagement.login}" update=":mensajes" oncomplete="manejarLogin(xhr, status, args)" />
+        <pr:commandButton id="ClearButton" value="Limpiar"/>
       </h:panelGrid>
     </pr:panel>
     
@@ -247,7 +248,7 @@
 				<!-- Copyright -->
 					<ul class="copyright">
 				    <li>Copyright @; 2014 - All Rights Reserved - DSAM</li>
-                    <img src="images/Barra.png" ></img>
+                    <img src="../images/Barra.png" ></img>
 					</ul>
 			</div>
 <script type="text/javascript">
