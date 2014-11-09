@@ -40,7 +40,7 @@ public class UsuarioSql {
 				+usuario.getDireccionUsuario()+"',"
 				+usuario.getTelefonoUsuario()+",'"
 				+usuario.getTipoUsuario()+"','"
-				+usuario.getContraseña()+"','"
+				+usuario.getContrasena()+"','"
 				+usuario.getNickname()+"');";		
 	}
 		
@@ -49,34 +49,22 @@ public class UsuarioSql {
 	 * @return
 	 */
 	public String buscarUsuarioPorNombre(String nombre){
-		return "SELECT ID_USUARIO AS 'CEDULA',NOMBRE_LUGAR AS 'LUGAR',"
-				+"NOMBRES_USUARIO AS 'NOMBRES', APELLIDOS_USUARIO AS 'APELLIDOS'"
-				+",DIRECCION_USUARIO AS 'DIRECCION',TELEFONO_USUARIO AS 'TELEFONO'"
-				+",TIPO_USUARIO AS 'ROL',CONTRASENA AS 'CONTRASENA',"
-				+"NICKNAME_USUARIO AS 'NICKNAME' "
-				+"FROM usuario JOIN lugar WHERE usuario.ID_LUGAR = "
-				+"lugar.ID_LUGAR AND NOMBRES_USUARIO LIKE '"+nombre+"';";
+		return "SELECT * FROM usuario WHERE NOMBRES_USUARIO = '"+nombre+"';";
 	}
 	
 	/**
 	 * Sentencia SQL para buscar un registro en la tabla usuario por el numero de cedula
 	 * @return
 	 */
-	public String buscarUsuarioPorCedula(String cedula){
-		return "SELECT ID_USUARIO AS 'CEDULA',NOMBRE_LUGAR AS 'LUGAR',"
-				+"NOMBRES_USUARIO AS 'NOMBRES', APELLIDOS_USUARIO AS 'APELLIDOS'"
-				+",DIRECCION_USUARIO AS 'DIRECCION',TELEFONO_USUARIO AS 'TELEFONO'"
-				+",TIPO_USUARIO AS 'ROL',CONTRASENA AS 'CONTRASENA',"
-				+"NICKNAME_USUARIO AS 'NICKNAME' "
-				+"FROM usuario JOIN lugar WHERE usuario.ID_LUGAR = "
-				+"lugar.ID_LUGAR AND ID_USUARIO = "+cedula+";";
+	public String buscarUsuarioPorCedula(int cedula){
+		return "SELECT * FROM usuario WHERE ID_USUARIO = "+cedula+";";
 	}
 	
 	/**
 	 * Sentencia SQL para restablecer la contrasena de un usuario a partir de su nickname y su numero de cedula
 	 * @return
 	 */
-	public String restablecerContrasenaUsuario(String cedula, String nickname, String contrasena){
+	public String restablecerContrasenaUsuario(int cedula, String nickname, String contrasena){
 		return "UPDATE usuario SET CONTRASENA = '"+contrasena
 				+"' WHERE ID_USUARIO = "+cedula
 				+" AND NICKNAME_USUARIO = '"+nickname+"';";
@@ -86,7 +74,7 @@ public class UsuarioSql {
 	 * Sentencia SQL para cambiar la contrasena existente por una nueva
 	 * @return
 	 */
-	public String cambiarContrasenaUsuario(String cedula, String anterior, 
+	public String cambiarContrasenaUsuario(int cedula, String anterior, 
 			String nueva){
 		return "UPDATE usuario SET CONTRASENA = '"+nueva
 				+"' WHERE ID_USUARIO = "+cedula

@@ -17,7 +17,7 @@ public class Usuario {
 	private long telefonoUsuario;
 	private char tipoUsuario;
 	private String nickname;
-	private String contraseña;
+	private String contrasena;
 //Building------------------------------------
 	/**
 	 * 
@@ -125,13 +125,13 @@ public class Usuario {
 	/**
 	 * @return contraseña
 	 */
-	public String getContraseña() {
-		return contraseña;
+	public String getContrasena() {
+		return contrasena;
 	}
 	/**
 	 * @param contraseña contraseña a colocar
 	 */
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}		
 }

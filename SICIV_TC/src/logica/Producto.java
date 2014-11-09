@@ -10,7 +10,7 @@ package logica;
 public class Producto {
 //Attributes------------------------------------
 	private int idProducto;
-	private Proveedor proveedor;
+	private int idProveedor;	
 	private String nombreProducto;
 	private String tipoProducto;
 	private String marcaProducto;
@@ -38,16 +38,7 @@ public class Producto {
 	}
 	/**
 	 * @return proveedor
-	 */
-	public Proveedor getProveedor() {
-		return proveedor;
-	}
-	/**
-	 * @param proveedor proveedor a colocar
-	 */
-	public void setProveedor(Proveedor proveedor) {
-		this.proveedor = proveedor;
-	}
+	 */	
 	/**
 	 * @return nombreProducto
 	 */
@@ -108,4 +99,21 @@ public class Producto {
 	public void setPrecioVenta(double precioVenta) {
 		this.precioVenta = precioVenta;
 	}
+	/**
+	 * @return
+	 */
+	/**
+	 * @return idProveedor
+	 */
+	public int getIdProveedor() {
+		return idProveedor;
+	}
+	/**
+	 * @param idProveedor idProveedor a colocar
+	 */
+	public void setIdProveedor(int idProveedor) {
+		this.idProveedor = idProveedor;
+	}
+	
+	
 }

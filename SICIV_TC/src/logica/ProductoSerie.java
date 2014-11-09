@@ -10,7 +10,8 @@ package logica;
 public class ProductoSerie {
 //Attributes-----------------------------
 	private String numeroSerie;
-	private Producto producto;
+	private int idProducto;
+	private int idFactura;
 	private String estadoProducto;
 //Methods--------------------------------
 	/**
@@ -31,18 +32,18 @@ public class ProductoSerie {
 	 */
 	public void setNumeroSerie(String numeroSerie) {
 		this.numeroSerie = numeroSerie;
+	}	
+	/**
+	 * @return idProducto
+	 */
+	public int getIdProducto() {
+		return idProducto;
 	}
 	/**
-	 * @return producto
+	 * @param idProducto idProducto a colocar
 	 */
-	public Producto getProducto() {
-		return producto;
-	}
-	/**
-	 * @param producto producto a colocar
-	 */
-	public void setProducto(Producto producto) {
-		this.producto = producto;
+	public void setIdProducto(int idProducto) {
+		this.idProducto = idProducto;
 	}
 	/**
 	 * @return estadoProducto
@@ -56,4 +57,20 @@ public class ProductoSerie {
 	public void setEstadoProducto(String estadoProducto) {
 		this.estadoProducto = estadoProducto;
 	}
+	/**
+	 * @return factura
+	 */
+	/**
+	 * @return idFactura
+	 */
+	public int getIdFactura() {
+		return idFactura;
+	}
+	/**
+	 * @param idFactura idFactura a colocar
+	 */
+	public void setIdFactura(int idFactura) {
+		this.idFactura = idFactura;
+	}
+		
 }

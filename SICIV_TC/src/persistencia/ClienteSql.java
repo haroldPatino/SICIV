@@ -63,23 +63,38 @@ public class ClienteSql {
 	 * Sentencia SQL para consultar los clientes que cumplen anos el dia que se realiza la consulta
 	 * @return
 	 */	
-	public String actualizarDatosCliente(){
-		return "";
+	public String actualizarDatosCliente(Cliente cliente){
+		return "UPDATE cliente SET ID_LUGAR="+cliente.getIdLugar()+
+				",NOMBRES_CLIENTE='"+cliente.getNombreCliente()+
+				"', APELLIDOS_CLIENTE='"+cliente.getApellidosCliente()+
+				"', DIRECCION_CLIENTE='"+cliente.getDireccionCliente()+
+				"', NUMERO_TELEFONICO="+cliente.getTelefonoCliente()+
+				", FECHA_NACIMIENTO='"+cliente.getFechaNacimiento()+
+				"' WHERE ID_CLIENTE = "+cliente.getIdCliente()+";";
+	}
+	
+	public String actualizarCedulaCliente(String cedulaAnterior, String cedulaNueva){
+		return "UPDATE cliente SET ID_CLIENTE = "+cedulaNueva+
+				" WHERE ID_CLIENTE = "+cedulaAnterior+";";
 	}
 	
 	/**
 	 * Sentencia SQL para consultar los clientes que cumplen anos el dia que se realiza la consulta
 	 * @return
 	 */	
-	public String buscarClientePorNombre(){
-		return "";
+	public String buscarClientePorNombre(String nombre){
+		return "SELECT *"
+				+ " FROM cliente "
+				+ " WHERE NOMBRES_CLIENTE = '"+nombre+"';";
 	}
 	
 	/**
 	 * Sentencia SQL para consultar los clientes que cumplen anos el dia que se realiza la consulta
 	 * @return
 	 */	
-	public String buscarClientePorCedula(){
-		return "";
+	public String buscarClientePorCedula(int cedula){
+		return "SELECT *"
+				+ " FROM cliente "
+				+ " WHERE ID_CLIENTE = "+cedula+";";
 	}
 }

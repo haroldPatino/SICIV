@@ -3,29 +3,28 @@
  */
 package logica;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
  * @author Harold Patiño
- *
+ * @author Victor Rojas
  */
 public class FacturaVenta {
 //Attributes----------------------------------
 	private int numeroFactura;
-	private Usuario usuario;
-	private Cliente cliente;
+	private int idUsuario;
+	private int idCliente;
 	private Calendar fechaFactura;
 	private int descuento;
 	private int impuestos;
 	private String estadoFactura;
-	private ArrayList<ProductoSerie> productos;
+
 //Building------------------------------------
 	/**
 	 * 
 	 */
 	public FacturaVenta(){
-		productos=new ArrayList<ProductoSerie>();
+		
 	}
 //Methods-------------------------------------
 	/**
@@ -40,30 +39,7 @@ public class FacturaVenta {
 	public void setNumeroFactura(int numeroFactura) {
 		this.numeroFactura = numeroFactura;
 	}
-	/**
-	 * @return usuario
-	 */
-	public Usuario getUsuario() {
-		return usuario;
-	}
-	/**
-	 * @param usuario usuario a colocar
-	 */
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-	/**
-	 * @return cliente
-	 */
-	public Cliente getCliente() {
-		return cliente;
-	}
-	/**
-	 * @param cliente cliente a colocar
-	 */
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
+	
 	/**
 	 * @return fechaFactura
 	 */
@@ -113,9 +89,28 @@ public class FacturaVenta {
 		this.estadoFactura = estadoFactura;
 	}
 	/**
-	 * @return productos
+	 * @return idUsuario
 	 */
-	public ArrayList<ProductoSerie> getProductos() {
-		return productos;
+	public int getIdUsuario() {
+		return idUsuario;
 	}
+	/**
+	 * @param idUsuario idUsuario a colocar
+	 */
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+	/**
+	 * @return idCliente
+	 */
+	public int getIdCliente() {
+		return idCliente;
+	}
+	/**
+	 * @param idCliente idCliente a colocar
+	 */
+	public void setIdCliente(int idCliente) {
+		this.idCliente = idCliente;
+	}
+	
 }
