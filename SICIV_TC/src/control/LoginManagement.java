@@ -55,7 +55,7 @@ public class LoginManagement implements Serializable {
     Usuario user= buscarUser(nombre);
     if(user!=null){
     	 if (nombre != null && nombre.equals(user.getNickname()) && clave != null
-    		        && clave.equals(user.getContraseña())) {
+    		        && clave.equals(user.getContrasena())) {
     		      logeado = true;
     		      msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenid@", nombre);
     		    } else {
@@ -82,7 +82,7 @@ public class LoginManagement implements Serializable {
     		      
   }
   public Usuario buscarUser(String nickname){
-	  ArrayList<Usuario> usuarios=dao.cargaUsuarios();
+	  ArrayList<Usuario> usuarios=dao.selecionarUsuarios();
 	  for(int i=0;i<usuarios.size();i++){
 		  if(usuarios.get(i).getNickname().equals(nickname)){
 			  return usuarios.get(i);
