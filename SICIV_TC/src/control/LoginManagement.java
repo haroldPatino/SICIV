@@ -50,20 +50,18 @@ public class LoginManagement implements Serializable {
   }  
   public void login(ActionEvent actionEvent) {
     RequestContext context = RequestContext.getCurrentInstance();
-    FacesMessage msg = null;
+    FacesContext ctxtMsg = FacesContext.getCurrentInstance();
     dao=new UsuarioDao();
     Usuario user= buscarUser(nombre);
     if(user!=null){
     	 if (nombre != null && nombre.equals(user.getNickname()) && clave != null
     		        && clave.equals(user.getContrasena())) {
     		      logeado = true;
-    		      msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenid@", nombre);
+    		      ctxtMsg.addMessage(null, new FacesMessage("Successful",  "Bienvenid@ " + user.getNombreUsuario()) );
     		    } else {
     		      logeado = false;
-    		      msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error",
-    		                             "Usuario o contraseña Erroneos");
+    		      ctxtMsg.addMessage(null, new FacesMessage("Alert",  "Usuario o contraseña erroneos") );
     		    }
-    		    FacesContext.getCurrentInstance().addMessage(null, msg);
     		    context.addCallbackParam("estaLogeado", logeado);
     		    if (logeado){
     		    	if(user.getTipoUsuario()=='A'){
@@ -76,8 +74,7 @@ public class LoginManagement implements Serializable {
     }
     else{
     	logeado = false;
-	      msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error",
-	                             "Usuario o contraseña Erroneos");
+    	ctxtMsg.addMessage(null, new FacesMessage("Alert",  "Usuario o contraseña erroneos") );
     }
     		      
   }
@@ -96,7 +93,6 @@ public class LoginManagement implements Serializable {
     session.invalidate();
     logeado = false;
   }
-
 /**
  * @return the serialversionuid
  */
