@@ -13,19 +13,25 @@
     	   <pm:header fixed="true">
     	   	 <img src="../images/Barra.png"/>
     	   </pm:header>
-    	   <pm:header title="SICIV Modulo Gerente">Gerente: #{loginManagement.nombre}</pm:header>
+    	   <pm:header title="SICIV Modulo Gerente"></pm:header>
+    	   <pm:header>
+    	   <h:panelGrid columns="2" cellpadding="18" styleClass="panelGridCenter" style="position:relative; top:5px">
+        	<p:outputLabel>Gerente: #{loginManagement.nombre}</p:outputLabel>
+           <p:commandButton value="Salir"></p:commandButton>
+      		</h:panelGrid>
+    	   </pm:header>
            <pm:header>
                 <p:tabMenu activeIndex="0">
-                    <p:menuitem value="Inventario" icon="ui-icon-shop" url="#" iconPos="bottom" outcome="pm:inentario"/>
-                    <p:menuitem value="Usuarios" icon="ui-icon-user" url="#" iconPos="bottom"/>
-                    <p:menuitem value="Reportes" icon="ui-icon-grid" url="#" iconPos="bottom"/>
-                    <p:menuitem value="Cuenta" icon="ui-icon-gear" url="#" iconPos="bottom"/>
+                    <p:menuitem value="Inventario" icon="ui-icon-shop" url="#" iconPos="bottom" outcome="pm:inventario"/>
+                    <p:menuitem value="Usuarios" icon="ui-icon-user" url="#" iconPos="bottom" outcome="pm:usuarios"/>
+                    <p:menuitem value="Reportes" icon="ui-icon-grid" url="#" iconPos="bottom" outcome="pm:reportes"/>
                 </p:tabMenu>
             </pm:header>
            <pm:content>
            		<p:accordionPanel>
     <p:tab title="AGREGAR PRODUCTO">
-        <h:form>
+        <h:form id="add">
+        <p:growl id="growl" showDetail="true" />
          <pm:field>
         		<p:outputLabel for="numSerie" value="Numero Serie:" /> 
         		<p:inputText id="numSerie" value="" required="true" label="NumeroSerie" placeholder="NUMERO_SERIE"/>
@@ -69,7 +75,7 @@
             <p:inputText id="precVen" value="" required="true" label="precioVenta"/>
 		 </pm:field>
 		 <pm:field>
-		 	<p:commandButton id="btnAddProd" value="Insertar Producto"></p:commandButton>
+		 	<p:commandButton id="btnAddProd" value="Insertar Producto" action="#{manejoPruebas.prueba}" update="growl"></p:commandButton>
 		 </pm:field>
         </h:form>
     </p:tab>
@@ -79,6 +85,9 @@
         		<p:outputLabel for="numSerie" value="Numero Serie:" /> 
         		<p:inputText id="numSerie" value="" required="true" label="NumeroSerie" placeholder="NUMERO_SERIE"/>
          </pm:field>
+         <pm:field>
+		 	<p:commandButton id="btnCargProd" value="Cargar Producto"></p:commandButton>
+		 </pm:field>
          <pm:field>
         		<p:outputLabel for="nameProduc" value="Nombre Producto:" /> 
         		<p:inputText id="nameProduc" value="" required="true" label="nombre"/>
@@ -123,10 +132,152 @@
         </h:form>
     </p:tab>
     <p:tab title="BUSQUEDA DE PRODUCTOS">
-        <h:outputText value="After a break of more than 15 years..." />
+    	<h:form>
+        <pm:field>
+        	<h:panelGrid columns="3" cellpadding="4" styleClass="panelGridCenter" style="position:relative; top:5px">
+        	<p:outputLabel for="numSerie" value="Numero de Serie:" /> 
+            <p:inputText id="numSerie" value="" required="true" label="numeroSerie"/>
+            <p:commandButton id="btnAddProd" value="Buscar Producto" icon="ui-icon-search" iconPos="left"></p:commandButton>
+      		</h:panelGrid>
+		 </pm:field>
+		 </h:form>
     </p:tab>
 </p:accordionPanel>
            </pm:content>
     </pm:page>
+    
+    <pm:page  id="usuarios">
+    	 <pm:header fixed="true">
+    	   	 <img src="../images/Barra.png"/>
+    	   </pm:header>
+    	   <pm:header title="SICIV Modulo Gerente">Gerente: #{loginManagement.nombre}</pm:header>
+           <pm:header>
+                <p:tabMenu activeIndex="1">
+                    <p:menuitem value="Inventario" icon="ui-icon-shop" url="#" iconPos="bottom" outcome="pm:inventario"/>
+                    <p:menuitem value="Usuarios" icon="ui-icon-user" url="#" iconPos="bottom" outcome="pm:usuarios"/>
+                    <p:menuitem value="Reportes" icon="ui-icon-grid" url="#" iconPos="bottom" outcome="pm:reportes"/>
+                </p:tabMenu>
+            </pm:header>
+           <pm:content>
+           		<p:accordionPanel>
+    				<p:tab title="CREAR USUARIOS">
+    					<h:form>
+    						<pm:field>
+    							<p:outputLabel for="idUser" value="N° Documento:"></p:outputLabel>
+    							<p:inputText id="idUser" value="" required="true"></p:inputText>
+    						</pm:field>
+    						<pm:field>
+    							<p:outputLabel for="nameUser" value="Nombres:"></p:outputLabel>
+    							<p:inputText id="nameUser" value="" required="true"></p:inputText>
+    						</pm:field>
+    						<pm:field>
+    							<p:outputLabel for="lastUser" value="Apellidos:"></p:outputLabel>
+    							<p:inputText id="lastUser" value="" required="true"></p:inputText>
+    						</pm:field>
+    						<pm:field>
+    							<p:autoComplete id="lugUser" value="" required="true" placeholder="Lugar de Residencia"></p:autoComplete>
+    						</pm:field>
+    						<pm:field>
+    							<p:outputLabel for="dirUser" value="Direccion:"></p:outputLabel>
+    							<p:inputText id="dirUser" value=""></p:inputText>
+    						</pm:field>
+    						<pm:field>
+    							<p:outputLabel for="telUser" value="Telefono:"></p:outputLabel>
+    							<p:inputText id="telUser" value=""></p:inputText>
+    						</pm:field>
+    						<pm:header>OPCIONES DE USUARIO</pm:header>
+    						<pm:field>
+    							<p:outputLabel for="nickUser" value="Nickname:"></p:outputLabel>
+    							<p:inputText id="nickUser" value="" required="true"></p:inputText>
+    						</pm:field>
+    						<pm:field>
+    							<p:outputLabel for="tipUser" value="Tipo de Usuario:"></p:outputLabel>
+    							<p:selectOneMenu id="tipUser" required="true">
+        							<f:selectItem itemLabel="Select One" itemValue="" />
+        							<f:selectItem itemLabel="Gerente" itemValue="G" />
+        							<f:selectItem itemLabel="Auxiliar" itemValue="A" />
+    							</p:selectOneMenu>
+    						</pm:field>
+    						<pm:field>
+    							<p:outputLabel for="passUser" value="Password:"></p:outputLabel>
+    							<p:inputText type="password" id="passUser" value="" required="true"></p:inputText>
+    						</pm:field>
+    					</h:form>
+    				</p:tab>
+    				<p:tab title="BUSCAR USUARIOS">
+    					<h:form>
+        					<pm:field>
+        						<h:panelGrid columns="3" cellpadding="4" styleClass="panelGridCenter" style="position:relative; top:5px">
+        						<p:outputLabel for="numDoc" value="Numero de Documento:" /> 
+            					<p:inputText id="numDoc" value="" required="true" label="numeroDocumento"/>
+            					<p:commandButton id="btnAddProd" value="Buscar Usuario" icon="ui-icon-search" iconPos="left"></p:commandButton>
+      							</h:panelGrid>
+		 					</pm:field>
+		 				</h:form>
+   					</p:tab>
+    				<p:tab title="CAMBIO CONTRASEÑAS">
+    					<h:form>
+    						<pm:field>
+    							<p:outputLabel for="docUser" value="Numero de Documento:"></p:outputLabel>
+    							<p:inputText id="docUser" value="" required="true"></p:inputText>
+    						</pm:field>
+    						<pm:field>
+    							<p:outputLabel for="newPassUser" value="Password Nuevo:"></p:outputLabel>
+    							<p:inputText type="password" id="newPassUser" value="" required="true"></p:inputText>
+    						</pm:field>
+    						<pm:field>
+    						    <p:commandButton id="btnAddProd" value="Guardar" icon="ui-icon-check" iconPos="left"></p:commandButton>
+    						</pm:field>
+    					</h:form>
+    				</p:tab>
+    				<p:tab title="CAMBIAR MI CONTRASEÑA">
+    					<h:form>
+    						<pm:field>
+    							<p:outputLabel for="docUser" value="Numero de Documento:"></p:outputLabel>
+    							<p:inputText id="docUser" value="" required="true"></p:inputText>
+    						</pm:field>
+    						<pm:field>
+    							<p:outputLabel for="oldPassUser" value="Password Actual:"></p:outputLabel>
+    							<p:inputText id="oldPassUser" value="" required="true"></p:inputText>
+    						</pm:field>
+    						<pm:field>
+    							<p:outputLabel for="newPassUser" value="Password Nuevo:"></p:outputLabel>
+    							<p:inputText id="newPassUser" value="" required="true"></p:inputText>
+    						</pm:field>
+    						<pm:field>
+    							<p:outputLabel for="confPassUser" value="Confirmar Password:"></p:outputLabel>
+    							<p:inputText id="confPassUser" value="" required="true"></p:inputText>
+    						</pm:field>
+    						<pm:field>
+    						    <p:commandButton id="btnAddProd" value="Guardar" icon="ui-icon-check" iconPos="left"></p:commandButton>
+    						</pm:field>
+    					</h:form>
+    				</p:tab>
+				</p:accordionPanel>
+           </pm:content>
+    </pm:page>
+    <pm:page id="reportes">
+    	<pm:header fixed="true">
+    	   	 <img src="../images/Barra.png"/>
+    	   </pm:header>
+    	   <pm:header title="SICIV Modulo Gerente">Gerente: #{loginManagement.nombre}</pm:header>
+           <pm:header>
+                <p:tabMenu activeIndex="1">
+                    <p:menuitem value="Inventario" icon="ui-icon-shop" url="#" iconPos="bottom" outcome="pm:inventario"/>
+                    <p:menuitem value="Usuarios" icon="ui-icon-user" url="#" iconPos="bottom" outcome="pm:usuarios"/>
+                    <p:menuitem value="Reportes" icon="ui-icon-grid" url="#" iconPos="bottom" outcome="pm:reportes"/>
+                </p:tabMenu>
+            </pm:header>
+    </pm:page>
+<script type="text/javascript">
+  //<![CDATA[
+  function logout(xhr, status, args) {
+	  alert("Salio");
+    setTimeout(function() {
+      window.location = 'index.xhtml';
+    }, 500);
+  }
+//]]>
+</script>
 </h:body>
 </html>

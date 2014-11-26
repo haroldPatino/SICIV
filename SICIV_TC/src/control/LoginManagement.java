@@ -87,9 +87,8 @@ public class LoginManagement implements Serializable {
 	  }
 	  return null;
   }
-  public void logout() {
-    HttpSession session = (HttpSession) FacesContext.getCurrentInstance() 
-                                        .getExternalContext().getSession(false);
+  public void logout(ActionEvent actionEvent) {
+    HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
     session.invalidate();
     logeado = false;
   }

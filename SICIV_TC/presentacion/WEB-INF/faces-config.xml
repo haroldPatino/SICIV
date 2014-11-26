@@ -9,5 +9,10 @@
 		<managed-bean-class>control.LoginManagement</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>manejoPruebas</managed-bean-name>
+		<managed-bean-class>control.ManejoPruebas</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 
 </faces-config>
