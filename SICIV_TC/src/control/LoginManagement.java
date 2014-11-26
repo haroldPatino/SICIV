@@ -65,10 +65,10 @@ public class LoginManagement implements Serializable {
     		    context.addCallbackParam("estaLogeado", logeado);
     		    if (logeado){
     		    	if(user.getTipoUsuario()=='A'){
-    		    		context.addCallbackParam("view", "Auxiliar.xhtml");
+    		    		context.addCallbackParam("view", "employee.xhtml");
     		    	}
     		    	if(user.getTipoUsuario()=='G'){
-    		    		context.addCallbackParam("view", "Gerente.xhtml");
+    		    		context.addCallbackParam("view", "boss.xhtml");
     		    	}
     		    }
     }

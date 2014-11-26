@@ -9,95 +9,124 @@
 <h:head>
 </h:head>
 <h:body>
-    <pm:page id="home">
-           <pm:header title="Inicio"></pm:header>
-           <pm:header fixed="true">
+    <pm:page id="inventario">
+    	   <pm:header fixed="true">
+    	   	 <img src="../images/Barra.png"/>
+    	   </pm:header>
+    	   <pm:header title="SICIV Modulo Gerente">Gerente: #{loginManagement.nombre}</pm:header>
+           <pm:header>
                 <p:tabMenu activeIndex="0">
-                    <p:menuitem value="Inicio" icon="ui-icon-home" url="#" iconPos="bottom" outcome="pm:home"/>
-                    <p:menuitem value="Login" icon="ui-icon-info" url="#" iconPos="bottom" outcome="pm:login"/>
-                    <p:menuitem value="Portafolio" icon="ui-icon-tag" url="#" iconPos="bottom" outcome="pm:portafolio"/>
-                    <p:menuitem value="Quienes Somos" icon="ui-icon-clock" url="#" iconPos="bottom" outcome="pm:somos"/>
-                    <p:menuitem value="Modelo Atencion" icon="ui-icon-star" url="#" iconPos="bottom" outcome="pm:modelo"/>
+                    <p:menuitem value="Inventario" icon="ui-icon-shop" url="#" iconPos="bottom" outcome="pm:inentario"/>
+                    <p:menuitem value="Usuarios" icon="ui-icon-user" url="#" iconPos="bottom"/>
+                    <p:menuitem value="Reportes" icon="ui-icon-grid" url="#" iconPos="bottom"/>
+                    <p:menuitem value="Cuenta" icon="ui-icon-gear" url="#" iconPos="bottom"/>
                 </p:tabMenu>
             </pm:header>
-           <pm:content></pm:content>
+           <pm:content>
+           		<p:accordionPanel>
+    <p:tab title="AGREGAR PRODUCTO">
+        <h:form>
+         <pm:field>
+        		<p:outputLabel for="numSerie" value="Numero Serie:" /> 
+        		<p:inputText id="numSerie" value="" required="true" label="NumeroSerie" placeholder="NUMERO_SERIE"/>
+         </pm:field>
+         <pm:field>
+        		<p:outputLabel for="nameProduc" value="Nombre Producto:" /> 
+        		<p:inputText id="nameProduc" value="" required="true" label="nombre"/>
+         </pm:field>
+         <pm:field>
+         	<p:autoComplete id="nameProv" value="" required="true" label="proveedor" placeholder="nombre del proveedor"/>
+         </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="tipoProd" value="Tipo de Producto:" /> 
+		    <p:selectOneMenu id="tipoProd" required="true">
+        		<f:selectItem itemLabel="Select One" itemValue="" />
+        		<f:selectItem itemLabel="Lentes" itemValue="1" />
+        		<f:selectItem itemLabel="Monturas" itemValue="2" />
+    		</p:selectOneMenu>
+		 </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="marcProd" value="Marca del Producto:" /> 
+            <p:inputText id="marcProd" value="" required="true" label="marca"/>
+		 </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="estProd" value="Estado Producto:" />
+		 	<p:selectOneMenu id="estProd" required="true">
+        		<f:selectItem itemLabel="Select One" itemValue="" />
+        		<f:selectItem itemLabel="En fabrica" itemValue="1" />
+        		<f:selectItem itemLabel="Defectuoso" itemValue="2" />
+        		<f:selectItem itemLabel="Optimo" itemValue="3" />
+        		<f:selectItem itemLabel="Vendido" itemValue="4" />
+        		<f:selectItem itemLabel="Devuelto" itemValue="5" />
+    		</p:selectOneMenu>		 
+		 </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="precCom" value="Precio de Compra Producto:" /> 
+            <p:inputText id="precCom" value="" required="true" label="precioCompra"/>
+		 </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="precVen" value="Precio de Venta Producto:" /> 
+            <p:inputText id="precVen" value="" required="true" label="precioVenta"/>
+		 </pm:field>
+		 <pm:field>
+		 	<p:commandButton id="btnAddProd" value="Insertar Producto"></p:commandButton>
+		 </pm:field>
+        </h:form>
+    </p:tab>
+    <p:tab title="ACTUALIZAR PRODUCTO">
+        <h:form>
+         <pm:field>
+        		<p:outputLabel for="numSerie" value="Numero Serie:" /> 
+        		<p:inputText id="numSerie" value="" required="true" label="NumeroSerie" placeholder="NUMERO_SERIE"/>
+         </pm:field>
+         <pm:field>
+        		<p:outputLabel for="nameProduc" value="Nombre Producto:" /> 
+        		<p:inputText id="nameProduc" value="" required="true" label="nombre"/>
+         </pm:field>
+         <pm:field>
+         	<p:autoComplete id="nameProv" value="" required="true" label="proveedor" placeholder="nombre del proveedor"/>
+         </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="tipoProd" value="Tipo de Producto:" /> 
+		    <p:selectOneMenu id="tipoProd" required="true">
+        		<f:selectItem itemLabel="Select One" itemValue="" />
+        		<f:selectItem itemLabel="Lentes" itemValue="1" />
+        		<f:selectItem itemLabel="Monturas" itemValue="2" />
+    		</p:selectOneMenu>
+		 </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="marcProd" value="Marca del Producto:" /> 
+            <p:inputText id="marcProd" value="" required="true" label="marca"/>
+		 </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="estProd" value="Estado Producto:" />
+		 	<p:selectOneMenu id="estProd" required="true">
+        		<f:selectItem itemLabel="Select One" itemValue="" />
+        		<f:selectItem itemLabel="En fabrica" itemValue="1" />
+        		<f:selectItem itemLabel="Defectuoso" itemValue="2" />
+        		<f:selectItem itemLabel="Optimo" itemValue="3" />
+        		<f:selectItem itemLabel="Vendido" itemValue="4" />
+        		<f:selectItem itemLabel="Devuelto" itemValue="5" />
+    		</p:selectOneMenu>		 
+		 </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="precCom" value="Precio de Compra Producto:" /> 
+            <p:inputText id="precCom" value="" required="true" label="precioCompra"/>
+		 </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="precVen" value="Precio de Venta Producto:" /> 
+            <p:inputText id="precVen" value="" required="true" label="precioVenta"/>
+		 </pm:field>
+		 <pm:field>
+		 	<p:commandButton id="btnAddProd" value="Actualizar Producto" icon="ui-icon-refresh" iconPos="left"></p:commandButton>
+		 </pm:field>
+        </h:form>
+    </p:tab>
+    <p:tab title="BUSQUEDA DE PRODUCTOS">
+        <h:outputText value="After a break of more than 15 years..." />
+    </p:tab>
+</p:accordionPanel>
+           </pm:content>
     </pm:page>
-    <pm:page id="login">
-           <pm:header title="Login"></pm:header>
-          <pm:header fixed="true">
-                <p:tabMenu activeIndex="1">
-                    <p:menuitem value="Inicio" icon="ui-icon-home" url="#" iconPos="bottom" outcome="pm:home"/>
-                    <p:menuitem value="Login" icon="ui-icon-info" url="#" iconPos="bottom" outcome="pm:login"/>
-                    <p:menuitem value="Portafolio" icon="ui-icon-tag" url="#" iconPos="bottom" outcome="pm:portafolio"/>
-                    <p:menuitem value="Quienes Somos" icon="ui-icon-clock" url="#" iconPos="bottom" outcome="pm:somos"/>
-                    <p:menuitem value="Modelo Atencion" icon="ui-icon-star" url="#" iconPos="bottom" outcome="pm:modelo"/>
-                </p:tabMenu>
-            </pm:header>
-           <pm:content></pm:content>
-       	    
-       	   <h:form class="login">
-       	    <p:growl id="growl" showDetail="true" />
-       	   
-             <pm:field>
-        		<p:outputLabel for="name" value="Usuario:" /> 
-        		<p:inputText id="name" value="#{loginManagement.nombre}" required="true" label="Name" placeholder="nombre.apellido"/>
-    		 </pm:field>
-    		 <pm:field>
-        		<p:outputLabel for="pass" value="Contraseña:" /> 
-        		<p:inputText type="password" id="pass" required="true" value="#{loginManagement.clave}" label="Pass"/>
-    		 </pm:field>
-             <p:commandButton id="loginButton" value="Ingresar" actionListener="#{loginManagement.login}" update="growl" icon="check" oncomplete="manejarLogin(xhr, status, args)" />
-           </h:form>
-    </pm:page>
-    <pm:page id="portafolio">
-           <pm:header title="Portafolio Empresarial"></pm:header>
-           <pm:header fixed="true">
-                <p:tabMenu activeIndex="2">
-                    <p:menuitem value="Inicio" icon="ui-icon-home" url="#" iconPos="bottom" outcome="pm:home"/>
-                    <p:menuitem value="Login" icon="ui-icon-info" url="#" iconPos="bottom" outcome="pm:login"/>
-                    <p:menuitem value="Portafolio" icon="ui-icon-tag" url="#" iconPos="bottom" outcome="pm:portafolio"/>
-                    <p:menuitem value="Quienes Somos" icon="ui-icon-clock" url="#" iconPos="bottom" outcome="pm:somos"/>
-                    <p:menuitem value="Modelo Atencion" icon="ui-icon-star" url="#" iconPos="bottom" outcome="pm:modelo"/>
-                </p:tabMenu>
-            </pm:header>
-           <pm:content></pm:content>
-    </pm:page>
-     <pm:page id="somos">
-           <pm:header title="Quienes Somos"></pm:header>
-           <pm:header fixed="true">
-                <p:tabMenu activeIndex="3">
-                    <p:menuitem value="Inicio" icon="ui-icon-home" url="#" iconPos="bottom" outcome="pm:home"/>
-                    <p:menuitem value="Login" icon="ui-icon-info" url="#" iconPos="bottom" outcome="pm:login"/>
-                    <p:menuitem value="Portafolio" icon="ui-icon-tag" url="#" iconPos="bottom" outcome="pm:portafolio"/>
-                    <p:menuitem value="Quienes Somos" icon="ui-icon-clock" url="#" iconPos="bottom" outcome="pm:somos"/>
-                    <p:menuitem value="Modelo Atencion" icon="ui-icon-star" url="#" iconPos="bottom" outcome="pm:modelo"/>
-                </p:tabMenu>
-            </pm:header>
-           <pm:content></pm:content>
-    </pm:page>
-     <pm:page id="modelo">
-           <pm:header title="Modelo de Atencion"></pm:header>
-           <pm:header fixed="true">
-                <p:tabMenu activeIndex="4">
-                    <p:menuitem value="Inicio" icon="ui-icon-home" url="#" iconPos="bottom" outcome="pm:home"/>
-                    <p:menuitem value="Login" icon="ui-icon-info" url="#" iconPos="bottom" outcome="pm:login"/>
-                    <p:menuitem value="Portafolio" icon="ui-icon-tag" url="#" iconPos="bottom" outcome="pm:portafolio"/>
-                    <p:menuitem value="Quienes Somos" icon="ui-icon-clock" url="#" iconPos="bottom" outcome="pm:somos"/>
-                    <p:menuitem value="Modelo Atencion" icon="ui-icon-star" url="#" iconPos="bottom" outcome="pm:modelo"/>
-                </p:tabMenu>
-            </pm:header>
-           <pm:content></pm:content>
-    </pm:page>
-    <script type="text/javascript">
-		//<![CDATA[
-		function manejarLogin(xhr, status, args) {
-			if (!args.validationFailed && args.estaLogeado) {
-				setTimeout(function() {
-					window.location = args.view;
-				}, 500);
-			}
-		}
-		//]]>
-	</script>
 </h:body>
 </html>

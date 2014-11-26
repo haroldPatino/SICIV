@@ -41,7 +41,7 @@ public class LoginFilter implements Filter {
 			  HttpServletResponse res = (HttpServletResponse) response;
 
 			  // Obtengo el bean que representa el usuario desde el scope sesión
-			  LoginManagement LoginManagement = (LoginManagement) req.getSession().getAttribute("LoginManagement");
+			  LoginManagement LoginManagement = (LoginManagement) req.getSession().getAttribute("loginManagement");
 			  
 			  //Proceso la URL que está requiriendo el cliente
 			  String urlStr = req.getRequestURL().toString().toLowerCase();
@@ -56,21 +56,13 @@ public class LoginFilter implements Filter {
 			  
 			  //El usuario no está logueado
 			  if (LoginManagement == null || !LoginManagement.estaLogeado()) {
-			    res.sendRedirect(req.getContextPath() + "/login.xhtml");
+			    res.sendRedirect(req.getContextPath() + "/faces/index.xhtml");
 			    return;
 			  }
 			  
 			  //El recurso requiere protección, pero el usuario ya está logueado.
 			  chain.doFilter(request, response);
 			}
-
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
-	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
-	}
-	
 	private boolean noProteger(String urlStr) {
 
 		/*
@@ -80,11 +72,25 @@ public class LoginFilter implements Filter {
 		 * que se obtengan de un archivo de configuración o algo que no requiera
 		 * compilación.
 		 */
-		  if (urlStr.endsWith("index2.xhtml"))
-		    return true;
+		  if (urlStr.endsWith("index.xhtml"))
+			  return true;
 		  if (urlStr.indexOf("/javax.faces.resource/") != -1)
-		    return true;
+			  return true;
+		  if (urlStr.indexOf("/images") != -1)
+			  return true;
+		  if (urlStr.indexOf("/scripts") != -1)
+			  return true;
+		  if (urlStr.indexOf("/styles") != -1)
+			  return true;
+		  if (urlStr.indexOf("/recursos") != -1)
+			  return true;
 		  return false;
 		}
 
+	/**
+	 * @see Filter#init(FilterConfig)
+	 */
+	public void init(FilterConfig fConfig) throws ServletException {
+		// TODO Auto-generated method stub
+	}
 }
