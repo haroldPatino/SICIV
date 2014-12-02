@@ -30,8 +30,7 @@
            <pm:content>
            		<p:accordionPanel>
     <p:tab title="AGREGAR PRODUCTO">
-        <h:form id="add">
-        <p:growl id="growl" showDetail="true" />
+        <h:form class="add">
          <pm:field>
         		<p:outputLabel for="numSerie" value="Numero Serie:" /> 
         		<p:inputText id="numSerie" value="" required="true" label="NumeroSerie" placeholder="NUMERO_SERIE"/>
@@ -74,9 +73,11 @@
 		 	<p:outputLabel for="precVen" value="Precio de Venta Producto:" /> 
             <p:inputText id="precVen" value="" required="true" label="precioVenta"/>
 		 </pm:field>
-		 <pm:field>
-		 	<p:commandButton id="btnAddProd" value="Insertar Producto" action="#{manejoPruebas.prueba}" update="growl"></p:commandButton>
-		 </pm:field>
+		 <p:growl id="growl" showDetail="true" />
+             <p:commandButton id="loginButton" value="Agregar Producto" onclick="PF('dlg1').show();" />
+             <p:dialog header="Header" widgetVar="dlg1" showEffect="pop">
+    <h:outputText value="Producto Agregado Exitosamente" />
+</p:dialog>
         </h:form>
     </p:tab>
     <p:tab title="ACTUALIZAR PRODUCTO">
@@ -126,9 +127,11 @@
 		 	<p:outputLabel for="precVen" value="Precio de Venta Producto:" /> 
             <p:inputText id="precVen" value="" required="true" label="precioVenta"/>
 		 </pm:field>
-		 <pm:field>
-		 	<p:commandButton id="btnAddProd" value="Actualizar Producto" icon="ui-icon-refresh" iconPos="left"></p:commandButton>
-		 </pm:field>
+		 <p:growl id="growl" showDetail="true" />
+             <p:commandButton id="loginButton" value="Actualizar Producto" onclick="PF('dlg1').show();" />
+             <p:dialog header="Header" widgetVar="dlg1" showEffect="pop">
+    <h:outputText value="Producto Modificado Exitosamente" />
+</p:dialog>
         </h:form>
     </p:tab>
     <p:tab title="BUSQUEDA DE PRODUCTOS">
@@ -268,6 +271,9 @@
                     <p:menuitem value="Reportes" icon="ui-icon-grid" url="#" iconPos="bottom" outcome="pm:reportes"/>
                 </p:tabMenu>
             </pm:header>
+            <p:button value="Reporte de Proveedores"></p:button>
+            <p:button value="Reporte de Inventario"></p:button>
+            <p:button value="Reporte de Lugares"></p:button>
     </pm:page>
 <script type="text/javascript">
   //<![CDATA[
