@@ -77,7 +77,7 @@ public class FacturaVentaDao {
 			}
 			return -1;
 		}
-		public FacturaVenta buscarFacturaPorNumeor(int numero){
+		public FacturaVenta buscarFacturaPorNumero(int numero){
 			ResultSet result;
 			FacturaVenta factura = new FacturaVenta();
 			if(conexion.conectar()){

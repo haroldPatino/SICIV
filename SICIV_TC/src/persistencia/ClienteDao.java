@@ -44,10 +44,10 @@ public class ClienteDao {
 						Cliente cliente = new Cliente();
 						cliente.setIdCliente(Integer.parseInt(result.getString("ID_CLIENTE")));
 						cliente.setIdLugar(Integer.parseInt(result.getString("ID_LUGAR")));;
-						cliente.setNombreCliente(result.getString("NOMBRES_CLIETNE"));
+						cliente.setNombreCliente(result.getString("NOMBRES_CLIENTE"));
 						cliente.setApellidosCliente(result.getString("APELLIDOS_CLIENTE"));
 						cliente.setDireccionCliente(result.getString("DIRECCION_CLIENTE"));
-						cliente.setTelefonoCliente(Integer.parseInt(result.getString("NUMERO_TELEFONICO")));
+						cliente.setTelefonoCliente(result.getString("NUMERO_TELEFONICO"));
 						DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 						Calendar fecha = Calendar.getInstance();
 						fecha.setTime(formato.parse(result.getString("FECHA_NACIMIENTO")));
@@ -90,7 +90,7 @@ public class ClienteDao {
 					sentence = conexion.getConexion().createStatement();
 					result = sentence.executeQuery(sqlCliente.selectClientes());
 					while(result.next()){
-						valores[0] = result.getString("NOMBRES_CLIETNE");
+						valores[0] = result.getString("NOMBRES_CLIENTE");
 						valores[1] = result.getString("APELLIDOS_CLIENTE");
 						valores[2] = result.getString("DIRECCION_CLIENTE");
 						valores[3] = result.getString("NUMERO_TELEFONICO");
@@ -143,10 +143,10 @@ public class ClienteDao {
 					while(result.next()){						
 						cliente.setIdCliente(Integer.parseInt(result.getString("ID_CLIENTE")));
 						cliente.setIdLugar(Integer.parseInt(result.getString("ID_LUGAR")));;
-						cliente.setNombreCliente(result.getString("NOMBRES_CLIETNE"));
+						cliente.setNombreCliente(result.getString("NOMBRES_CLIENTE"));
 						cliente.setApellidosCliente(result.getString("APELLIDOS_CLIENTE"));
 						cliente.setDireccionCliente(result.getString("DIRECCION_CLIENTE"));
-						cliente.setTelefonoCliente(Integer.parseInt(result.getString("NUMERO_TELEFONICO")));
+						cliente.setTelefonoCliente(result.getString("NUMERO_TELEFONICO"));
 						DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 						Calendar fecha = Calendar.getInstance();
 						fecha.setTime(formato.parse(result.getString("FECHA_NACIMIENTO")));
@@ -177,10 +177,10 @@ public class ClienteDao {
 					while(result.next()){						
 						cliente.setIdCliente(Integer.parseInt(result.getString("ID_CLIENTE")));
 						cliente.setIdLugar(Integer.parseInt(result.getString("ID_LUGAR")));;
-						cliente.setNombreCliente(result.getString("NOMBRES_CLIETNE"));
+						cliente.setNombreCliente(result.getString("NOMBRES_CLIENTE"));
 						cliente.setApellidosCliente(result.getString("APELLIDOS_CLIENTE"));
 						cliente.setDireccionCliente(result.getString("DIRECCION_CLIENTE"));
-						cliente.setTelefonoCliente(Integer.parseInt(result.getString("NUMERO_TELEFONICO")));
+						cliente.setTelefonoCliente(result.getString("NUMERO_TELEFONICO"));
 						DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 						Calendar fecha = Calendar.getInstance();
 						fecha.setTime(formato.parse(result.getString("FECHA_NACIMIENTO")));

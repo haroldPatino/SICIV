@@ -16,7 +16,7 @@ public class Cliente {
 	private String nombreCliente;
 	private String apellidosCliente;
 	private String direccionCliente;
-	private int telefonoCliente;
+	private String telefonoCliente;
 	private Calendar fechaNacimiento;
 //Building-----------------------------------------
 	/**
@@ -86,16 +86,17 @@ public class Cliente {
 	public void setDireccionCliente(String direccionCliente) {
 		this.direccionCliente = direccionCliente;
 	}
+	
 	/**
 	 * @return telefonoCliente
 	 */
-	public int getTelefonoCliente() {
+	public String getTelefonoCliente() {
 		return telefonoCliente;
 	}
 	/**
 	 * @param telefonoCliente telefonoCliente a colocar
 	 */
-	public void setTelefonoCliente(int telefonoCliente) {
+	public void setTelefonoCliente(String telefonoCliente) {
 		this.telefonoCliente = telefonoCliente;
 	}
 	/**

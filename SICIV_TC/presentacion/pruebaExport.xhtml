@@ -1,0 +1,24 @@
+﻿<!DOCTYPE HTML>
+<!--
+	Prologue by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pr="http://primefaces.org/ui">
+	
+	<body>
+ 		<h1>JASPER REPORTS PRUEBA</h1>
+		
+		<h:form>
+		<h:commandButton value = "Reporte FACTURA 1001" actionListener="#{reportes.verReporteFactura(1001)}" />
+		<h:commandButton value = "Reporte ELEMENTOS INVENTARIO" actionListener="#{reportes.verReporteInventario}" />
+		<h:commandButton value = "Reporte LUGARES" actionListener="#{reportes.verReporteLugares}" />
+		<h:commandButton value = "Reporte PROVEEDORES" actionListener="#{reportes.verReporteProveedores}" />
+		</h:form>
+ 
+
+	</body>
+</html>
