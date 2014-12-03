@@ -19,5 +19,15 @@
 		<managed-bean-class>control.ControlProducto</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>controlEmpleados</managed-bean-name>
+		<managed-bean-class>control.ControlEmpleados</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>controlClientes</managed-bean-name>
+		<managed-bean-class>control.ControlClientes</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 
 </faces-config>

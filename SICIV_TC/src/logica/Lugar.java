@@ -10,7 +10,7 @@ package logica;
 public class Lugar {
 	////Attributes---------------------------------------
 	private int idLugar;
-	private int lugarPadre;
+	private String lugarPadre;
 	private String nombreLugar;
 	//Building-----------------------------------------
 		/**
@@ -36,13 +36,13 @@ public class Lugar {
 	/**
 	 * @return lugarPadre
 	 */
-	public int getLugarPadre() {
+	public String getLugarPadre() {
 		return lugarPadre;
 	}
 	/**
 	 * @param lugarPadre lugarPadre a colocar
 	 */
-	public void setLugarPadre(int lugarPadre) {
+	public void setLugarPadre(String lugarPadre) {
 		this.lugarPadre = lugarPadre;
 	}
 	/**

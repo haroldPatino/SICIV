@@ -11,8 +11,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-import org.primefaces.context.RequestContext;
-
 import logica.Producto;
 import logica.Proveedor;
 import persistencia.ProductoDao;

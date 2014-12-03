@@ -42,7 +42,7 @@ public class LugarDao {
 						while(result.next()){
 							Lugar lugar = new Lugar();
 							lugar.setIdLugar(Integer.parseInt(result.getString("ID_LUGAR")));
-							lugar.setLugarPadre(Integer.parseInt(result.getString("LUG_ID_LUGAR")));
+							lugar.setLugarPadre(result.getString("LUG_ID_LUGAR"));
 							lugar.setNombreLugar(result.getString("NOMBRE_LUGAR"));
 							lugares.add(lugar);
 						}
@@ -66,7 +66,7 @@ public class LugarDao {
 						result = sentence.executeQuery(sqlLugar.buscarLugarPorNombre(nombre));
 						while(result.next()){						
 							lugar.setIdLugar(Integer.parseInt(result.getString("ID_LUGAR")));
-							lugar.setLugarPadre(Integer.parseInt(result.getString("LUG_ID_LUGAR")));
+							lugar.setLugarPadre(result.getString("LUG_ID_LUGAR"));
 							lugar.setNombreLugar(result.getString("NOMBRE_LUGAR"));
 							
 						}
@@ -90,7 +90,7 @@ public class LugarDao {
 						result = sentence.executeQuery(sqlLugar.buscarLugarPorID(buscar));
 						while(result.next()){						
 							lugar.setIdLugar(Integer.parseInt(result.getString("ID_LUGAR")));
-							lugar.setLugarPadre(Integer.parseInt(result.getString("LUG_ID_LUGAR")));
+							lugar.setLugarPadre(result.getString("LUG_ID_LUGAR"));
 							lugar.setNombreLugar(result.getString("NOMBRE_LUGAR"));
 							
 						}

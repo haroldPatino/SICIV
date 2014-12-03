@@ -23,7 +23,7 @@
            <pm:header>
                 <p:tabMenu activeIndex="0">
                     <p:menuitem value="Inventario" icon="ui-icon-shop" url="#" iconPos="bottom" outcome="pm:inventario"/>
-                    <p:menuitem value="Usuarios" icon="ui-icon-user" url="#" iconPos="bottom" outcome="pm:usuarios"/>
+                    <p:menuitem value="Empleados" icon="ui-icon-user" url="#" iconPos="bottom" outcome="pm:usuarios"/>
                     <p:menuitem value="Reportes" icon="ui-icon-grid" url="#" iconPos="bottom" outcome="pm:reportes"/>
                 </p:tabMenu>
             </pm:header>
@@ -143,45 +143,46 @@
            <pm:header>
                 <p:tabMenu activeIndex="1">
                     <p:menuitem value="Inventario" icon="ui-icon-shop" url="#" iconPos="bottom" outcome="pm:inventario"/>
-                    <p:menuitem value="Usuarios" icon="ui-icon-user" url="#" iconPos="bottom" outcome="pm:usuarios"/>
+                    <p:menuitem value="Empleados" icon="ui-icon-user" url="#" iconPos="bottom" outcome="pm:usuarios"/>
                     <p:menuitem value="Reportes" icon="ui-icon-grid" url="#" iconPos="bottom" outcome="pm:reportes"/>
                 </p:tabMenu>
             </pm:header>
            <pm:content>
            		<p:accordionPanel>
-    				<p:tab title="CREAR USUARIOS">
+    				<p:tab title="INGRESAR NUEVO EMPLEADO">
     					<h:form>
+    					<p:growl id="growl" showDetail="true" />
     						<pm:field>
     							<p:outputLabel for="idUser" value="N° Documento:"></p:outputLabel>
-    							<p:inputText id="idUser" value="" required="true"></p:inputText>
+    							<p:inputText id="idUser" value="#{controlEmpleados.idEmpleado}" required="true"></p:inputText>
     						</pm:field>
     						<pm:field>
     							<p:outputLabel for="nameUser" value="Nombres:"></p:outputLabel>
-    							<p:inputText id="nameUser" value="" required="true"></p:inputText>
+    							<p:inputText id="nameUser" value="#{controlEmpleados.nombres}" required="true"></p:inputText>
     						</pm:field>
     						<pm:field>
     							<p:outputLabel for="lastUser" value="Apellidos:"></p:outputLabel>
-    							<p:inputText id="lastUser" value="" required="true"></p:inputText>
+    							<p:inputText id="lastUser" value="#{controlEmpleados.apellidos}" required="true"></p:inputText>
     						</pm:field>
     						<pm:field>
-    							<p:autoComplete id="lugUser" value="" required="true" placeholder="Lugar de Residencia"></p:autoComplete>
+    							<p:autoComplete id="lugUser" value="#{controlEmpleados.lugarResidencia}" required="true" placeholder="Lugar de Residencia" completeMethod="#{controlEmpleados.completeLugares}"></p:autoComplete>
     						</pm:field>
     						<pm:field>
     							<p:outputLabel for="dirUser" value="Direccion:"></p:outputLabel>
-    							<p:inputText id="dirUser" value=""></p:inputText>
+    							<p:inputText id="dirUser" value="#{controlEmpleados.direccion}"></p:inputText>
     						</pm:field>
     						<pm:field>
     							<p:outputLabel for="telUser" value="Telefono:"></p:outputLabel>
-    							<p:inputText id="telUser" value=""></p:inputText>
+    							<p:inputText id="telUser" value="#{controlEmpleados.telefono}"></p:inputText>
     						</pm:field>
     						<pm:header>OPCIONES DE USUARIO</pm:header>
     						<pm:field>
     							<p:outputLabel for="nickUser" value="Nickname:"></p:outputLabel>
-    							<p:inputText id="nickUser" value="" required="true"></p:inputText>
+    							<p:inputText id="nickUser" value="#{controlEmpleados.nickname}" required="true"></p:inputText>
     						</pm:field>
     						<pm:field>
     							<p:outputLabel for="tipUser" value="Tipo de Usuario:"></p:outputLabel>
-    							<p:selectOneMenu id="tipUser" required="true">
+    							<p:selectOneMenu id="tipUser" required="true" value="#{controlEmpleados.tipoUser}">
         							<f:selectItem itemLabel="Select One" itemValue="" />
         							<f:selectItem itemLabel="Gerente" itemValue="G" />
         							<f:selectItem itemLabel="Auxiliar" itemValue="A" />
@@ -189,8 +190,9 @@
     						</pm:field>
     						<pm:field>
     							<p:outputLabel for="passUser" value="Password:"></p:outputLabel>
-    							<p:inputText type="password" id="passUser" value="" required="true"></p:inputText>
+    							<p:inputText type="password" id="passUser" value="#{controlEmpleados.password}" required="true"></p:inputText>
     						</pm:field>
+    						<p:commandButton id="btnAddUser" value="Agregar Empleado" actionListener="#{controlEmpleados.agregarEmpleado}" update="growl"></p:commandButton>
     					</h:form>
     				</p:tab>
     				<p:tab title="BUSCAR USUARIOS">
