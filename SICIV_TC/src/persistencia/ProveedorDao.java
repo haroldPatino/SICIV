@@ -45,9 +45,9 @@ public class ProveedorDao {
 						Proveedor proveedor = new Proveedor();
 							proveedor.setIdProveedor(Integer.parseInt(result.getString("ID_PROVEEDOR")));
 							proveedor.setIdLugar(Integer.parseInt(result.getString("ID_LUGAR")));;
-							proveedor.setNombreProveedor(result.getString("NOMBRES_PROVEEDOR"));
-							proveedor.setTelefonoProveedor(Integer.parseInt(result.getString("TELEFONO_PROVEEDOR")));
-							proveedor.setDireccionProveedor(result.getString("DIRECCION_CLIENTE"));
+							proveedor.setNombreProveedor(result.getString("NOMBRE_PROVEEDOR"));
+							proveedor.setTelefonoProveedor(result.getString("TELEFONO_PROVEEDOR"));
+							proveedor.setDireccionProveedor(result.getString("DIRECCION_PROVEEDOR"));
 							proveedores.add(proveedor);
 						}
 						return proveedores;
@@ -83,7 +83,7 @@ public class ProveedorDao {
 							proveedor.setIdProveedor(Integer.parseInt(result.getString("ID_PROVEEDOR")));
 							proveedor.setIdLugar(Integer.parseInt(result.getString("ID_LUGAR")));;
 							proveedor.setNombreProveedor(result.getString("NOMBRES_PROVEEDOR"));
-							proveedor.setTelefonoProveedor(Integer.parseInt(result.getString("TELEFONO_PROVEEDOR")));
+							proveedor.setTelefonoProveedor(result.getString("TELEFONO_PROVEEDOR"));
 							proveedor.setDireccionProveedor(result.getString("DIRECCION_CLIENTE"));
 						}
 						return proveedor;

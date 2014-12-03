@@ -12,7 +12,7 @@ public class Proveedor {
 	private int idProveedor;
 	private int idLugar;
 	private String nombreProveedor;
-	private int telefonoProveedor;
+	private String telefonoProveedor;
 	private String direccionProveedor;
 //Building--------------------------------------
 	/**
@@ -61,13 +61,13 @@ public class Proveedor {
 	/**
 	 * @return telefonoProveedor
 	 */
-	public int getTelefonoProveedor() {
+	public String getTelefonoProveedor() {
 		return telefonoProveedor;
 	}
 	/**
 	 * @param telefonoProveedor telefonoProveedor a colocar
 	 */
-	public void setTelefonoProveedor(int telefonoProveedor) {
+	public void setTelefonoProveedor(String telefonoProveedor) {
 		this.telefonoProveedor = telefonoProveedor;
 	}
 	/**
