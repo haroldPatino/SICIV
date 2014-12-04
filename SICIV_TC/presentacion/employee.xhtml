@@ -203,17 +203,56 @@
             	</p:accordionPanel>
             </pm:content>
     </pm:page>
-    <pm:page id="reportes">
+    <pm:page id="ventas">
     	<pm:header fixed="true">
     	   	 <img src="../images/Barra.png"/>
     	   </pm:header>
+    	   <pm:header title="SICIV Modulo Auxiliar"></pm:header>
     	   <pm:header>
+    	   <h:panelGrid columns="2" cellpadding="18" styleClass="panelGridCenter" style="position:relative; top:5px">
+        	<p:outputLabel>Auxiliar: #{loginManagement.nombre}</p:outputLabel>
+           <p:commandButton value="Salir"></p:commandButton>
+      		</h:panelGrid>
+    	   </pm:header>
+           <pm:header>
                 <p:tabMenu activeIndex="2">
                     <p:menuitem value="Inventario" icon="ui-icon-shop" url="#" iconPos="bottom" outcome="pm:inventario"/>
-                    <p:menuitem value="Ventas" icon="ui-icon-bullets" url="#" iconPos="bottom" outcome="pm:usuarios"/>
-                    <p:menuitem value="Cambiar Contraseña" icon="ui-icon-lock" url="#" iconPos="bottom" outcome="pm:reportes"/>
+                    <p:menuitem value="Clientes" icon="ui-icon-user" url="#" iconPos="bottom" outcome="pm:clientes"/>
+                    <p:menuitem value="Ventas" icon="ui-icon-bullets" url="#" iconPos="bottom" outcome="pm:ventas"/>
+                    <p:menuitem value="Cambiar Contraseña" icon="ui-icon-lock" url="#" iconPos="bottom" outcome="pm:contraseña"/>
                 </p:tabMenu>
             </pm:header>
+            <pm:content>
+            	<p:accordionPanel>
+            		<p:tab title="FACTURAR VENTA">
+            			<h:form>
+            			<p:growl id="growl" showDetail="true" />
+            				<pm:field>
+            					<p:outputLabel for="idVenta" value="Numero Factura:"></p:outputLabel>
+            					<p:inputText id="idVenta" required="true" value=""></p:inputText>
+            				</pm:field>
+            				<pm:field>
+            					<p:outputLabel for="idCliente" value="Documento Cliente"></p:outputLabel>
+            					<p:inputText id="idCliente" required="true" value=""></p:inputText>
+            				</pm:field>
+            				<pm:field>
+            				<pm:header>CARRITO DE COMPRAS</pm:header>
+            				</pm:field>
+    						
+            				<pm:field>
+            					<h:panelGrid columns="3" cellpadding="4" styleClass="panelGridCenter" style="position:relative; top:5px">
+        							<p:outputLabel for="numSerie" value="Numero de Serie:" /> 
+            						<p:inputText id="numSerie" value="" label="numeroSerie"/>
+            						<p:commandButton id="btnAddProd" value="Agregar al Carrito" icon="ui-icon-plus" iconPos="left"></p:commandButton>
+            						<p:outputLabel for="nameProd" value="CLase de Producto:"></p:outputLabel>
+            						<p:autoComplete id="nameProd" value="" label="producto" placeholder="nombre del producto"/>	
+      							</h:panelGrid>
+            				</pm:field>
+            				<p:commandButton value="Facturar" update="growl"></p:commandButton>
+            			</h:form>
+            		</p:tab>
+            	</p:accordionPanel>
+            </pm:content>
     </pm:page>
 <script type="text/javascript">
   //<![CDATA[
