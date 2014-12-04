@@ -3,6 +3,9 @@
  */
 package persistencia;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 import logica.Cliente;
 
 /**
@@ -33,6 +36,10 @@ public class ClienteSql {
 	 * @return
 	 */	
 	public String crearCliente(Cliente cliente){
+		
+		DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+		String fechAux=formato.format(cliente.getFechaNacimiento());
+		
 		return "INSERT INTO cliente VALUES ("
 				+cliente.getIdCliente()
 				+","+cliente.getIdLugar()
@@ -40,7 +47,7 @@ public class ClienteSql {
 				+"','"+cliente.getApellidosCliente()
 				+"','"+cliente.getDireccionCliente()
 				+"',"+cliente.getTelefonoCliente()
-				+",'"+cliente.getFechaNacimiento()+"');";
+				+",'"+fechAux+"');";
 	}
 	
 	/**

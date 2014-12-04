@@ -172,32 +172,32 @@
             			<p:growl id="growl" showDetail="true" />
             				<pm:field>
             					<p:outputLabel for="idClient" value="Numero Documento:"></p:outputLabel>
-            					<p:inputText id="idClient" required="true" value=""></p:inputText>
+            					<p:inputText id="idClient" required="true" value="#{controlClientes.idCliente}"></p:inputText>
             				</pm:field>
             				<pm:field>
             					<p:outputLabel for="nameClient" value="Nombres Completos:"></p:outputLabel>
-            					<p:inputText id="nameClient" required="true" value=""></p:inputText>
+            					<p:inputText id="nameClient" required="true" value="#{controlClientes.nombres}"></p:inputText>
             				</pm:field>
             				<pm:field>
             					<p:outputLabel for="lastClient" value="Apellidos:"></p:outputLabel>
-            					<p:inputText id="lastClient" required="true" value=""></p:inputText>
+            					<p:inputText id="lastClient" required="true" value="#{controlClientes.apellidos}"></p:inputText>
             				</pm:field>
             				<pm:field>
-            					<p:autoComplete id="nameLug" value="" required="true" label="lugar" placeholder="Lugar de Residencia" completeMethod="#{controlClientes.completeLugares}"/>
+            					<p:autoComplete id="nameLug" value="#{controlClientes.lugarResidencia}" required="true" label="lugar" placeholder="Lugar de Residencia" completeMethod="#{controlClientes.completeLugares}"/>
             				</pm:field>
             				<pm:field>
             					<p:outputLabel for="dirClient" value="Direccion:"></p:outputLabel>
-            					<p:inputText id="dirClient" value=""></p:inputText>
+            					<p:inputText id="dirClient" value="#{controlClientes.direccion}"></p:inputText>
             				</pm:field>
             				<pm:field>
             					<p:outputLabel for="telClient" value="Telefono:"></p:outputLabel>
-            					<p:inputText id="telClient" value=""></p:inputText>
+            					<p:inputText id="telClient" value="#{controlClientes.telefono}"></p:inputText>
             				</pm:field>
             				<pm:field>
             					<p:outputLabel for="nacClient" value="Fecha de Nacimiento:"></p:outputLabel>
-            					<p:calendar id="nacClient" required="true" pattern="yyyy-MM-dd" navigator="true"></p:calendar>
+            					<p:calendar id="nacClient" value="#{controlClientes.fechaNacimiento}" required="true" pattern="yyyy-MM-dd" navigator="true"></p:calendar>
             				</pm:field>
-            				<p:commandButton value="Agregar Cliente" update="growl"></p:commandButton>
+            				<p:commandButton value="Agregar Cliente" actionListener="#{controlClientes.agregarCliente}" update="growl"></p:commandButton>
             			</h:form>
             		</p:tab>
             	</p:accordionPanel>

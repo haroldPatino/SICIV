@@ -4,9 +4,19 @@
 package control;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
+import logica.Cliente;
 import logica.Lugar;
 import persistencia.ClienteDao;
 import persistencia.LugarDao;
@@ -24,7 +34,7 @@ public class ControlClientes implements Serializable{
 	private String lugarResidencia;
 	private String direccion;
 	private String telefono;
-	private String fechaNacimiento;
+	private Date fechaNacimiento;
 	private ClienteDao dao;
 //Building---------------------------------------
 	public ControlClientes(){
@@ -106,13 +116,13 @@ public class ControlClientes implements Serializable{
 	/**
 	 * @return fechaNacimiento
 	 */
-	public String getFechaNacimiento() {
+	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 	/**
 	 * @param fechaNacimiento fechaNacimiento a colocar
 	 */
-	public void setFechaNacimiento(String fechaNacimiento) {
+	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	/**
@@ -126,6 +136,53 @@ public class ControlClientes implements Serializable{
 	 */
 	public ClienteDao getDao() {
 		return dao;
+	}
+	
+	public void agregarCliente(ActionEvent actionEvent) throws ParseException{
+		FacesContext ctxtMsg = FacesContext.getCurrentInstance();
+
+		System.out.println(".---------------................ Methods");
+		if(idCliente!="" && nombres!="" && apellidos!="" && lugarResidencia!=""){
+			System.out.println(".---------------................ Is IN");
+			Cliente client=new Cliente();
+			client.setIdCliente(Integer.parseInt(idCliente));
+			client.setNombreCliente(nombres);
+			client.setApellidosCliente(apellidos);
+			client.setIdLugar(buscarLugarNombre(lugarResidencia));
+			client.setDireccionCliente(direccion);
+			client.setTelefonoCliente(telefono);
+			client.setFechaNacimiento(fechaNacimiento);
+			if(buscarClienteDoc(client.getIdCliente())==null){
+				dao.insertarCliente(client);
+				ctxtMsg.addMessage(null, new FacesMessage("Successful",  "Cliente Agregado Exitosamente"));
+			}
+			else{
+				ctxtMsg.addMessage(null, new FacesMessage("Exception",  "El documento del cliente ya esta registrado"));
+			}
+		}
+		else{
+			ctxtMsg.addMessage(null, new FacesMessage("Alert",  "Existen campos vacios"));
+		}
+	}
+	public int buscarLugarNombre(String nombreLugar){
+		LugarDao daoLug=new LugarDao();
+		ArrayList<Lugar> lugares=daoLug.seleccionarLugares();
+		for(int i=0;i<lugares.size();i++){
+			Lugar aux=lugares.get(i);
+			if(aux.getNombreLugar().toUpperCase().equals(nombreLugar.toUpperCase())){
+				return aux.getIdLugar();
+			}
+		}
+		return -1;
+	}
+	public Cliente buscarClienteDoc(int documento){
+		ArrayList<Cliente> clients=dao.seleccionarCliente();
+		for(int i=0;i<clients.size();i++){
+			if(clients.get(i).getIdCliente()==documento){
+				return clients.get(i);
+			}
+		}
+		return null;
 	}
 	public List<String> completeLugares(String text){
 		ArrayList<Lugar> lugares=new ArrayList<Lugar>();

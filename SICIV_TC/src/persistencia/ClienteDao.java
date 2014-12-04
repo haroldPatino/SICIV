@@ -12,6 +12,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import logica.Cliente;
 
@@ -47,11 +48,9 @@ public class ClienteDao {
 						cliente.setNombreCliente(result.getString("NOMBRES_CLIENTE"));
 						cliente.setApellidosCliente(result.getString("APELLIDOS_CLIENTE"));
 						cliente.setDireccionCliente(result.getString("DIRECCION_CLIENTE"));
-						cliente.setTelefonoCliente(result.getString("NUMERO_TELEFONICO"));
+						cliente.setTelefonoCliente(result.getString("NUMERO_TELEFONICO"));		
 						DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-						Calendar fecha = Calendar.getInstance();
-						fecha.setTime(formato.parse(result.getString("FECHA_NACIMIENTO")));
-						cliente.setFechaNacimiento(fecha);
+						cliente.setFechaNacimiento(formato.parse(result.getString("FECHA_NACIMIENTO")));
 						clientes.add(cliente);
 					}
 					return clientes;
@@ -148,9 +147,7 @@ public class ClienteDao {
 						cliente.setDireccionCliente(result.getString("DIRECCION_CLIENTE"));
 						cliente.setTelefonoCliente(result.getString("NUMERO_TELEFONICO"));
 						DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-						Calendar fecha = Calendar.getInstance();
-						fecha.setTime(formato.parse(result.getString("FECHA_NACIMIENTO")));
-						cliente.setFechaNacimiento(fecha);
+						cliente.setFechaNacimiento(formato.parse(result.getString("FECHA_NACIMIENTO")));
 						
 					}
 					return cliente;
@@ -182,9 +179,7 @@ public class ClienteDao {
 						cliente.setDireccionCliente(result.getString("DIRECCION_CLIENTE"));
 						cliente.setTelefonoCliente(result.getString("NUMERO_TELEFONICO"));
 						DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-						Calendar fecha = Calendar.getInstance();
-						fecha.setTime(formato.parse(result.getString("FECHA_NACIMIENTO")));
-						cliente.setFechaNacimiento(fecha);
+						cliente.setFechaNacimiento(formato.parse(result.getString("FECHA_NACIMIENTO")));
 						
 					}
 					return cliente;

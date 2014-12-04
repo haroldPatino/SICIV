@@ -4,6 +4,7 @@
 package logica;
 
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * @author Harold Patiño
@@ -17,7 +18,7 @@ public class Cliente {
 	private String apellidosCliente;
 	private String direccionCliente;
 	private String telefonoCliente;
-	private Calendar fechaNacimiento;
+	private Date fechaNacimiento;
 //Building-----------------------------------------
 	/**
 	 * 
@@ -102,13 +103,13 @@ public class Cliente {
 	/**
 	 * @return fechaNacimiento
 	 */
-	public Calendar getFechaNacimiento() {
+	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 	/**
 	 * @param fechaNacimiento fechaNacimiento a colocar
 	 */
-	public void setFechaNacimiento(Calendar fechaNacimiento) {
+	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 }
