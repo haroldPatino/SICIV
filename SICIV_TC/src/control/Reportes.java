@@ -5,6 +5,8 @@ package control;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -79,7 +81,9 @@ public class Reportes {
 		mapaParametros.put("idFactura", factura.getNumeroFactura());
 		mapaParametros.put("idCliente", cliente.getIdCliente());
 		mapaParametros.put("nombreCliente", cliente.getNombreCliente()+" "+ cliente.getApellidosCliente());
-		mapaParametros.put("fechaFactura", factura.getFechaFactura().getTime());
+		DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+		String fechAux=formato.format(factura.getFechaFactura());
+		mapaParametros.put("fechaFactura", fechAux);
 		mapaParametros.put("direccionCliente", cliente.getDireccionCliente());
 		mapaParametros.put("nombreLugar", lugar.getNombreLugar());		
 		mapaParametros.put("telefonoCliente", cliente.getTelefonoCliente());

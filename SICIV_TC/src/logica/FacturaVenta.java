@@ -4,6 +4,7 @@
 package logica;
 
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * @author Harold Patiño
@@ -14,7 +15,7 @@ public class FacturaVenta {
 	private int numeroFactura;
 	private int idUsuario;
 	private int idCliente;
-	private Calendar fechaFactura;
+	private Date fechaFactura;
 	private int descuento;
 	private int impuestos;
 	private String estadoFactura;
@@ -43,13 +44,13 @@ public class FacturaVenta {
 	/**
 	 * @return fechaFactura
 	 */
-	public Calendar getFechaFactura() {
+	public Date getFechaFactura() {
 		return fechaFactura;
 	}
 	/**
 	 * @param fechaFactura fechaFactura a colocar
 	 */
-	public void setFechaFactura(Calendar fechaFactura) {
+	public void setFechaFactura(Date fechaFactura) {
 		this.fechaFactura = fechaFactura;
 	}
 	/**

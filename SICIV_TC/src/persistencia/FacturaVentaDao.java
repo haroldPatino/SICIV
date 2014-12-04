@@ -47,9 +47,7 @@ public class FacturaVentaDao {
 						factura.setIdUsuario(Integer.parseInt(result.getString("ID_USUARIO")));
 						factura.setIdCliente(Integer.parseInt(result.getString("ID_CLIENTE")));
 						DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-						Calendar fecha = Calendar.getInstance();
-						fecha.setTime(formato.parse(result.getString("FECHA_FACTURA")));
-						factura.setFechaFactura(fecha);
+						factura.setFechaFactura(formato.parse(result.getString("FECHA_FACTURA")));
 						factura.setDescuento(Integer.parseInt(result.getString("DESCUENTO")));
 						factura.setImpuestos(Integer.parseInt(result.getString("IMPUESTOS")));
 						factura.setEstadoFactura(result.getString("ESTADO_FACTURA"));
@@ -89,10 +87,8 @@ public class FacturaVentaDao {
 						factura.setNumeroFactura(Integer.parseInt(result.getString("NUMERO_FACTURA")));
 						factura.setIdUsuario(Integer.parseInt(result.getString("ID_USUARIO")));
 						factura.setIdCliente(Integer.parseInt(result.getString("ID_CLIENTE")));
-						DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-						Calendar fecha = Calendar.getInstance();
-						fecha.setTime(formato.parse(result.getString("FECHA_FACTURA")));
-						factura.setFechaFactura(fecha);
+						DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");						;
+						factura.setFechaFactura(formato.parse(result.getString("FECHA_FACTURA")));
 						factura.setDescuento(Integer.parseInt(result.getString("DESCUENTO")));
 						factura.setImpuestos(Integer.parseInt(result.getString("IMPUESTOS")));
 						factura.setEstadoFactura(result.getString("ESTADO_FACTURA"));
