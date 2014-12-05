@@ -13,7 +13,7 @@ import logica.FacturaVenta;
 public class FacturaVentaSql {
 
 	public String selectFacturas(){
-		return "SELECT * FROM factura_venta;";
+		return "SELECT * FROM factura_venta WHERE NUMERO_FACTURA != 0;";
 	}
 	
 	public String crearFactura(FacturaVenta factura){

@@ -23,7 +23,7 @@ public class UsuarioSql {
 	 * @return
 	 */
 	public String selectUsuarios(){
-		return "SELECT * FROM usuario";
+		return "SELECT * FROM usuario WHERE ID_USUARIO != 0;";
 	}
 	
 	/**

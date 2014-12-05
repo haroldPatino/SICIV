@@ -28,7 +28,7 @@ public class ClienteSql {
 	 * @return
 	 */
 	public String selectClientes(){
-			return "SELECT * FROM cliente";
+			return "SELECT * FROM cliente WHERE ID_CLIENTE != 0;";
 	}
 		
 	/**

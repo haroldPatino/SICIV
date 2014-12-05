@@ -3,6 +3,7 @@
  */
 package control;
 
+import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -214,7 +215,7 @@ public class Reportes {
 			e.printStackTrace();
 		}	
 	}
-	public void verReporteDevueltos(){
+	public void verReporteDevueltos(javax.faces.event.ActionEvent ss){
 		try {
 		File jasper=new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/ReporteDevueltos.jasper"));
 //		byte[] bytes = null;
