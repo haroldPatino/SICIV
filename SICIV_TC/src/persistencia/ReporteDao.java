@@ -92,4 +92,38 @@ public class ReporteDao {
 		return result;
 	}
 	
+	public ResultSet consultarReporteDefectuosos(){
+		ResultSet result = null;
+		if(conexion.conectar()){
+			Statement sentence;
+			
+				try {
+					sentence = conexion.getConexion().createStatement();
+					result = sentence.executeQuery(sqlReporte.selectReporteDefectuosos());
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}			
+		}
+		
+		return result;
+	}
+	
+	public ResultSet consultarReporteDevueltos(){
+		ResultSet result = null;
+		if(conexion.conectar()){
+			Statement sentence;
+			
+				try {
+					sentence = conexion.getConexion().createStatement();
+					result = sentence.executeQuery(sqlReporte.selectReporteDevueltos());
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}			
+		}
+		
+		return result;
+	}
+	
 }
