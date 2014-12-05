@@ -5,7 +5,6 @@ package control;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

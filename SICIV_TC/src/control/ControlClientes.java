@@ -4,11 +4,8 @@
 package control;
 
 import java.io.Serializable;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +19,7 @@ import persistencia.ClienteDao;
 import persistencia.LugarDao;
 
 /**
- * @author Lenovo Pc
+ * @author Harold Patiño
  *
  */
 public class ControlClientes implements Serializable{

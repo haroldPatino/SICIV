@@ -17,7 +17,7 @@ import persistencia.ProductoDao;
 import persistencia.ProveedorDao;
 
 /**
- * @author Lenovo Pc
+ * @author Harold Patiño
  *
  */
 public class ControlProducto implements Serializable{

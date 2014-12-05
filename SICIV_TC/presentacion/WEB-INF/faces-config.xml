@@ -29,5 +29,10 @@
 		<managed-bean-class>control.ControlClientes</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>controlProveedores</managed-bean-name>
+		<managed-bean-class>control.ControlProveedores</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 
 </faces-config>

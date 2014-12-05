@@ -17,7 +17,7 @@ import persistencia.LugarDao;
 import persistencia.UsuarioDao;
 
 /**
- * @author Lenovo Pc
+ * @author Harold Patiño
  *
  */
 public class ControlEmpleados implements Serializable{
