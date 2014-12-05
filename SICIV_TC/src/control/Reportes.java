@@ -5,6 +5,7 @@ package control;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -142,27 +143,6 @@ public class Reportes {
 		}	
 	}
 	
-	public void verReporteLugares(){
-		try {
-		File jasper=new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/ReporteLugares.jasper"));
-		byte[] bytes=JasperRunManager.runReportToPdf(jasper.getPath(), null, new JRResultSetDataSource(reporteFactura.consultarReporteLugares()));
-		HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
-		response.setContentType("application/pdf");
-		response.setContentLength(bytes.length);
-		ServletOutputStream stream=response.getOutputStream();
-		stream.write(bytes,0,bytes.length);
-		stream.flush();
-		stream.close();		
-		FacesContext.getCurrentInstance().responseComplete();		
-		} catch (JRException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-	}
-
 	public void verReporteProveedores(){
 		try {
 		File jasper=new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/ReporteProveedores.jasper"));
@@ -184,5 +164,30 @@ public class Reportes {
 		}	
 	}
 	
+	public void verReporteCumpleanos(){
+		try {
+		File jasper=new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/ReporteCumpleanos.jasper"));
+//		byte[] bytes = null;
+//		if (clienteDao.seleccionarCumpleaños().next()){
+		byte[] bytes=JasperRunManager.runReportToPdf(jasper.getPath(), null, new JRResultSetDataSource(reporteFactura.consultarReporteCumpleanos()));	
+//		}else{
+//			bytes=JasperRunManager.runReportToPdf(jasper.getPath(), null, new JRResultSetDataSource(null));
+//		}		
+		HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+		response.setContentType("application/pdf");
+		response.setContentLength(bytes.length);
+		ServletOutputStream stream=response.getOutputStream();
+		stream.write(bytes,0,bytes.length);
+		stream.flush();
+		stream.close();		
+		FacesContext.getCurrentInstance().responseComplete();		
+		} catch (JRException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+	}
 }
 

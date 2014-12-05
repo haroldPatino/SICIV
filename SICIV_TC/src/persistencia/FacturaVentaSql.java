@@ -26,7 +26,7 @@ public class FacturaVentaSql {
 				+",'"+factura.getFechaFactura()
 				+"',"+factura.getDescuento()
 				+","+factura.getImpuestos()
-				+",'"+factura.getEstadoFactura()+"')";
+				+",'AC')";
 	}
 	
 	public String buscarFacturaPorNumero(int numero){

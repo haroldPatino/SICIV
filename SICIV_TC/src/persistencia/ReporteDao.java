@@ -58,14 +58,14 @@ public class ReporteDao {
 		return result;
 	}
 	
-	public ResultSet consultarReporteLugares(){
+	public ResultSet consultarReporteCumpleanos(){
 		ResultSet result = null;
 		if(conexion.conectar()){
 			Statement sentence;
 			
 				try {
 					sentence = conexion.getConexion().createStatement();
-					result = sentence.executeQuery(sqlReporte.selectReporteLugares());
+					result = sentence.executeQuery(sqlReporte.selectReporteCumpleanos());
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

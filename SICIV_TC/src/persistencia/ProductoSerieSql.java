@@ -14,10 +14,9 @@ public class ProductoSerieSql {
 
 	public String crearProductoSerie(ProductoSerie producto){
 		return "INSERT INTO producto_serie(NUM_SERIE, ID_PRODUCTO,"
-				+ " NUMERO_FACTURA, ESTADO)"
+				+ " ESTADO)"
 				+ " VALUES ("+producto.getNumeroSerie()
-				+", "+producto.getIdProducto()
-				+","+producto.getIdFactura()				
+				+", "+producto.getIdProducto()						
 				+","+producto.getEstadoProducto()+");";
 	}
 	

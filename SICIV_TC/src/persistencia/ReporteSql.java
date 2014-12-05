@@ -31,15 +31,9 @@ public class ReporteSql {
 				+ "producto_serie.ID_PRODUCTO = "
 				+ "producto.ID_PRODUCTO AND "
 				+ "producto.ID_PROVEEDOR = proveedor.ID_PROVEEDOR "
+				+ "AND producto_serie.NUMERO_FACTURA = 0 "
 				+ "ORDER BY NUM_SERIE;";
-	}
-	
-	public String selectReporteLugares(){
-		return "SELECT lugar.ID_LUGAR, NOMBRE_PADRE, "
-				+ "NOMBRE_LUGAR "
-				+ "FROM lugar_pertenece JOIN lugar WHERE "
-				+ "lugar_pertenece.ID_LUGAR = lugar.LUG_ID_LUGAR;";
-	}
+	}	
 	
 	public String selectReporteProveedores(){
 		return "SELECT ID_PROVEEDOR, NOMBRE_PROVEEDOR, TELEFONO_PROVEEDOR, "
@@ -47,6 +41,11 @@ public class ReporteSql {
 				+ "JOIN lugar WHERE proveedor.ID_LUGAR = lugar.ID_LUGAR;";
 	}
 	
-	
-	
+	public String selectReporteCumpleanos(){
+		return "SELECT NOMBRES_CLIENTE, APELLIDOS_CLIENTE, "
+				+ "NUMERO_TELEFONICO, FECHA_NACIMIENTO "
+				+ "FROM cliente WHERE MONTH(FECHA_NACIMIENTO) = "
+				+ "MONTH(Current_date) AND DAY(FECHA_NACIMIENTO) = "
+				+ "DAY(Current_date);";
+	}
 }

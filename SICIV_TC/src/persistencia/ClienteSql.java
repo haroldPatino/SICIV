@@ -55,15 +55,11 @@ public class ClienteSql {
 	 * @return
 	 */	
 	public String consultarCumpleanos(){
-		return "SELECT ID_CLIENTE, NOMBRES_CLIENTE,"
-				+ " APELLIDOS_CLIENTE,"
-				+ " NUMERO_TELEFONICO,"
-				+ " FECHA_NACIMIENTO,"
-				+ " DIRECCION_CLIENTE,"
-				+ " NOMBRE_LUGAR FROM cliente JOIN lugar"
-				+ " WHERE MONTH(Fecha_nacimiento) = MONTH(Current_date)"
-				+ " AND DAY(fecha_nacimiento) = DAY(Current_date)"
-				+ " AND cliente.ID_LUGAR = lugar.ID_LUGAR;";
+		return "SELECT NOMBRES_CLIENTE, "
+				+ "NUMERO_TELEFONICO FROM cliente "
+				+ "WHERE MONTH(FECHA_NACIMIENTO) = "
+				+ "MONTH(Current_date) AND DAY(FECHA_NACIMIENTO) = "
+				+ "DAY(Current_date);";
 	}
 	
 	/**

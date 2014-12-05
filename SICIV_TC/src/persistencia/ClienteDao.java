@@ -79,30 +79,37 @@ public class ClienteDao {
 
 		}
 		
-		public ArrayList<String[]> seleccionarCumpleaños(){
+		public ArrayList<Cliente> seleccionarCumpleaños(){
 			ResultSet result;
-			ArrayList<String[]> clientes = new ArrayList<String[]>();
-			String[] valores = new String [5];
+			ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 			if(conexion.conectar()){
 				Statement sentence;
 				try {
 					sentence = conexion.getConexion().createStatement();
-					result = sentence.executeQuery(sqlCliente.selectClientes());
+					result = sentence.executeQuery(sqlCliente.consultarCumpleanos());
 					while(result.next()){
-						valores[0] = result.getString("NOMBRES_CLIENTE");
-						valores[1] = result.getString("APELLIDOS_CLIENTE");
-						valores[2] = result.getString("DIRECCION_CLIENTE");
-						valores[3] = result.getString("NUMERO_TELEFONICO");
-						valores[4] = result.getString("FECHA_NACIMIENTO");
-						clientes.add(valores);
+						Cliente cliente = new Cliente();
+						cliente.setIdCliente(Integer.parseInt(result.getString("ID_CLIENTE")));
+						cliente.setIdLugar(Integer.parseInt(result.getString("ID_LUGAR")));;
+						cliente.setNombreCliente(result.getString("NOMBRES_CLIENTE"));
+						cliente.setApellidosCliente(result.getString("APELLIDOS_CLIENTE"));
+						cliente.setDireccionCliente(result.getString("DIRECCION_CLIENTE"));
+						cliente.setTelefonoCliente(result.getString("NUMERO_TELEFONICO"));		
+						DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+						cliente.setFechaNacimiento(formato.parse(result.getString("FECHA_NACIMIENTO")));
+						clientes.add(cliente);
 					}
 					return clientes;
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				} 				
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 			}			
-			return null;
+			return null;	
 		}
 		
 		public int actualizarDatosCliente(Cliente cliente){
