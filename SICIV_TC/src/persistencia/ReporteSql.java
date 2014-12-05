@@ -47,4 +47,36 @@ public class ReporteSql {
 				+ "MONTH(Current_date) AND DAY(FECHA_NACIMIENTO) = "
 				+ "DAY(Current_date);";
 	}
+	
+	public String selectReporteDefectuosos(){
+		return "SELECT NUM_SERIE, TIPO_PRODUCTO, "
+				+ "MARCA, NOMBRE_PRODUCTO, "
+				+ "NOMBRE_PROVEEDOR, ESTADO, "
+				+ "PRECIO_COMPRA, PRECIO_VENTA "
+				+ "FROM factura_venta JOIN producto_serie "
+				+ "JOIN producto JOIN proveedor "
+				+ "WHERE factura_venta.NUMERO_FACTURA = "
+				+ "producto_serie.NUMERO_FACTURA AND "
+				+ "producto_serie.ID_PRODUCTO = "
+				+ "producto.ID_PRODUCTO AND "
+				+ "producto.ID_PROVEEDOR = proveedor.ID_PROVEEDOR "
+				+ "AND producto_serie.NUMERO_FACTURA = 0 "
+				+ "AND ESTADO LIKE 'SD' "				
+				+ "ORDER BY NUM_SERIE;";
+	}
+	
+	public String selectReporteDevueltos(){
+		return "SELECT NUM_SERIE, TIPO_PRODUCTO, "
+				+ "MARCA, NOMBRE_PRODUCTO, "
+				+ "NOMBRE_PROVEEDOR, ESTADO, PRECIO_COMPRA, "
+				+ "PRECIO_VENTA FROM factura_venta JOIN "
+				+ "producto_serie JOIN producto JOIN "
+				+ "proveedor WHERE factura_venta.NUMERO_FACTURA "
+				+ "= producto_serie.NUMERO_FACTURA AND "
+				+ "producto_serie.ID_PRODUCTO = "
+				+ "producto.ID_PRODUCTO AND producto.ID_PROVEEDOR "
+				+ "= proveedor.ID_PROVEEDOR "
+				+ "AND ESTADO LIKE 'DV' "
+				+ "ORDER BY NUM_SERIE;";
+	}	
 }
