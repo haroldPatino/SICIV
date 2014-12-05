@@ -23,6 +23,7 @@ import persistencia.ProveedorDao;
 public class ControlProducto implements Serializable{
 //Attributes-------------------------------------------------------------
 	private static final long serialVersionUID = -2116310479639491793L;
+	private String nameCarga;
 	private String idProduct;
 	private String nombreProduct;
 	private String nombreProveedor;
@@ -36,12 +37,27 @@ public class ControlProducto implements Serializable{
 		dao=new ProductoDao();
 	}
 //Methods----------------------------------------------------------------
+	
 	/**
 	 * @return nombreProduct
 	 */
 	public String getNombreProduct() {
 		return nombreProduct;
 	}
+	/**
+	 * @return nameCarga
+	 */
+	public String getNameCarga() {
+		return nameCarga;
+	}
+
+	/**
+	 * @param nameCarga nameCarga a colocar
+	 */
+	public void setNameCarga(String nameCarga) {
+		this.nameCarga = nameCarga;
+	}
+
 	/**
 	 * @return idProduct
 	 */
@@ -191,5 +207,72 @@ public class ControlProducto implements Serializable{
 			}
 		}
 		return result;
+	}
+	public List<String> completeProductos(String text){
+		ArrayList<Producto> products=new ArrayList<Producto>();
+		products=dao.selecionarProductos();
+		List<String> result=new ArrayList<String>();
+		for(int i=0;i<products.size();i++){
+			if(products.get(i).getNombreProducto().toUpperCase().contains(text.toUpperCase())){
+				result.add(products.get(i).getNombreProducto());
+			}
+		}
+		return result;
+	}
+	public Producto buscarProductoName(String name){
+		ArrayList<Producto> list=dao.selecionarProductos();
+		for(int i=0;i<list.size();i++){
+			Producto aux=list.get(i);
+			if(aux.getNombreProducto().toUpperCase().equals(name.toUpperCase())){
+				return aux;
+			}
+		}
+		return null;
+	}
+	public String buscarProveedorId(int idProveedor){
+		ProveedorDao daoProver=new ProveedorDao();
+		ArrayList<Proveedor> prover=daoProver.selecionarProveedores();
+		for(int i=0;i<prover.size();i++){
+			if(prover.get(i).getIdProveedor()==idProveedor){
+				return prover.get(i).getNombreProveedor();
+			}
+		}
+		return "";
+	}
+	public void cargarProducto(ActionEvent actionEvent){
+		FacesContext ctxtMsg = FacesContext.getCurrentInstance();
+		Producto product=buscarProductoName(getNameCarga());
+		if(product!=null){
+			idProduct=String.valueOf(product.getIdProducto());
+			nombreProduct=product.getNombreProducto();
+			nombreProveedor=String.valueOf(buscarProveedorId(product.getIdProveedor()));
+			tipoproduct=product.getTipoProducto();
+			marcaProduct=product.getMarcaProducto();
+			precioCompra=String.valueOf(product.getPrecioCompra());
+			precioVenta=String.valueOf(product.getPrecioVenta());
+			ctxtMsg.addMessage(null, new FacesMessage("Exception",  "Carga Completa"));
+
+		}else{
+			ctxtMsg.addMessage(null, new FacesMessage("Exception",  "El proveedor no existe"));
+		}
+	}
+	public void actualizarProducto(ActionEvent actionEvent){
+		FacesContext ctxtMsg = FacesContext.getCurrentInstance();
+		if(idProduct!="" && nombreProduct!="" && nombreProveedor!="" && tipoproduct!="" && marcaProduct!="" && precioCompra!="" && precioVenta!=null){
+			Producto product=new Producto();
+			product.setIdProducto(Integer.parseInt(idProduct));
+			product.setNombreProducto(nombreProduct);
+			product.setIdProveedor(buscarProveedorName(nombreProveedor));
+			product.setTipoProducto(tipoproduct);
+			product.setMarcaProducto(marcaProduct);
+			product.setPrecioCompra(Double.parseDouble(precioCompra));
+			product.setPrecioVenta(Double.parseDouble(precioVenta));
+			dao.actualizarDatosProducto(product);
+			ctxtMsg.addMessage(null, new FacesMessage("Successful",  "Producto actualizado Exitosamente"));
+		
+		}
+		else{
+			ctxtMsg.addMessage(null, new FacesMessage("Alert",  "Existen campos vacios"));
+		}
 	}
 }

@@ -131,8 +131,8 @@
 		 	<p:outputLabel for="tipoProd" value="Tipo de Producto:" /> 
 		    <p:selectOneMenu id="tipoProd" required="true" value="#{controlProducto.tipoproduct}">
         		<f:selectItem itemLabel="Select One" itemValue="" />
-        		<f:selectItem itemLabel="Lentes" itemValue="LENTES" />
-        		<f:selectItem itemLabel="Monturas" itemValue="MONTURA" />
+        		<f:selectItem itemLabel="LENTES" itemValue="LENTES" />
+        		<f:selectItem itemLabel="MONTURA" itemValue="MONTURA" />
     		</p:selectOneMenu>
 		 </pm:field>
 		 <pm:field>
@@ -152,7 +152,48 @@
 		 </pm:field>
         </h:form>
     </p:tab>
-    <p:tab title="ACTUALIZAR PRODUCTO">
+    <p:tab title="ACTUALIZAR FAMILIA PRODUCTO">
+    	<h:form>
+           <p:growl id="growl" showDetail="true" />
+           	<h:panelGrid columns="3" cellpadding="18" styleClass="panelGridCenter" style="position:relative; top:5px">
+        	<p:outputLabel for="idProdBusq" value="Nombre Producto:"></p:outputLabel>
+        	<p:autoComplete id="idProdBusq" value="#{controlProducto.nameCarga}" required="true" completeMethod="#{controlProducto.completeProductos}"></p:autoComplete>
+        	<p:commandButton id="btnBusqProd" value="Cargar Producto" icon="ui-icon-search" iconPos="left" actionListener="#{controlProducto.cargarProducto}" update="growl , act:idProduct , act:nameProduc , act:nameProv , act:tipoProd , act:marcProd , act:precCom , act:precVen"></p:commandButton>
+      		</h:panelGrid>
+      	<h:form id="act">
+        <p:growl id="growl" showDetail="true" />
+        <pm:field>
+        		<p:outputLabel for="idProduct" value="Id Producto:" /> 
+        		<p:inputText id="idProduct" value="#{controlProducto.idProduct}" disabled="true" label="nombre"/>
+         </pm:field>
+         <pm:field>
+        		<p:outputLabel for="nameProduc" value="Nombre Producto:" /> 
+        		<p:inputText id="nameProduc" value="#{controlProducto.nombreProduct}" label="nombre"/>
+         </pm:field>
+         <pm:field>
+         	<p:autoComplete id="nameProv" value="#{controlProducto.nombreProveedor}" label="proveedor" placeholder="nombre del proveedor" completeMethod="#{controlProducto.completeProveedores}"/>
+         </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="tipoProd" value="Tipo de Producto:" /> 
+    		<p:inputText id="tipoProd" value="#{controlProducto.tipoproduct}" disabled="true"></p:inputText>
+		 </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="marcProd" value="Marca del Producto:" /> 
+            <p:inputText id="marcProd" value="#{controlProducto.marcaProduct}" label="marca"/>
+		 </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="precCom" value="Precio de Compra Producto:" /> 
+            <p:inputText id="precCom" value="#{controlProducto.precioCompra}" label="precioCompra"/>
+		 </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="precVen" value="Precio de Venta Producto:" /> 
+            <p:inputText id="precVen" value="#{controlProducto.precioVenta}" label="precioVenta"/>
+		 </pm:field>
+		 <pm:field>
+		 	<p:commandButton id="btnAddProd" value="ActUalizar Producto" actionListener="#{controlProducto.actualizarProducto}" update="growl"></p:commandButton>
+		 </pm:field>
+        </h:form>
+            		</h:form>
     </p:tab>
     <p:tab title="AGREGAR NUMEROS DE SERIE">
     </p:tab>
