@@ -57,33 +57,36 @@
             	</p:tab>
             	<p:tab title="ACTUALIZAR PROVEEDOR">
             		<h:form>
+            		    <p:growl id="growl" showDetail="true" />
             			<h:panelGrid columns="3" cellpadding="18" styleClass="panelGridCenter" style="position:relative; top:5px">
-        					<p:outputLabel for="idProvBusq" value="Id Proveedor"></p:outputLabel>
-        					<p:inputText id="idProvBusq" value="" required="true"></p:inputText>
-        					<p:commandButton id="btnBusqProv" value="Cargar Proveedor" icon="ui-icon-search" iconPos="left"></p:commandButton>
+        					<p:outputLabel for="idProvBusq" value="Nombre Proveedor:"></p:outputLabel>
+        					<p:autoComplete id="idProvBusq" value="#{controlProveedores.nameCarga}" required="true" completeMethod="#{controlProveedores.completeProveedores}"></p:autoComplete>
+        					<p:commandButton id="btnBusqProv" value="Cargar Proveedor" icon="ui-icon-search" iconPos="left" actionListener="#{controlProveedores.cargarProveedor}" update="growl , act:idProv , act:lugProv , act:nameProv , act:telProv , act:dirProv"></p:commandButton>
       					</h:panelGrid>
-            		</h:form>
-            		<h:form>
-            			<pm:field>
+      					<h:form id="act">
+      					<p:growl id="growl" showDetail="true" />
+      					
+            		<pm:field>
             			<p:outputLabel for="idProv" value="Id Proveedor:"></p:outputLabel>
-            			<p:inputText id="idProv" value="" required="true" disabled="true"></p:inputText>
+            			<p:inputText id="idProv" value="#{controlProveedores.idProveedor}" disabled="true"></p:inputText>
             		</pm:field>
             		<pm:field>
-            			<p:autoComplete id="lugProv" value="" placeholder="Lugar de Ubicacion"></p:autoComplete>
+            			<p:autoComplete id="lugProv" value="#{controlProveedores.lugarUbicacion}" placeholder="Lugar de Ubicacion" completeMethod="#{controlProveedores.completeLugares}"></p:autoComplete>
             		</pm:field>
             		<pm:field>
             			<p:outputLabel for="nameProv" value="Nombre Proveedor:"></p:outputLabel>
-            			<p:inputText id="nameProv" value="" required="true"></p:inputText>
+            			<p:inputText id="nameProv" value="#{controlProveedores.nombreProveedor}"></p:inputText>
             		</pm:field>
             		<pm:field>
             			<p:outputLabel for="telProv" value="Telefono Proveedor:"></p:outputLabel>
-            			<p:inputText id="telProv" value="" required="true"></p:inputText>
+            			<p:inputText id="telProv" value="#{controlProveedores.telProveedor}" ></p:inputText>
             		</pm:field>
             		<pm:field>
             			<p:outputLabel for="dirProv" value="Direccion Proveedor:"></p:outputLabel>
-            			<p:inputText id="dirProv" value="" required="true"></p:inputText>
+            			<p:inputText id="dirProv" value="#{controlProveedores.dirProveedor}"></p:inputText>
             		</pm:field>
-            		<p:commandButton id="btnActProv" value="Actualizar Proveedor"></p:commandButton>
+            		<p:commandButton id="btnActProv" value="Actualizar Proveedor" actionListener="#{controlProveedores.actualizarProveedor}" update="growl"></p:commandButton>
+            		</h:form>
             		</h:form>
             	</p:tab>
             </p:accordionPanel>

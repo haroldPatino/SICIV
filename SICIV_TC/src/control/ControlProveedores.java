@@ -23,6 +23,7 @@ import persistencia.ProveedorDao;
 public class ControlProveedores implements Serializable{
 //Attributes------------------------------------------------------------
 	private static final long serialVersionUID = -5501620774484969553L;
+	private String nameCarga;
 	private String idProveedor;
 	private String lugarUbicacion;
 	private String nombreProveedor;
@@ -34,11 +35,25 @@ public class ControlProveedores implements Serializable{
 		dao=new ProveedorDao();
 	}
 //Methods---------------------------------------------------------------
+	
 	/**
 	 * @return idProveedor
 	 */
 	public String getIdProveedor() {
 		return idProveedor;
+	}
+	/**
+	 * @return nameCarga
+	 */
+	public String getNameCarga() {
+		return nameCarga;
+	}
+
+	/**
+	 * @param nameCarga nameCarga a colocar
+	 */
+	public void setNameCarga(String nameCarga) {
+		this.nameCarga = nameCarga;
 	}
 	/**
 	 * @param idProveedor idProveedor a colocar
@@ -150,6 +165,17 @@ public class ControlProveedores implements Serializable{
 		}
 		return -1;
 	}
+	public String buscarLugarId(int id){
+		LugarDao daoLug=new LugarDao();
+		ArrayList<Lugar> lugares=daoLug.seleccionarLugares();
+		for(int i=0;i<lugares.size();i++){
+			Lugar aux=lugares.get(i);
+			if(aux.getIdLugar()==id){
+				return aux.getNombreLugar();
+			}
+		}
+		return "";
+	}
 	public Proveedor buscarProveedorId(int idProveedor){
 		ArrayList<Proveedor> prover=dao.selecionarProveedores();
 		for(int i=0;i<prover.size();i++){
@@ -158,5 +184,57 @@ public class ControlProveedores implements Serializable{
 			}
 		}
 		return null;
+	}
+	public List<String> completeProveedores(String text){
+		ArrayList<Proveedor> proveedores=new ArrayList<Proveedor>();
+		ProveedorDao prover=new ProveedorDao();
+		proveedores=prover.selecionarProveedores();
+		List<String> result=new ArrayList<String>();
+		for(int i=0;i<proveedores.size();i++){
+			if(proveedores.get(i).getNombreProveedor().toUpperCase().contains(text.toUpperCase())){
+				result.add(proveedores.get(i).getNombreProveedor());
+			}
+		}
+		return result;
+	}
+	public Proveedor buscProveedorName(String name){
+		ArrayList<Proveedor> prover=dao.selecionarProveedores();
+		for(int i=0;i<prover.size();i++){
+			if(prover.get(i).getNombreProveedor().equals(name)){
+				return prover.get(i);
+			}
+		}
+		return null;
+	}
+	public void cargarProveedor(ActionEvent actionEvent){
+		FacesContext ctxtMsg = FacesContext.getCurrentInstance();
+		Proveedor prover=buscProveedorName(getNameCarga());
+		if(prover!=null){
+			idProveedor=String.valueOf(prover.getIdProveedor());
+			nombreProveedor=prover.getNombreProveedor();
+			telProveedor=prover.getTelefonoProveedor();
+			dirProveedor=prover.getDireccionProveedor();
+			lugarUbicacion=buscarLugarId(prover.getIdLugar());
+			ctxtMsg.addMessage(null, new FacesMessage("Exception",  "Carga Completa"));
+
+		}else{
+			ctxtMsg.addMessage(null, new FacesMessage("Exception",  "El proveedor no existe"));
+		}
+	}
+	public void actualizarProveedor(ActionEvent actionEvent){
+		FacesContext ctxtMsg = FacesContext.getCurrentInstance();
+		if(idProveedor!="" && lugarUbicacion!="" && nombreProveedor!="" && telProveedor!="" && dirProveedor!=""){
+			Proveedor proveedor=new Proveedor();
+			proveedor.setIdProveedor(Integer.parseInt(idProveedor));
+			proveedor.setIdLugar(buscarLugarNombre(lugarUbicacion));
+			proveedor.setNombreProveedor(nombreProveedor.toUpperCase());
+			proveedor.setTelefonoProveedor(telProveedor);
+			proveedor.setDireccionProveedor(dirProveedor.toUpperCase());
+			dao.actualizarDatosProveedor(proveedor);
+			ctxtMsg.addMessage(null, new FacesMessage("Sucessfull",  "Proveedor Actualizado Exitosamente"));
+		}
+		else{
+			ctxtMsg.addMessage(null, new FacesMessage("Alert",  "Existen campos obligatorios vacios"));
+		}
 	}
 }
