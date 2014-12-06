@@ -330,15 +330,31 @@
                     <p:menuitem value="Empleados" icon="ui-icon-user" url="#" iconPos="bottom" outcome="pm:usuarios"/>
                     <p:menuitem value="Reportes" icon="ui-icon-grid" url="#" iconPos="bottom" outcome="pm:reportes"/>
                 </p:tabMenu>
+                
             </pm:header>
             <pm:content>
-            <h:form>
-            <h:commandButton id="btnProv" value="Reporte de Proveedores" actionListener="#{reportes.verReporteProveedores}"/>
-            <h:commandButton id="btnInv" value="Elementos en Inventario" actionListener="#{reportes.verReporteInventario}"/>
-            <h:commandButton id="btnCum" value="Listado de Cumpleaños Hoy" actionListener="#{reportes.verReporteCumpleanos}"/>
-            <h:commandButton id="btnDef" value ="Reporte Elementos Defectuosos" actionListener="#{reportes.verReporteDefectuosos}"/>
-			<h:commandButton id="btnDev" value ="Reporte Elementos Devueltos" actionListener="#{reportes.verReporteDevueltos}"/>
-            </h:form>-            
+             <h:form>
+            	<h:commandButton id="btnCum" value="Listado de Cumpleaños Hoy" actionListener="#{reportes.verReporteCumpleanos}"/>
+             </h:form>
+            <p:accordionPanel>
+            	<p:tab title="REPORTES DE INVENTARIO">
+            		 <h:form>
+            			<h:commandButton id="btnProv" value="Reporte de Proveedores" actionListener="#{reportes.verReporteProveedores}"/>
+            			<h:commandButton id="btnInv" value="Reporte Elementos en Inventario" actionListener="#{reportes.verReporteInventario}"/>
+            			<h:commandButton id="btnDef" value ="Reporte Elementos Defectuosos" actionListener="#{reportes.verReporteDefectuosos}"/>
+						<h:commandButton id="btnDev" value ="Reporte Elementos Devueltos" actionListener="#{reportes.verReporteDevueltos}"/>
+           			 </h:form>             	
+            	</p:tab>
+            	<p:tab title="REPORTE DE VENTAS">
+            		 <h:form>
+            			<h:commandButton id="btnRepVen" value="Reporte de Ventas Mes" actionListener="#{reportes.verReporteProveedores}"/>
+            			
+           			 </h:form>             	
+            	</p:tab>
+            </p:accordionPanel>
+            
+            
+                   
             </pm:content>
            
     </pm:page>
