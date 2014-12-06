@@ -20,7 +20,7 @@ public class ProveedorSql {
 		//Methods----------------------------------
 	
 	public String selectProveedores(){
-		return "SELECT * FROM PROVEEDOR;";
+		return "SELECT * FROM PROVEEDOR WHERE ID_PROVEEDOR != 0;";
 	}
 	
 	public String crearProveedor(Proveedor proveedor){

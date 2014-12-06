@@ -37,7 +37,8 @@ public class ReporteSql {
 	public String selectReporteProveedores(){
 		return "SELECT ID_PROVEEDOR, NOMBRE_PROVEEDOR, TELEFONO_PROVEEDOR, "
 				+ "DIRECCION_PROVEEDOR, NOMBRE_LUGAR FROM proveedor "
-				+ "JOIN lugar WHERE proveedor.ID_LUGAR = lugar.ID_LUGAR;";
+				+ "JOIN lugar WHERE proveedor.ID_LUGAR = lugar.ID_LUGAR AND "
+				+ "ID_PROVEEDOR != 0;";
 	}
 	
 	public String selectReporteCumpleanos(){
