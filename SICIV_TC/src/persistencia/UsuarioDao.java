@@ -101,6 +101,30 @@ public class UsuarioDao {
 		return null;
 	}
 	
+	public Usuario buscarPorNickname(String nickname){
+		ResultSet result;
+		Usuario usuario = new Usuario();;
+		if(conexion.conectar()){
+			try{
+			Statement sentencia=conexion.getConexion().createStatement();
+			result = sentencia.executeQuery(sqlUsuario.buscarUsuarioPorNickname(nickname));
+			usuario.setIdUsuario(Integer.parseInt(result.getString("ID_USUARIO")));
+			usuario.setNombreUsuario(result.getString("NOMBRES_USUARIO"));
+			usuario.setIdLugar(Integer.parseInt(result.getString("ID_LUGAR")));
+			usuario.setApellidosUsuario(result.getString("APELLIDOS_USUARIO"));
+			usuario.setDireccionUsuario(result.getString("DIRECCION_USUARIO"));
+			usuario.setTelefonoUsuario(Integer.parseInt(result.getString("TELEFONO_USUARIO")));
+			usuario.setTipoUsuario(result.getString("TIPO_USUARIO").charAt(0));
+			usuario.setContrasena(result.getString("CONTRASENA"));
+			usuario.setNickname(result.getString("NICKNAME_USUARIO"));
+			return usuario;
+			}catch (SQLException e){
+				System.out.println(e.getMessage());
+			}
+		}
+		return null;
+	}
+	
 	public Usuario buscarPorCedula(int cedula){
 		ResultSet result;
 		Usuario usuario = new Usuario();;

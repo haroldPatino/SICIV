@@ -53,6 +53,14 @@ public class UsuarioSql {
 	}
 	
 	/**
+	 * Sentencia SQL para buscar un registro en la tabla usuario por el nickname
+	 * @return
+	 */
+	public String buscarUsuarioPorNickname(String nickname){
+		return "SELECT * FROM usuario WHERE NICKNAME_USUARIO = '"+nickname+"';";
+	}
+	
+	/**
 	 * Sentencia SQL para buscar un registro en la tabla usuario por el numero de cedula
 	 * @return
 	 */

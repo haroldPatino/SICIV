@@ -24,6 +24,7 @@ import logica.Lugar;
 import logica.Producto;
 import logica.ProductoSerie;
 import logica.ReporteElementosFactura;
+import logica.Usuario;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
 import net.sf.jasperreports.engine.JasperRunManager;
@@ -34,6 +35,7 @@ import persistencia.LugarDao;
 import persistencia.ProductoDao;
 import persistencia.ProductoSerieDao;
 import persistencia.ReporteDao;
+import persistencia.UsuarioDao;
 
 /**
  * @author Victor Rojas
@@ -54,6 +56,8 @@ public class Reportes {
 	private ProductoSerieDao serieDao = new ProductoSerieDao();	
 	private ProductoDao productoDao = new ProductoDao();	
 	private ReporteDao reporte = new ReporteDao();
+	private UsuarioDao usuarioDao = new UsuarioDao();
+	private Usuario usuario = new Usuario();
 	
 	public ArrayList<ReporteElementosFactura> listadoElementosFactura(int idFactura){
 		factura = facturaDao.buscarFacturaPorNumero(idFactura); 
@@ -78,6 +82,7 @@ public class Reportes {
 		HashMap<String, Object> mapaParametros = new HashMap<String, Object>();
 		factura = facturaDao.buscarFacturaPorNumero(idFactura);
 		cliente = clienteDao.buscarClientePorCedula(factura.getIdCliente());
+		usuario = usuarioDao.buscarPorCedula(factura.getIdUsuario());
 		lugar = lugarDao.buscarLugarPorID(cliente.getIdLugar());
 		mapaParametros.put("idFactura", factura.getNumeroFactura());
 		mapaParametros.put("idCliente", cliente.getIdCliente());
@@ -89,6 +94,7 @@ public class Reportes {
 		mapaParametros.put("nombreLugar", lugar.getNombreLugar());		
 		mapaParametros.put("telefonoCliente", cliente.getTelefonoCliente());
 		mapaParametros.put("totalFactura", valorTotalFactura(idFactura));
+		mapaParametros.put("nicknameUsuario", usuario.getNickname());
 		return mapaParametros;
 	}
 	
