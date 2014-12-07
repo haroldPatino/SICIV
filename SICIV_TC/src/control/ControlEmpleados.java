@@ -167,7 +167,7 @@ public class ControlEmpleados implements Serializable{
 			user.setApellidosUsuario(apellidos);
 			user.setIdLugar(buscarLugarNombre(lugarResidencia));
 			user.setDireccionUsuario(direccion);
-			user.setTelefonoUsuario(Long.parseLong(telefono));
+			user.setTelefonoUsuario(telefono);
 			user.setNickname(nickname);
 			user.setTipoUsuario(tipoUser.toUpperCase().charAt(0));
 			user.setContrasena(password);

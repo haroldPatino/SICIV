@@ -38,7 +38,7 @@ public class UsuarioDao {
 					user.setNombreUsuario(result.getString("NOMBRES_USUARIO"));
 					user.setApellidosUsuario(result.getString("APELLIDOS_USUARIO"));
 					user.setDireccionUsuario(result.getString("DIRECCION_USUARIO"));
-					user.setTelefonoUsuario(Long.parseLong(result.getString("TELEFONO_USUARIO")));
+					user.setTelefonoUsuario(result.getString("TELEFONO_USUARIO"));
 					user.setTipoUsuario(result.getString("TIPO_USUARIO").charAt(0));
 					user.setNickname(result.getString("NICKNAME_USUARIO"));
 					user.setContrasena(result.getString("CONTRASENA"));
@@ -84,15 +84,17 @@ public class UsuarioDao {
 			try{
 			Statement sentencia=conexion.getConexion().createStatement();
 			result = sentencia.executeQuery(sqlUsuario.buscarUsuarioPorNombre(nombre));
-			usuario.setIdUsuario(Integer.parseInt(result.getString("ID_USUARIO")));
-			usuario.setNombreUsuario(result.getString("NOMBRES_USUARIO"));
-			usuario.setIdLugar(Integer.parseInt(result.getString("ID_LUGAR")));
-			usuario.setApellidosUsuario(result.getString("APELLIDOS_USUARIO"));
-			usuario.setDireccionUsuario(result.getString("DIRECCION_USUARIO"));
-			usuario.setTelefonoUsuario(Integer.parseInt(result.getString("TELEFONO_USUARIO")));
-			usuario.setTipoUsuario(result.getString("TIPO_USUARIO").charAt(0));
-			usuario.setContrasena(result.getString("CONTRASENA"));
-			usuario.setNickname(result.getString("NICKNAME_USUARIO"));
+			while(result.next()){
+				usuario.setIdUsuario(Integer.parseInt(result.getString("ID_USUARIO")));
+				usuario.setNombreUsuario(result.getString("NOMBRES_USUARIO"));
+				usuario.setIdLugar(Integer.parseInt(result.getString("ID_LUGAR")));
+				usuario.setApellidosUsuario(result.getString("APELLIDOS_USUARIO"));
+				usuario.setDireccionUsuario(result.getString("DIRECCION_USUARIO"));
+				usuario.setTelefonoUsuario(result.getString("TELEFONO_USUARIO"));
+				usuario.setTipoUsuario(result.getString("TIPO_USUARIO").charAt(0));
+				usuario.setContrasena(result.getString("CONTRASENA"));
+				usuario.setNickname(result.getString("NICKNAME_USUARIO"));
+			}
 			return usuario;
 			}catch (SQLException e){
 				System.out.println(e.getMessage());
@@ -108,15 +110,17 @@ public class UsuarioDao {
 			try{
 			Statement sentencia=conexion.getConexion().createStatement();
 			result = sentencia.executeQuery(sqlUsuario.buscarUsuarioPorNickname(nickname));
-			usuario.setIdUsuario(Integer.parseInt(result.getString("ID_USUARIO")));
-			usuario.setNombreUsuario(result.getString("NOMBRES_USUARIO"));
-			usuario.setIdLugar(Integer.parseInt(result.getString("ID_LUGAR")));
-			usuario.setApellidosUsuario(result.getString("APELLIDOS_USUARIO"));
-			usuario.setDireccionUsuario(result.getString("DIRECCION_USUARIO"));
-			usuario.setTelefonoUsuario(Integer.parseInt(result.getString("TELEFONO_USUARIO")));
-			usuario.setTipoUsuario(result.getString("TIPO_USUARIO").charAt(0));
-			usuario.setContrasena(result.getString("CONTRASENA"));
-			usuario.setNickname(result.getString("NICKNAME_USUARIO"));
+			while(result.next()){
+				usuario.setIdUsuario(Integer.parseInt(result.getString("ID_USUARIO")));
+				usuario.setNombreUsuario(result.getString("NOMBRES_USUARIO"));
+				usuario.setIdLugar(Integer.parseInt(result.getString("ID_LUGAR")));
+				usuario.setApellidosUsuario(result.getString("APELLIDOS_USUARIO"));
+				usuario.setDireccionUsuario(result.getString("DIRECCION_USUARIO"));
+				usuario.setTelefonoUsuario(result.getString("TELEFONO_USUARIO"));
+				usuario.setTipoUsuario(result.getString("TIPO_USUARIO").charAt(0));
+				usuario.setContrasena(result.getString("CONTRASENA"));
+				usuario.setNickname(result.getString("NICKNAME_USUARIO"));
+			}
 			return usuario;
 			}catch (SQLException e){
 				System.out.println(e.getMessage());
@@ -126,21 +130,24 @@ public class UsuarioDao {
 	}
 	
 	public Usuario buscarPorCedula(int cedula){
+		
 		ResultSet result;
 		Usuario usuario = new Usuario();;
 		if(conexion.conectar()){
-			try{
-			Statement sentencia=conexion.getConexion().createStatement();
-			result = sentencia.executeQuery(sqlUsuario.buscarUsuarioPorCedula(cedula));
-			usuario.setIdUsuario(Integer.parseInt(result.getString("ID_USUARIO")));
-			usuario.setNombreUsuario(result.getString("NOMBRES_USUARIO"));
-			usuario.setIdLugar(Integer.parseInt(result.getString("ID_LUGAR")));
-			usuario.setApellidosUsuario(result.getString("APELLIDOS_USUARIO"));
-			usuario.setDireccionUsuario(result.getString("DIRECCION_USUARIO"));
-			usuario.setTelefonoUsuario(Integer.parseInt(result.getString("TELEFONO_USUARIO")));
-			usuario.setTipoUsuario(result.getString("TIPO_USUARIO").charAt(0));
-			usuario.setContrasena(result.getString("CONTRASENA"));
-			usuario.setNickname(result.getString("NICKNAME_USUARIO"));
+			try{		
+			Statement sentencia=conexion.getConexion().createStatement();			
+			result = sentencia.executeQuery(sqlUsuario.buscarUsuarioPorCedula(cedula));			
+			while(result.next()){
+				usuario.setIdUsuario(Integer.parseInt(result.getString("ID_USUARIO")));			
+				usuario.setNombreUsuario(result.getString("NOMBRES_USUARIO"));
+				usuario.setIdLugar(Integer.parseInt(result.getString("ID_LUGAR")));
+				usuario.setApellidosUsuario(result.getString("APELLIDOS_USUARIO"));
+				usuario.setDireccionUsuario(result.getString("DIRECCION_USUARIO"));			
+				usuario.setTelefonoUsuario(result.getString("TELEFONO_USUARIO"));
+				usuario.setTipoUsuario(result.getString("TIPO_USUARIO").charAt(0));
+				usuario.setContrasena(result.getString("CONTRASENA"));
+				usuario.setNickname(result.getString("NICKNAME_USUARIO"));
+			}			
 			return usuario;
 			}catch (SQLException e){
 				System.out.println(e.getMessage());

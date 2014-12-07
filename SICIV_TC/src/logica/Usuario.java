@@ -14,7 +14,7 @@ public class Usuario {
 	private String nombreUsuario;
 	private String apellidosUsuario;
 	private String direccionUsuario;
-	private long telefonoUsuario;
+	private String telefonoUsuario;
 	private char tipoUsuario;
 	private String nickname;
 	private String contrasena;
@@ -89,13 +89,13 @@ public class Usuario {
 	/**
 	 * @return telefonoUsuario
 	 */
-	public long getTelefonoUsuario() {
+	public String getTelefonoUsuario() {
 		return telefonoUsuario;
 	}
 	/**
 	 * @param telefonoUsuario telefonoUsuario a colocar
 	 */
-	public void setTelefonoUsuario(long telefonoUsuario) {
+	public void setTelefonoUsuario(String telefonoUsuario) {
 		this.telefonoUsuario = telefonoUsuario;
 	}
 	/**

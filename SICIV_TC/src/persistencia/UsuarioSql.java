@@ -49,7 +49,7 @@ public class UsuarioSql {
 	 * @return
 	 */
 	public String buscarUsuarioPorNombre(String nombre){
-		return "SELECT * FROM usuario WHERE NOMBRES_USUARIO = '"+nombre+"';";
+		return "SELECT * FROM usuario WHERE NOMBRES_USUARIO LIKE '"+nombre+"';";
 	}
 	
 	/**
@@ -57,7 +57,7 @@ public class UsuarioSql {
 	 * @return
 	 */
 	public String buscarUsuarioPorNickname(String nickname){
-		return "SELECT * FROM usuario WHERE NICKNAME_USUARIO = '"+nickname+"';";
+		return "SELECT * FROM usuario WHERE NICKNAME_USUARIO LIKE '"+nickname+"';";
 	}
 	
 	/**
