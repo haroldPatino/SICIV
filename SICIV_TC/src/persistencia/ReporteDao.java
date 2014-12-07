@@ -58,6 +58,57 @@ public class ReporteDao {
 		return result;
 	}
 	
+	public ResultSet consultarReporteElementosVendidos(){
+		ResultSet result = null;
+		if(conexion.conectar()){
+			Statement sentence;
+			
+				try {
+					sentence = conexion.getConexion().createStatement();
+					result = sentence.executeQuery(sqlReporte.selectReporteVendidos());
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}			
+		}
+		
+		return result;
+	}
+	
+	public ResultSet consultarReporteEnviadosLaboratorio(){
+		ResultSet result = null;
+		if(conexion.conectar()){
+			Statement sentence;
+			
+				try {
+					sentence = conexion.getConexion().createStatement();
+					result = sentence.executeQuery(sqlReporte.selectReporteEnviadosLaboratorio());
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}			
+		}
+		
+		return result;
+	}
+	
+	public ResultSet consultarReporteListoEntrega(){
+		ResultSet result = null;
+		if(conexion.conectar()){
+			Statement sentence;
+			
+				try {
+					sentence = conexion.getConexion().createStatement();
+					result = sentence.executeQuery(sqlReporte.selectReporteListosEntrega());
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}			
+		}
+		
+		return result;
+	}
+	
 	public ResultSet consultarReporteCumpleanos(){
 		ResultSet result = null;
 		if(conexion.conectar()){

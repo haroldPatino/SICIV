@@ -143,6 +143,69 @@ public class Reportes {
 		}	
 	}
 	
+	public void verReporteElementosVendidos(){
+		try {
+		File jasper=new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/ReporteVendidos.jasper"));
+		byte[] bytes=JasperRunManager.runReportToPdf(jasper.getPath(), null, new JRResultSetDataSource(reporte.consultarReporteElementosVendidos()));
+		HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+		response.setContentType("application/pdf");
+		response.setContentLength(bytes.length);
+		ServletOutputStream stream=response.getOutputStream();
+		stream.write(bytes,0,bytes.length);
+		stream.flush();
+		stream.close();		
+		FacesContext.getCurrentInstance().responseComplete();		
+		} catch (JRException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+	}
+	
+	public void verReporteEnviadosLaboratorio(){
+		try {
+		File jasper=new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/ReporteEnviadoLaboratorio.jasper"));
+		byte[] bytes=JasperRunManager.runReportToPdf(jasper.getPath(), null, new JRResultSetDataSource(reporte.consultarReporteEnviadosLaboratorio()));
+		HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+		response.setContentType("application/pdf");
+		response.setContentLength(bytes.length);
+		ServletOutputStream stream=response.getOutputStream();
+		stream.write(bytes,0,bytes.length);
+		stream.flush();
+		stream.close();		
+		FacesContext.getCurrentInstance().responseComplete();		
+		} catch (JRException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+	}
+	
+	public void verReporteListoEntrega(){
+		try {
+		File jasper=new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/ReporteEntrega.jasper"));
+		byte[] bytes=JasperRunManager.runReportToPdf(jasper.getPath(), null, new JRResultSetDataSource(reporte.consultarReporteListoEntrega()));
+		HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+		response.setContentType("application/pdf");
+		response.setContentLength(bytes.length);
+		ServletOutputStream stream=response.getOutputStream();
+		stream.write(bytes,0,bytes.length);
+		stream.flush();
+		stream.close();		
+		FacesContext.getCurrentInstance().responseComplete();		
+		} catch (JRException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+	}
+	
 	public void verReporteProveedores(){
 		try {
 		File jasper=new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/ReporteProveedores.jasper"));
