@@ -34,5 +34,10 @@
 		<managed-bean-class>control.ControlProveedores</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>controlSeries</managed-bean-name>
+		<managed-bean-class>control.ControlSeries</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 
 </faces-config>
