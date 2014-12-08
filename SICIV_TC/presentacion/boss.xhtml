@@ -224,24 +224,28 @@
     <h:form>
            <p:growl id="growl" showDetail="true" />
            	<h:panelGrid columns="3" cellpadding="18" styleClass="panelGridCenter" style="position:relative; top:5px">
-        	<p:outputLabel for="idProdBusq" value="Codigo de Barras:"></p:outputLabel>
-        	<p:inputText id="idProdBusq" value="#{controlSeries.serialCarga}" required="true"></p:inputText>
-        	<p:commandButton id="btnBusqProd" value="Cargar Producto" icon="ui-icon-search" iconPos="left" actionListener="#{controlSeries.cargarProducto}" update="growl , act:idProduct , act:nameProduc , act:estProd"></p:commandButton>
+        	<p:outputLabel for="idSerieBusq" value="Codigo de Barras:"></p:outputLabel>
+        	<p:inputText id="idSerieBusq" value="#{controlSeries.serialCarga}" required="true"></p:inputText>
+        	<p:commandButton id="btnSerBusq" value="Cargar Producto" icon="ui-icon-search" iconPos="left" actionListener="#{controlSeries.cargarSerial}" update="growl , act2:idProduct , act2:nameProd , act2:estProd"></p:commandButton>
       		</h:panelGrid>
-      		<h:form id="act">
+      		<h:form id="act2">
         <p:growl id="growl" showDetail="true" />
         <pm:field>
         		<p:outputLabel for="idProduct" value="Codigo de Barras:" /> 
-        		<p:inputText id="idProduct" value="" required="true" disabled="true" label="codigo"/>
+        		<p:inputText id="idProduct" value="#{controlSeries.serial}" disabled="true" label="codigo"/>
          </pm:field>
          <pm:field>
-         	<p:autoComplete id="nameProd" value="" required="true" disabled="true" label="familia Producto" placeholder="familia del producto" completeMethod="#{controlProducto.completeProductos}"/>
+         		<p:outputLabel for="nameProd" value="Nombre Producto:" /> 
+        		<p:inputText id="nameProd" value="#{controlSeries.nombreProducto}" disabled="true" label="nombre"/>
          </pm:field>
          <pm:field>
-		    <p:autoComplete id="estProd" value="" placeholder="Estado del Producto" completeMethod="#{controlSeries.completeProductos}" required="true"></p:autoComplete>
+           	<h:panelGrid columns="2" cellpadding="18" styleClass="panelGridCenter" style="position:relative; top:5px">
+        	<p:outputLabel for="estProd" value="Estado del Producto:"></p:outputLabel>
+         	<p:autoComplete id="estProd" value="#{controlSeries.estadoProducto}" label="estado Producto" placeholder="estado del producto" completeMethod="#{controlSeries.completeProductos}"/>
+      		</h:panelGrid>
 		 </pm:field>
 		 <pm:field>
-		 	<p:commandButton id="btnAddProd" value="Insertar Serial" actionListener="#{controlProducto.agregarProducto}" update="growl"></p:commandButton>
+		 	<p:commandButton id="btnActSer" value="Actualizar Serial" actionListener="#{controlSeries.actualizarSerial}" update="growl"></p:commandButton>
 		 </pm:field>
         </h:form>
         </h:form>

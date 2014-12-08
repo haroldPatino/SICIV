@@ -36,7 +36,7 @@ public class ProductoSerieSql {
 	public String actualizarDatosProductoSerie(ProductoSerie producto){
 		return "UPDATE producto_serie SET ID_PRODUCTO="+producto.getIdProducto()
 				+", NUMERO_FACTURA="+producto.getIdFactura()
-				+", ESTADO`="+producto.getEstadoProducto()
+				+", ESTADO="+producto.getEstadoProducto()
 				+" WHERE NUM_SERIE="+producto.getNumeroSerie()+";";
 	}
 	

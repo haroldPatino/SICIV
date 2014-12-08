@@ -139,7 +139,8 @@ public class ControlSeries implements Serializable{
 
 		}
 	}
-	public void cargarProducto(ActionEvent actionEvent){
+	public void cargarSerial(ActionEvent actionEvent){
+		System.out.println("------------------------Hola");
 	    FacesContext ctxtMsg = FacesContext.getCurrentInstance();
 	    ProductoSerie productSerie=buscarSerie(serialCarga);
 	    if(productSerie!=null){
@@ -152,7 +153,7 @@ public class ControlSeries implements Serializable{
 			ctxtMsg.addMessage(null, new FacesMessage("Exception",  "El producto no esta registrado"));
 	    }
 	}
-	public void actualizarProducto(ActionEvent actionEvent){
+	public void actualizarSerial(ActionEvent actionEvent){
 	    FacesContext ctxtMsg = FacesContext.getCurrentInstance();
 		if(serial!="" && nombreProducto!="" && estadoProducto!=""){
 			ProductoSerie product=new ProductoSerie();
