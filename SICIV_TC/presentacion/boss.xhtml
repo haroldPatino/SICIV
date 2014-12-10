@@ -15,10 +15,13 @@
     	   </pm:header>
     	   <pm:header title="SICIV Modulo Gerente"></pm:header>
     	   <pm:header>
+    	   <h:form>
+    	   <p:growl id="growl" showDetail="true" />
     	   <h:panelGrid columns="2" cellpadding="18" styleClass="panelGridCenter" style="position:relative; top:5px">
         	<p:outputLabel>Gerente: #{loginManagement.nombre}</p:outputLabel>
-           <p:commandButton value="Salir"></p:commandButton>
+           	<p:commandButton value="Salir" actionListener="#{loginManagement.logout}" oncomplete="logout(xhr, status, args)" update="growl"></p:commandButton>
       		</h:panelGrid>
+      		</h:form>
     	   </pm:header>
            <pm:header>
                 <p:tabMenu activeIndex="0">
@@ -98,10 +101,13 @@
     	   </pm:header>
     	   <pm:header title="SICIV Modulo Gerente"></pm:header>
     	   <pm:header>
+    	   <h:form>
+    	   <p:growl id="growl" showDetail="true" />
     	   <h:panelGrid columns="2" cellpadding="18" styleClass="panelGridCenter" style="position:relative; top:5px">
         	<p:outputLabel>Gerente: #{loginManagement.nombre}</p:outputLabel>
-           <p:commandButton value="Salir"></p:commandButton>
+           	<p:commandButton value="Salir" actionListener="#{loginManagement.logout}" oncomplete="logout(xhr, status, args)" update="growl"></p:commandButton>
       		</h:panelGrid>
+      		</h:form>
     	   </pm:header>
            <pm:header>
                 <p:tabMenu activeIndex="1">
@@ -269,6 +275,15 @@
     	   	 <img src="../images/Barra.png"/>
     	   </pm:header>
     	   <pm:header title="SICIV Modulo Gerente">Gerente: #{loginManagement.nombre}</pm:header>
+    	   <pm:header>
+    	   <h:form>
+    	   <p:growl id="growl" showDetail="true" />
+    	   <h:panelGrid columns="2" cellpadding="18" styleClass="panelGridCenter" style="position:relative; top:5px">
+        	<p:outputLabel>Gerente: #{loginManagement.nombre}</p:outputLabel>
+           	<p:commandButton value="Salir" actionListener="#{loginManagement.logout}" oncomplete="logout(xhr, status, args)" update="growl"></p:commandButton>
+      		</h:panelGrid>
+      		</h:form>
+    	   </pm:header>
            <pm:header>
                 <p:tabMenu activeIndex="2">
                     <p:menuitem value="Proveedores" icon="ui-icon-navigation" url="#" iconPos="bottom" outcome="pm:proveedores"></p:menuitem>
@@ -369,6 +384,15 @@
     	   	 <img src="../images/Barra.png"/>
     	   </pm:header>
     	   <pm:header title="SICIV Modulo Gerente">Gerente: #{loginManagement.nombre}</pm:header>
+    	   <pm:header>
+    	   <h:form>
+    	   <p:growl id="growl" showDetail="true" />
+    	   <h:panelGrid columns="2" cellpadding="18" styleClass="panelGridCenter" style="position:relative; top:5px">
+        	<p:outputLabel>Gerente: #{loginManagement.nombre}</p:outputLabel>
+           	<p:commandButton value="Salir" actionListener="#{loginManagement.logout}" oncomplete="logout(xhr, status, args)" update="growl"></p:commandButton>
+      		</h:panelGrid>
+      		</h:form>
+    	   </pm:header>
            <pm:header>
                 <p:tabMenu activeIndex="3">
                     <p:menuitem value="Proveedores" icon="ui-icon-navigation" url="#" iconPos="bottom" outcome="pm:proveedores"></p:menuitem>
@@ -410,7 +434,6 @@
 <script type="text/javascript">
   //<![CDATA[
   function logout(xhr, status, args) {
-	  alert("Salio");
     setTimeout(function() {
       window.location = 'index.xhtml';
     }, 500);

@@ -133,9 +133,11 @@ public void login(ActionEvent actionEvent) {
 	  return null;
   }
   public void logout(ActionEvent actionEvent) {
+	FacesContext ctxtMsg = FacesContext.getCurrentInstance();
     HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
     session.invalidate();
     logeado = false;
+    ctxtMsg.addMessage(null, new FacesMessage("Successful",  "Cierre de Sesion Exitoso") );
   }
   public void cambiarContrasena(ActionEvent actionEvent){
 	  FacesContext ctxtMsg = FacesContext.getCurrentInstance();

@@ -15,10 +15,13 @@
     	   </pm:header>
     	   <pm:header title="SICIV Modulo Auxiliar"></pm:header>
     	   <pm:header>
+    	   <h:form>
+    	   <p:growl id="growl" showDetail="true" />
     	   <h:panelGrid columns="2" cellpadding="18" styleClass="panelGridCenter" style="position:relative; top:5px">
         	<p:outputLabel>Auxiliar: #{loginManagement.nombre}</p:outputLabel>
-           <p:commandButton value="Salir"></p:commandButton>
+           	<p:commandButton value="Salir" actionListener="#{loginManagement.logout}" oncomplete="logout(xhr, status, args)" update="growl"></p:commandButton>
       		</h:panelGrid>
+      		</h:form>
     	   </pm:header>
            <pm:header>
                 <p:tabMenu activeIndex="0">
@@ -187,13 +190,16 @@
     	   </pm:header>
     	   <pm:header title="SICIV Modulo Auxiliar"></pm:header>
     	   <pm:header>
+    	   <h:form>
+    	   <p:growl id="growl" showDetail="true" />
     	   <h:panelGrid columns="2" cellpadding="18" styleClass="panelGridCenter" style="position:relative; top:5px">
         	<p:outputLabel>Auxiliar: #{loginManagement.nombre}</p:outputLabel>
-           <p:commandButton value="Salir"></p:commandButton>
+           	<p:commandButton value="Salir" actionListener="#{loginManagement.logout}" oncomplete="logout(xhr, status, args)" update="growl"></p:commandButton>
       		</h:panelGrid>
+      		</h:form>
     	   </pm:header>
            <pm:header>
-                <p:tabMenu activeIndex="0">
+                <p:tabMenu activeIndex="1">
                     <p:menuitem value="Inventario" icon="ui-icon-shop" url="#" iconPos="bottom" outcome="pm:inventario"/>
                     <p:menuitem value="Clientes" icon="ui-icon-user" url="#" iconPos="bottom" outcome="pm:clientes"/>
                     <p:menuitem value="Ventas" icon="ui-icon-bullets" url="#" iconPos="bottom" outcome="pm:ventas"/>
@@ -243,11 +249,14 @@
     	   	 <img src="../images/Barra.png"/>
     	   </pm:header>
     	   <pm:header title="SICIV Modulo Auxiliar"></pm:header>
-    	   <pm:header>
+    	  <pm:header>
+    	   <h:form>
+    	   <p:growl id="growl" showDetail="true" />
     	   <h:panelGrid columns="2" cellpadding="18" styleClass="panelGridCenter" style="position:relative; top:5px">
         	<p:outputLabel>Auxiliar: #{loginManagement.nombre}</p:outputLabel>
-           <p:commandButton value="Salir"></p:commandButton>
+           	<p:commandButton value="Salir" actionListener="#{loginManagement.logout}" oncomplete="logout(xhr, status, args)" update="growl"></p:commandButton>
       		</h:panelGrid>
+      		</h:form>
     	   </pm:header>
            <pm:header>
                 <p:tabMenu activeIndex="2">
@@ -292,6 +301,28 @@
             </pm:content>
     </pm:page>
     <pm:page id="contraseña">
+    <pm:header fixed="true">
+    	   	 <img src="../images/Barra.png"/>
+    	   </pm:header>
+    	   <pm:header title="SICIV Modulo Auxiliar"></pm:header>
+    	  <pm:header>
+    	   <h:form>
+    	   <p:growl id="growl" showDetail="true" />
+    	   <h:panelGrid columns="2" cellpadding="18" styleClass="panelGridCenter" style="position:relative; top:5px">
+        	<p:outputLabel>Auxiliar: #{loginManagement.nombre}</p:outputLabel>
+           	<p:commandButton value="Salir" actionListener="#{loginManagement.logout}" oncomplete="logout(xhr, status, args)" update="growl"></p:commandButton>
+      		</h:panelGrid>
+      		</h:form>
+    	   </pm:header>
+           <pm:header>
+                <p:tabMenu activeIndex="3">
+                    <p:menuitem value="Inventario" icon="ui-icon-shop" url="#" iconPos="bottom" outcome="pm:inventario"/>
+                    <p:menuitem value="Clientes" icon="ui-icon-user" url="#" iconPos="bottom" outcome="pm:clientes"/>
+                    <p:menuitem value="Ventas" icon="ui-icon-bullets" url="#" iconPos="bottom" outcome="pm:ventas"/>
+                    <p:menuitem value="Cambiar Contraseña" icon="ui-icon-lock" url="#" iconPos="bottom" outcome="pm:contraseña"/>
+                </p:tabMenu>
+            </pm:header>
+            <pm:content>
     	<h:form>
     					<p:growl id="growl" showDetail="true" />
     						<pm:field>
@@ -310,11 +341,11 @@
     						    <p:commandButton id="btnAddProd" value="Guardar" icon="ui-icon-check" iconPos="left" actionListener="#{loginManagement.cambiarContrasena}" update="growl"></p:commandButton>
     						</pm:field>
     					</h:form>
+    					</pm:content>
     </pm:page>
 <script type="text/javascript">
   //<![CDATA[
   function logout(xhr, status, args) {
-	  alert("Salio");
     setTimeout(function() {
       window.location = 'index.xhtml';
     }, 500);
