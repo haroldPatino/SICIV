@@ -264,11 +264,15 @@
             			<p:growl id="growl" showDetail="true" />
             				<pm:field>
             					<p:outputLabel for="idVenta" value="Numero Factura:"></p:outputLabel>
-            					<p:inputText id="idVenta" required="true" value=""></p:inputText>
+            					<p:inputText id="idVenta" required="true" value="#{controlVentas.numFactura}"></p:inputText>
             				</pm:field>
             				<pm:field>
-            					<p:outputLabel for="idCliente" value="Documento Cliente"></p:outputLabel>
-            					<p:inputText id="idCliente" required="true" value=""></p:inputText>
+            					<p:outputLabel for="idCliente" value="Documento Cliente:"></p:outputLabel>
+            					<p:inputText id="idCliente" required="true" value="#{controlVentas.numCliente}"></p:inputText>
+            				</pm:field>
+            				<pm:field>
+            					<p:outputLabel for="idVend" value="Documento Vendedor:"></p:outputLabel>
+            					<p:inputText id="idVend" required="true" value="#{controlVentas.numVendedor}"></p:inputText>
             				</pm:field>
             				<pm:field>
             				<pm:header>CARRITO DE COMPRAS</pm:header>
@@ -277,17 +281,35 @@
             				<pm:field>
             					<h:panelGrid columns="3" cellpadding="4" styleClass="panelGridCenter" style="position:relative; top:5px">
         							<p:outputLabel for="numSerie" value="Numero de Serie:" /> 
-            						<p:inputText id="numSerie" value="" label="numeroSerie"/>
-            						<p:commandButton id="btnAddProd" value="Agregar al Carrito" icon="ui-icon-plus" iconPos="left"></p:commandButton>
-            						<p:outputLabel for="nameProd" value="CLase de Producto:"></p:outputLabel>
-            						<p:autoComplete id="nameProd" value="" label="producto" placeholder="nombre del producto"/>	
+            						<p:inputText id="numSerie" value="#{controlVentas.idProducto}" label="numeroSerie"/>
+            						<p:commandButton id="btnAddProd" value="Agregar al Carrito" icon="ui-icon-plus" iconPos="left" actionListener="#{controlVentas.cargarProducto}" update="growl"></p:commandButton>	
       							</h:panelGrid>
             				</pm:field>
-            				<p:commandButton value="Facturar" update="growl"></p:commandButton>
+            				<p:commandButton value="Facturar" actionListener="#{controlVentas.generarFactura}" update="growl"></p:commandButton>
             			</h:form>
             		</p:tab>
             	</p:accordionPanel>
             </pm:content>
+    </pm:page>
+    <pm:page id="contraseña">
+    	<h:form>
+    					<p:growl id="growl" showDetail="true" />
+    						<pm:field>
+    							<p:outputLabel for="oldPassUser" value="Password Actual:"></p:outputLabel>
+    							<p:inputText id="oldPassUser" value="#{loginManagement.oldPass}" required="true"></p:inputText>
+    						</pm:field>
+    						<pm:field>
+    							<p:outputLabel for="newPassUser" value="Password Nuevo:"></p:outputLabel>
+    							<p:inputText id="newPassUser" value="#{loginManagement.newPass}" required="true"></p:inputText>
+    						</pm:field>
+    						<pm:field>
+    							<p:outputLabel for="confPassUser" value="Confirmar Password:"></p:outputLabel>
+    							<p:inputText id="confPassUser" value="#{loginManagement.confPass}" required="true"></p:inputText>
+    						</pm:field>
+    						<pm:field>
+    						    <p:commandButton id="btnAddProd" value="Guardar" icon="ui-icon-check" iconPos="left" actionListener="#{loginManagement.cambiarContrasena}" update="growl"></p:commandButton>
+    						</pm:field>
+    					</h:form>
     </pm:page>
 <script type="text/javascript">
   //<![CDATA[

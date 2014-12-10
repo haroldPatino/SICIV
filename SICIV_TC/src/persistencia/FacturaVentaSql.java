@@ -3,6 +3,9 @@
  */
 package persistencia;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 import logica.FacturaVenta;
 
 /**
@@ -17,13 +20,15 @@ public class FacturaVentaSql {
 	}
 	
 	public String crearFactura(FacturaVenta factura){
+		DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+		String fechAux=formato.format(factura.getFechaFactura());
 		return "INSERT INTO factura_venta (NUMERO_FACTURA,"
 				+ " ID_USUARIO, ID_CLIENTE, FECHA_FACTURA,"
 				+ " DESCUENTO, IMPUESTOS, ESTADO_FACTURA)"
 				+ " VALUES ("+factura.getNumeroFactura()
 				+","+factura.getIdUsuario()
 				+","+factura.getIdCliente()
-				+",'"+factura.getFechaFactura()
+				+",'"+fechAux
 				+"',"+factura.getDescuento()
 				+","+factura.getImpuestos()
 				+",'AC')";

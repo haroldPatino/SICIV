@@ -135,7 +135,9 @@ public class ControlVentas implements Serializable{
 	}
 	public void generarFactura(ActionEvent actionEvent){
 		FacesContext ctxtMsg = FacesContext.getCurrentInstance();
-		if(numFactura!=null && productos.size()>0){
+		ProductoSerieDao daoS=new ProductoSerieDao();
+		Reportes reportes=new Reportes();
+		if(numFactura!=null && numFactura!="" && productos.size()>0){
 			FacturaVenta factura=new FacturaVenta();
 			factura.setIdCliente(Integer.parseInt(numCliente));
 			factura.setIdUsuario(Integer.parseInt(numVendedor));
@@ -143,6 +145,17 @@ public class ControlVentas implements Serializable{
 			Date date=new Date();
 			factura.setFechaFactura(date);
 			factura.setNumeroFactura(Integer.parseInt(numFactura));
+			dao.insertarFactura(factura);
+			for(int i=0;i<productos.size();i++){
+				ProductoSerie aux=productos.get(i);
+				aux.setIdFactura(factura.getNumeroFactura());
+				aux.setEstadoProducto("VD");
+				daoS.actualizarDatosProductoSerie(aux);
+			}
+			reportes.verReporteFactura(factura.getNumeroFactura());
+		}
+		else{
+			
 		}
 	}
 	public ProductoSerie buscarSerie(String serie){
