@@ -161,7 +161,7 @@ public class ControlSeries implements Serializable{
 			product.setEstadoProducto(manejoEstadoInverso(estadoProducto));
 			product.setIdFactura(0);
 			product.setIdProducto(buscarProductoName(nombreProducto).getIdProducto());
-			dao.actualizarDatosProductoSerie(product);
+			dao.cambiarEstadoProducto(product.getNumeroSerie(), product.getEstadoProducto());
 			ctxtMsg.addMessage(null, new FacesMessage("Successful",  "Producto Actualizado Exitosamente"));
 		}
 		else{
@@ -178,6 +178,26 @@ public class ControlSeries implements Serializable{
 		}
 		return null;
 	}
+	public void search(ActionEvent actionEvent){
+	    FacesContext ctxtMsg = FacesContext.getCurrentInstance();
+		if(serialCarga!=""){
+			ProductoSerie product=buscarSerie(serialCarga);
+			if(product!=null){
+				String msg="ID Barras: "+product.getNumeroSerie()+"\n"
+						+"Nombre Producto: "+buscarProductoId(product.getIdProducto()).getNombreProducto()+"\n"
+						+"Precio Compra: "+buscarProductoId(product.getIdProducto()).getPrecioCompra()+"\n"
+						+"Precio Venta: " +buscarProductoId(product.getIdProducto()).getPrecioVenta()+"\n"
+						+"Estado: "+manejoEstado(product.getEstadoProducto());
+				ctxtMsg.addMessage(null, new FacesMessage("Info System",  msg));
+			}
+			else{
+				ctxtMsg.addMessage(null, new FacesMessage("Exception","No existe el producto en el inventario"));
+			}
+		}
+		else{
+			ctxtMsg.addMessage(null, new FacesMessage("Exception","Existen campos vacios"));
+		}
+	}
 	public String manejoEstado(String est){
 		if(est.equals("AC")){
 			return "ACTIVO";
@@ -192,7 +212,7 @@ public class ControlSeries implements Serializable{
 			return "PENDIENTE";
 		}
 		else{
-			return "";
+			return "VENDIDO";
 		}
 	}
 	public String manejoEstadoInverso(String est){
@@ -209,7 +229,7 @@ public class ControlSeries implements Serializable{
 			return "PE";
 		}
 		else{
-			return "";
+			return "VD";
 		}
 	}
 	public List<String> completeProductos(String text){

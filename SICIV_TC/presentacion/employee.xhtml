@@ -28,123 +28,158 @@
                     <p:menuitem value="Cambiar Contraseña" icon="ui-icon-lock" url="#" iconPos="bottom" outcome="pm:contraseña"/>
                 </p:tabMenu>
             </pm:header>
-           <pm:content>
+<pm:content>
            		<p:accordionPanel>
-    <p:tab title="AGREGAR PRODUCTO">
-        <h:form>
-         <pm:field>
-        		<p:outputLabel for="numSerie" value="Numero Serie:" /> 
-        		<p:inputText id="numSerie" value="" required="true" label="NumeroSerie" placeholder="NUMERO_SERIE"/>
-         </pm:field>
-         <pm:field>
-        		<p:outputLabel for="nameProduc" value="Nombre Producto:" /> 
-        		<p:inputText id="nameProduc" value="" required="true" label="nombre"/>
-         </pm:field>
-         <pm:field>
-         	<p:autoComplete id="nameProv" value="" required="true" label="proveedor" placeholder="nombre del proveedor"/>
-         </pm:field>
-		 <pm:field>
-		 	<p:outputLabel for="tipoProd" value="Tipo de Producto:" /> 
-		    <p:selectOneMenu id="tipoProd" required="true">
-        		<f:selectItem itemLabel="Select One" itemValue="" />
-        		<f:selectItem itemLabel="Lentes" itemValue="1" />
-        		<f:selectItem itemLabel="Monturas" itemValue="2" />
-    		</p:selectOneMenu>
-		 </pm:field>
-		 <pm:field>
-		 	<p:outputLabel for="marcProd" value="Marca del Producto:" /> 
-            <p:inputText id="marcProd" value="" required="true" label="marca"/>
-		 </pm:field>
-		 <pm:field>
-		 	<p:outputLabel for="estProd" value="Estado Producto:" />
-		 	<p:selectOneMenu id="estProd" required="true">
-        		<f:selectItem itemLabel="Select One" itemValue="" />
-        		<f:selectItem itemLabel="En fabrica" itemValue="1" />
-        		<f:selectItem itemLabel="Defectuoso" itemValue="2" />
-        		<f:selectItem itemLabel="Optimo" itemValue="3" />
-        		<f:selectItem itemLabel="Vendido" itemValue="4" />
-        		<f:selectItem itemLabel="Devuelto" itemValue="5" />
-    		</p:selectOneMenu>		 
-		 </pm:field>
-		 <pm:field>
-		 	<p:outputLabel for="precCom" value="Precio de Compra Producto:" /> 
-            <p:inputText id="precCom" value="" required="true" label="precioCompra"/>
-		 </pm:field>
-		 <pm:field>
-		 	<p:outputLabel for="precVen" value="Precio de Venta Producto:" /> 
-            <p:inputText id="precVen" value="" required="true" label="precioVenta"/>
-		 </pm:field>
-		 <pm:field>
-		 	<p:commandButton id="btnAddProd" value="Insertar Producto"></p:commandButton>
-		 </pm:field>
-        </h:form>
-    </p:tab>
-    <p:tab title="ACTUALIZAR PRODUCTO">
-        <h:form>
-         <pm:field>
-        		<p:outputLabel for="numSerie" value="Numero Serie:" /> 
-        		<p:inputText id="numSerie" value="" required="true" label="NumeroSerie" placeholder="NUMERO_SERIE"/>
-         </pm:field>
-         <pm:field>
-		 	<p:commandButton id="btnCargProd" value="Cargar Producto"></p:commandButton>
-		 </pm:field>
-         <pm:field>
-        		<p:outputLabel for="nameProduc" value="Nombre Producto:" /> 
-        		<p:inputText id="nameProduc" value="" required="true" label="nombre"/>
-         </pm:field>
-         <pm:field>
-         	<p:autoComplete id="nameProv" value="" required="true" label="proveedor" placeholder="nombre del proveedor"/>
-         </pm:field>
-		 <pm:field>
-		 	<p:outputLabel for="tipoProd" value="Tipo de Producto:" /> 
-		    <p:selectOneMenu id="tipoProd" required="true">
-        		<f:selectItem itemLabel="Select One" itemValue="" />
-        		<f:selectItem itemLabel="Lentes" itemValue="1" />
-        		<f:selectItem itemLabel="Monturas" itemValue="2" />
-    		</p:selectOneMenu>
-		 </pm:field>
-		 <pm:field>
-		 	<p:outputLabel for="marcProd" value="Marca del Producto:" /> 
-            <p:inputText id="marcProd" value="" required="true" label="marca"/>
-		 </pm:field>
-		 <pm:field>
-		 	<p:outputLabel for="estProd" value="Estado Producto:" />
-		 	<p:selectOneMenu id="estProd" required="true">
-        		<f:selectItem itemLabel="Select One" itemValue="" />
-        		<f:selectItem itemLabel="En fabrica" itemValue="1" />
-        		<f:selectItem itemLabel="Defectuoso" itemValue="2" />
-        		<f:selectItem itemLabel="Optimo" itemValue="3" />
-        		<f:selectItem itemLabel="Vendido" itemValue="4" />
-        		<f:selectItem itemLabel="Devuelto" itemValue="5" />
-    		</p:selectOneMenu>		 
-		 </pm:field>
-		 <pm:field>
-		 	<p:outputLabel for="precCom" value="Precio de Compra Producto:" /> 
-            <p:inputText id="precCom" value="" required="true" label="precioCompra"/>
-		 </pm:field>
-		 <pm:field>
-		 	<p:outputLabel for="precVen" value="Precio de Venta Producto:" /> 
-            <p:inputText id="precVen" value="" required="true" label="precioVenta"/>
-		 </pm:field>
-		 <pm:field>
-		 	<p:commandButton id="btnAddProd" value="Actualizar Producto" icon="ui-icon-refresh" iconPos="left"></p:commandButton>
-		 </pm:field>
-        </h:form>
-    </p:tab>
-    <p:tab title="BUSQUEDA DE PRODUCTOS">
-    	<h:form>
+   	 <p:tab title="AGREGAR PRODUCTO">
+        <h:form id="add">
+        <p:growl id="growl" showDetail="true" />
         <pm:field>
-        	<h:panelGrid columns="3" cellpadding="4" styleClass="panelGridCenter" style="position:relative; top:5px">
-        	<p:outputLabel for="numSerie" value="Numero de Serie:" /> 
-            <p:inputText id="numSerie" value="" required="true" label="numeroSerie"/>
-            <p:commandButton id="btnAddProd" value="Buscar Producto" icon="ui-icon-search" iconPos="left"></p:commandButton>
+        		<p:outputLabel for="idProduct" value="Id Producto:" /> 
+        		<p:inputText id="idProduct" value="#{controlProducto.idProduct}" required="true" label="nombre"/>
+         </pm:field>
+         <pm:field>
+        		<p:outputLabel for="nameProduc" value="Nombre Producto:" /> 
+        		<p:inputText id="nameProduc" value="#{controlProducto.nombreProduct}" required="true" label="nombre"/>
+         </pm:field>
+         <pm:field>
+         	<p:autoComplete id="nameProv" value="#{controlProducto.nombreProveedor}" required="true" label="proveedor" placeholder="nombre del proveedor" completeMethod="#{controlProducto.completeProveedores}"/>
+         </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="tipoProd" value="Tipo de Producto:" /> 
+		    <p:selectOneMenu id="tipoProd" required="true" value="#{controlProducto.tipoproduct}">
+        		<f:selectItem itemLabel="Select One" itemValue="" />
+        		<f:selectItem itemLabel="LENTES" itemValue="LENTES" />
+        		<f:selectItem itemLabel="MONTURA" itemValue="MONTURA" />
+    		</p:selectOneMenu>
+		 </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="marcProd" value="Marca del Producto:" /> 
+            <p:inputText id="marcProd" value="#{controlProducto.marcaProduct}" required="true" label="marca"/>
+		 </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="precCom" value="Precio de Compra Producto:" /> 
+            <p:inputText id="precCom" value="#{controlProducto.precioCompra}" required="true" label="precioCompra"/>
+		 </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="precVen" value="Precio de Venta Producto:" /> 
+            <p:inputText id="precVen" value="#{controlProducto.precioVenta}" required="true" label="precioVenta"/>
+		 </pm:field>
+		 <pm:field>
+		 	<p:commandButton id="btnAddProd" value="Insertar Producto" actionListener="#{controlProducto.agregarProducto}" update="growl"></p:commandButton>
+		 </pm:field>
+        </h:form>
+    </p:tab>
+    <p:tab title="ACTUALIZAR FAMILIA PRODUCTO">
+    	<h:form>
+           <p:growl id="growl" showDetail="true" />
+           	<h:panelGrid columns="3" cellpadding="18" styleClass="panelGridCenter" style="position:relative; top:5px">
+        	<p:outputLabel for="idProdBusq" value="Nombre Producto:"></p:outputLabel>
+        	<p:autoComplete id="idProdBusq" value="#{controlProducto.nameCarga}" required="true" completeMethod="#{controlProducto.completeProductos}"></p:autoComplete>
+        	<p:commandButton id="btnBusqProd" value="Cargar Producto" icon="ui-icon-search" iconPos="left" actionListener="#{controlProducto.cargarProducto}" update="growl , act:idProduct , act:nameProduc , act:nameProv , act:tipoProd , act:marcProd , act:precCom , act:precVen"></p:commandButton>
+      		</h:panelGrid>
+      	<h:form id="act">
+        <p:growl id="growl" showDetail="true" />
+        <pm:field>
+        		<p:outputLabel for="idProduct" value="Id Producto:" /> 
+        		<p:inputText id="idProduct" value="#{controlProducto.idProduct}" disabled="true" label="nombre"/>
+         </pm:field>
+         <pm:field>
+        		<p:outputLabel for="nameProduc" value="Nombre Producto:" /> 
+        		<p:inputText id="nameProduc" value="#{controlProducto.nombreProduct}" label="nombre"/>
+         </pm:field>
+         <pm:field>
+         	<p:autoComplete id="nameProv" value="#{controlProducto.nombreProveedor}" label="proveedor" placeholder="nombre del proveedor" completeMethod="#{controlProducto.completeProveedores}"/>
+         </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="tipoProd" value="Tipo de Producto:" /> 
+    		<p:inputText id="tipoProd" value="#{controlProducto.tipoproduct}" disabled="true"></p:inputText>
+		 </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="marcProd" value="Marca del Producto:" /> 
+            <p:inputText id="marcProd" value="#{controlProducto.marcaProduct}" label="marca"/>
+		 </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="precCom" value="Precio de Compra Producto:" /> 
+            <p:inputText id="precCom" value="#{controlProducto.precioCompra}" label="precioCompra"/>
+		 </pm:field>
+		 <pm:field>
+		 	<p:outputLabel for="precVen" value="Precio de Venta Producto:" /> 
+            <p:inputText id="precVen" value="#{controlProducto.precioVenta}" label="precioVenta"/>
+		 </pm:field>
+		 <pm:field>
+		 	<p:commandButton id="btnAddProd" value="ActUalizar Producto" actionListener="#{controlProducto.actualizarProducto}" update="growl"></p:commandButton>
+		 </pm:field>
+        </h:form>
+            		</h:form>
+    </p:tab>
+    <p:tab title="AGREGAR NUMEROS DE SERIE">
+    <h:form>
+        <p:growl id="growl" showDetail="true" />
+        <pm:field>
+        		<p:outputLabel for="idProduct" value="Codigo de Barras:" /> 
+        		<p:inputText id="idProduct" value="#{controlSeries.serial}" required="true" label="codigo"/>
+         </pm:field>
+         <pm:field>
+         	<p:autoComplete id="nameProd" value="#{controlSeries.nombreProducto}" required="true" label="familia Producto" placeholder="familia del producto" completeMethod="#{controlProducto.completeProductos}"/>
+         </pm:field>
+         <pm:field>
+		 	<p:outputLabel for="estProd" value="Estado del Producto:" /> 
+		    <p:selectOneMenu id="estProd" required="true" value="#{controlSeries.estadoProducto}">
+        		<f:selectItem itemLabel="Select One" itemValue="" />
+        		<f:selectItem itemLabel="ACTIVO" itemValue="AC" />
+        		<f:selectItem itemLabel="DEVUELTO" itemValue="DV"/>
+        		<f:selectItem itemLabel="EN PROCESO" itemValue="EP"/>
+        		<f:selectItem itemLabel="PENDIENTE" itemValue="PE"/>
+    		</p:selectOneMenu>
+		 </pm:field>
+		 <pm:field>
+		 	<p:commandButton id="btnAddProd" value="Insertar Serial" actionListener="#{controlSeries.agregarProducto}" update="growl"></p:commandButton>
+		 </pm:field>
+        </h:form>
+    </p:tab>
+    <p:tab title="ACTUALIZAR ESTADO">
+    <h:form>
+           <p:growl id="growl" showDetail="true" />
+           	<h:panelGrid columns="3" cellpadding="18" styleClass="panelGridCenter" style="position:relative; top:5px">
+        	<p:outputLabel for="idSerieBusq" value="Codigo de Barras:"></p:outputLabel>
+        	<p:inputText id="idSerieBusq" value="#{controlSeries.serialCarga}" required="true"></p:inputText>
+        	<p:commandButton id="btnSerBusq" value="Cargar Producto" icon="ui-icon-search" iconPos="left" actionListener="#{controlSeries.cargarSerial}" update="growl , act2:idProduct , act2:nameProd , act2:estProd"></p:commandButton>
+      		</h:panelGrid>
+      		<h:form id="act2">
+        <p:growl id="growl" showDetail="true" />
+        <pm:field>
+        		<p:outputLabel for="idProduct" value="Codigo de Barras:" /> 
+        		<p:inputText id="idProduct" value="#{controlSeries.serial}" disabled="true" label="codigo"/>
+         </pm:field>
+         <pm:field>
+         		<p:outputLabel for="nameProd" value="Nombre Producto:" /> 
+        		<p:inputText id="nameProd" value="#{controlSeries.nombreProducto}" disabled="true" label="nombre"/>
+         </pm:field>
+         <pm:field>
+           	<h:panelGrid columns="2" cellpadding="18" styleClass="panelGridCenter" style="position:relative; top:5px">
+        	<p:outputLabel for="estProd" value="Estado del Producto:"></p:outputLabel>
+         	<p:autoComplete id="estProd" value="#{controlSeries.estadoProducto}" label="estado Producto" placeholder="estado del producto" completeMethod="#{controlSeries.completeProductos}"/>
       		</h:panelGrid>
 		 </pm:field>
-		 </h:form>
+		 <pm:field>
+		 	<p:commandButton id="btnActSer" value="Actualizar Serial" actionListener="#{controlSeries.actualizarSerial}" update="growl"></p:commandButton>
+		 </pm:field>
+        </h:form>
+        </h:form>
     </p:tab>
-</p:accordionPanel>
+    <p:tab title="BUSCAR NUMERO DE SERIE">
+    	<h:form>
+           <p:growl id="growl" showDetail="true" life="6000"/>
+           	<h:panelGrid columns="3" cellpadding="18" styleClass="panelGridCenter" style="position:relative; top:5px">
+        	<p:outputLabel for="idSerieBusq" value="Codigo de Barras:"></p:outputLabel>
+        	<p:inputText id="idSerieBusq" value="#{controlSeries.serialCarga}" required="true"></p:inputText>
+        	<p:commandButton id="btnSerBusq" value="Buscar Producto" icon="ui-icon-search" iconPos="left" actionListener="#{controlSeries.search}" update="growl"></p:commandButton>
+      		</h:panelGrid>
+      	</h:form>
+    </p:tab>
+	</p:accordionPanel>
            </pm:content>
-    </pm:page>
+          </pm:page>
     
     <pm:page  id="clientes">
     	 <pm:header fixed="true">

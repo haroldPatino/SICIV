@@ -32,6 +32,10 @@ public class ControlEmpleados implements Serializable{
 	private String nickname;
 	private String password;
 	private String tipoUser;
+	private String docContra;
+	private String newPass;
+	private String oldPass;
+	private String confPass;
 	private UsuarioDao dao;
 //Building-----------------------------------------------------------------
 	public ControlEmpleados(){
@@ -158,6 +162,54 @@ public class ControlEmpleados implements Serializable{
 	public UsuarioDao getDao() {
 		return dao;
 	}
+	/**
+	 * @return docContra
+	 */
+	public String getDocContra() {
+		return docContra;
+	}
+	/**
+	 * @param docContra docContra a colocar
+	 */
+	public void setDocContra(String docContra) {
+		this.docContra = docContra;
+	}
+	/**
+	 * @return newPass
+	 */
+	public String getNewPass() {
+		return newPass;
+	}
+	/**
+	 * @param newPass newPass a colocar
+	 */
+	public void setNewPass(String newPass) {
+		this.newPass = newPass;
+	}
+	/**
+	 * @return oldPass
+	 */
+	public String getOldPass() {
+		return oldPass;
+	}
+	/**
+	 * @param oldPass oldPass a colocar
+	 */
+	public void setOldPass(String oldPass) {
+		this.oldPass = oldPass;
+	}
+	/**
+	 * @return confPass
+	 */
+	public String getConfPass() {
+		return confPass;
+	}
+	/**
+	 * @param confPass confPass a colocar
+	 */
+	public void setConfPass(String confPass) {
+		this.confPass = confPass;
+	}
 	public void agregarEmpleado(ActionEvent actionEvent){
 		FacesContext ctxtMsg = FacesContext.getCurrentInstance();
 		if(idEmpleado!="" && nombres!="" && apellidos!="" && lugarResidencia!="" && nickname!="" && password!="" && tipoUser!=""){
@@ -224,5 +276,22 @@ public class ControlEmpleados implements Serializable{
 		}
 		return null;
 	}
+	public void cambiarContrasenaGeneral(ActionEvent actionEvent){
+		FacesContext ctxtMsg = FacesContext.getCurrentInstance();
+		if(newPass!="" && docContra!=""){
+			Usuario user=buscarEmpleadoId(Integer.parseInt(docContra));
+			if(user!=null){
+				user.setContrasena(newPass);
+				dao.restablecerContrasena(user.getIdUsuario(), user.getContrasena());
+				ctxtMsg.addMessage(null, new FacesMessage("Successful",  "Contraseña Actualizada Exitosamente"));
+			}
+			else{
+				ctxtMsg.addMessage(null, new FacesMessage("Exception",  "El documento del usuario no existe"));
+			}
+		}
+		else{
+			ctxtMsg.addMessage(null, new FacesMessage("Exception",  "Existen campos obligatorios vacios"));
 
+		}
+	}
 }

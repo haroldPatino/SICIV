@@ -156,12 +156,12 @@ public class UsuarioDao {
 		return null;
 	}
 	
-	public int restablecerContrasena(int cedula, String nickname, String contrasena){
+	public int restablecerContrasena(int cedula, String contrasena){
 
 		if(conexion.conectar()){
 			try{
 			Statement sentencia=conexion.getConexion().createStatement();
-			return sentencia.executeUpdate(sqlUsuario.restablecerContrasenaUsuario(cedula, nickname, contrasena));
+			return sentencia.executeUpdate(sqlUsuario.restablecerContrasenaUsuario(cedula, contrasena));
 			}catch (SQLException e){
 				System.out.println(e.getMessage());
 			}

@@ -13,11 +13,7 @@ import logica.ProductoSerie;
 public class ProductoSerieSql {
 
 	public String crearProductoSerie(ProductoSerie producto){
-		return "INSERT INTO producto_serie(NUM_SERIE, ID_PRODUCTO,"
-				+ " ESTADO)"
-				+ " VALUES ("+producto.getNumeroSerie()
-				+", "+producto.getIdProducto()						
-				+","+producto.getEstadoProducto()+");";
+		return "INSERT INTO `siciv`.`producto_serie` (`NUM_SERIE`, `ID_PRODUCTO`, `NUMERO_FACTURA`, `ESTADO`) VALUES ('"+producto.getNumeroSerie()+"', '"+producto.getIdProducto()+"', '"+producto.getIdFactura()+"', '"+producto.getEstadoProducto()+"');";
 	}
 	
 	public String SelectProductosSeriePorNumFactura(int numeroFactura){
@@ -28,9 +24,9 @@ public class ProductoSerieSql {
 		return "SELECT * FROM producto_serie;";
 	}
 	
-	public String cambiarEstadoProduucto(int idProducto, String estado){
-		return "UPDATE producto_serie SET ESTADO="+estado
-				+" WHERE NUM_SERIE ="+idProducto+";";		
+	public String cambiarEstadoProduucto(String idProducto, String estado){
+		return "UPDATE `siciv`.`producto_serie` SET ESTADO= '"+estado
+				+"' WHERE NUM_SERIE = '"+idProducto+"';";		
 	}
 	
 	public String actualizarDatosProductoSerie(ProductoSerie producto){

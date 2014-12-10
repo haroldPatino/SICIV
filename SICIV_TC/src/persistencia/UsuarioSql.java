@@ -32,16 +32,7 @@ public class UsuarioSql {
 	 */	
 	public String crearUsuario(Usuario usuario){
 				
-		return  "INSERT INTO usuario VALUES ("
-				+usuario.getIdUsuario()+","
-				+usuario.getIdLugar()+",'"
-				+usuario.getNombreUsuario()+"','"
-				+usuario.getApellidosUsuario()+"','"
-				+usuario.getDireccionUsuario()+"',"
-				+usuario.getTelefonoUsuario()+",'"
-				+usuario.getTipoUsuario()+"','"
-				+usuario.getContrasena()+"','"
-				+usuario.getNickname()+"');";		
+		return  "INSERT INTO `siciv`.`usuario` (`ID_USUARIO`, `ID_LUGAR`, `NOMBRES_USUARIO`, `APELLIDOS_USUARIO`, `DIRECCION_USUARIO`, `TELEFONO_USUARIO`, `TIPO_USUARIO`, `CONTRASENA`, `NICKNAME_USUARIO`) VALUES ('"+usuario.getIdUsuario()+"', '"+usuario.getIdLugar()+"', '"+usuario.getNombreUsuario()+"', '"+usuario.getApellidosUsuario()+"', '"+usuario.getDireccionUsuario()+"', '"+usuario.getTelefonoUsuario()+"', '"+usuario.getTipoUsuario()+"', '"+usuario.getContrasena()+"', '"+usuario.getNickname()+"');";		
 	}
 		
 	/**
@@ -72,10 +63,9 @@ public class UsuarioSql {
 	 * Sentencia SQL para restablecer la contrasena de un usuario a partir de su nickname y su numero de cedula
 	 * @return
 	 */
-	public String restablecerContrasenaUsuario(int cedula, String nickname, String contrasena){
+	public String restablecerContrasenaUsuario(int cedula, String contrasena){
 		return "UPDATE usuario SET CONTRASENA = '"+contrasena
-				+"' WHERE ID_USUARIO = "+cedula
-				+" AND NICKNAME_USUARIO = '"+nickname+"';";
+				+"' WHERE ID_USUARIO = "+cedula+";";
 	}
 	
 	/**

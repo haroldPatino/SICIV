@@ -90,7 +90,7 @@ public class ProductoSerieDao {
 			return -1;
 		}
 		
-		public int cambiarEstadoProducto(int idProducto, String estado ){
+		public int cambiarEstadoProducto(String idProducto, String estado ){
 			if(conexion.conectar()){
 				try{
 				Statement sentencia=conexion.getConexion().createStatement();
