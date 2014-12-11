@@ -66,20 +66,55 @@ public class ReporteSql {
 				+ "ORDER BY NUM_SERIE;";
 	}
 	
-	public String selectReporteVendidos(){
-		return "SELECT NUM_SERIE, TIPO_PRODUCTO, "
-				+ "MARCA, NOMBRE_PRODUCTO, "
-				+ "NOMBRE_PROVEEDOR, ESTADO, "
-				+ "PRECIO_COMPRA, PRECIO_VENTA "
-				+ "FROM factura_venta JOIN producto_serie "
-				+ "JOIN producto JOIN proveedor "
-				+ "WHERE factura_venta.NUMERO_FACTURA = "
-				+ "producto_serie.NUMERO_FACTURA AND "
-				+ "producto_serie.ID_PRODUCTO = "
+	public String selectReporteVendidos(int mes, int anio){
+		return "SELECT NUM_SERIE, TIPO_PRODUCTO, MARCA, "
+				+ "NOMBRE_PRODUCTO, NOMBRE_PROVEEDOR, "
+				+ "PRECIO_VENTA FROM factura_venta "
+				+ "JOIN producto_serie JOIN producto "
+				+ "JOIN proveedor WHERE "
+				+ "factura_venta.NUMERO_FACTURA = "
+				+ "producto_serie.NUMERO_FACTURA "
+				+ "AND producto_serie.ID_PRODUCTO = "
 				+ "producto.ID_PRODUCTO AND "
-				+ "producto.ID_PROVEEDOR = proveedor.ID_PROVEEDOR "
-				+ "AND ESTADO LIKE 'VD' "				
+				+ "producto.ID_PROVEEDOR = "
+				+ "proveedor.ID_PROVEEDOR AND ESTADO "
+				+ "LIKE 'VD' AND MONTH(FECHA_FACTURA) = "+mes+" "
+				+ "AND YEAR(FECHA_FACTURA) = "+anio+" "
 				+ "ORDER BY NUM_SERIE;";
+	}
+	
+	public String selectReporteVentaMesElemento(int mes, int anio){
+		return "SELECT NOMBRE_PRODUCTO, NOMBRE_PROVEEDOR, "
+				+ "SUM(PRECIO_VENTA) FROM factura_venta "
+				+ "JOIN producto_serie JOIN producto "
+				+ "JOIN proveedor WHERE factura_venta.NUMERO_FACTURA "
+				+ "= producto_serie.NUMERO_FACTURA "
+				+ "AND producto_serie.ID_PRODUCTO "
+				+ "= producto.ID_PRODUCTO AND "
+				+ "producto.ID_PROVEEDOR = "
+				+ "proveedor.ID_PROVEEDOR AND ESTADO "
+				+ "LIKE 'VD' AND MONTH(FECHA_FACTURA) = "+mes+" "
+				+ "AND YEAR(FECHA_FACTURA) = "+anio+" "
+				+ "GROUP BY NOMBRE_PRODUCTO ORDER BY "
+				+ "SUM(PRECIO_VENTA) DESC;";
+	}
+	
+
+	public String selectReporteVentaMesProveedor(int mes, int anio){
+		return "SELECT NOMBRE_PRODUCTO, NOMBRE_PROVEEDOR, "
+				+ "SUM(PRECIO_VENTA) FROM factura_venta "
+				+ "JOIN producto_serie JOIN producto "
+				+ "JOIN proveedor WHERE factura_venta.NUMERO_FACTURA "
+				+ "= producto_serie.NUMERO_FACTURA "
+				+ "AND producto_serie.ID_PRODUCTO "
+				+ "= producto.ID_PRODUCTO AND "
+				+ "producto.ID_PROVEEDOR = "
+				+ "proveedor.ID_PROVEEDOR AND ESTADO "
+				+ "LIKE 'VD' AND MONTH(FECHA_FACTURA) = "+mes+" "
+				+ "AND YEAR(FECHA_FACTURA) = "+anio+" "
+				+ "GROUP BY NOMBRE_PROVEEDOR "
+				+ "ORDER BY SUM(PRECIO_VENTA) DESC;";
+				
 	}
 	
 	public String selectReporteEnviadosLaboratorio(){

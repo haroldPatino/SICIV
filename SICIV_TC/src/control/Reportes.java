@@ -76,8 +76,7 @@ public class Reportes {
 		}		
 		return resultado;
 	}
-	
-	
+		
 	public Map<String, Object> datosFactura(int idFactura){
 		HashMap<String, Object> mapaParametros = new HashMap<String, Object>();
 		factura = facturaDao.buscarFacturaPorNumero(idFactura);
@@ -149,10 +148,10 @@ public class Reportes {
 		}	
 	}
 	
-	public void verReporteElementosVendidos(){
+	public void verReporteElementosVendidos(int mes, int anio){
 		try {
 		File jasper=new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/ReporteVendidos.jasper"));
-		byte[] bytes=JasperRunManager.runReportToPdf(jasper.getPath(), null, new JRResultSetDataSource(reporte.consultarReporteElementosVendidos()));
+		byte[] bytes=JasperRunManager.runReportToPdf(jasper.getPath(), null, new JRResultSetDataSource(reporte.consultarReporteElementosVendidos(mes, anio)));
 		HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
 		response.setContentType("application/pdf");
 		response.setContentLength(bytes.length);
@@ -284,15 +283,32 @@ public class Reportes {
 			e.printStackTrace();
 		}	
 	}
-	public void verReporteDevueltos(javax.faces.event.ActionEvent ss){
+	
+	public void verReporteVentasMes(int numeroMes, int numeroAno){
+		try {
+		File jasper=new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/ReporteVentas.jasper"));//		
+		byte[] bytes=JasperRunManager.runReportToPdf(jasper.getPath(), null, new JRResultSetDataSource(reporte.consultarReporteDefectuosos()));			
+		HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+		response.setContentType("application/pdf");
+		response.setContentLength(bytes.length);
+		ServletOutputStream stream=response.getOutputStream();
+		stream.write(bytes,0,bytes.length);
+		stream.flush();
+		stream.close();		
+		FacesContext.getCurrentInstance().responseComplete();		
+		} catch (JRException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+	}
+	
+	public void verReporteDevueltos(){
 		try {
 		File jasper=new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/ReporteDevueltos.jasper"));
-//		byte[] bytes = null;
-//		if (clienteDao.seleccionarCumpleaños().next()){
 		byte[] bytes=JasperRunManager.runReportToPdf(jasper.getPath(), null, new JRResultSetDataSource(reporte.consultarReporteDevueltos()));	
-//		}else{
-//			bytes=JasperRunManager.runReportToPdf(jasper.getPath(), null, new JRResultSetDataSource(null));
-//		}		
 		HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
 		response.setContentType("application/pdf");
 		response.setContentLength(bytes.length);

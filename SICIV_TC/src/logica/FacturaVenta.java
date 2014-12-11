@@ -93,7 +93,6 @@ public class FacturaVenta {
 	 * @return idUsuario
 	 */
 	public int getIdUsuario() {
-		System.out.println("--------------- entro en idUsuario" );
 		return idUsuario;
 	}
 	/**

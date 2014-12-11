@@ -58,14 +58,14 @@ public class ReporteDao {
 		return result;
 	}
 	
-	public ResultSet consultarReporteElementosVendidos(){
+	public ResultSet consultarReporteElementosVendidos(int mes, int anio){
 		ResultSet result = null;
 		if(conexion.conectar()){
 			Statement sentence;
 			
 				try {
 					sentence = conexion.getConexion().createStatement();
-					result = sentence.executeQuery(sqlReporte.selectReporteVendidos());
+					result = sentence.executeQuery(sqlReporte.selectReporteVendidos(mes, anio));
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
