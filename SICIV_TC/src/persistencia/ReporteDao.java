@@ -6,6 +6,9 @@ package persistencia;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import logica.Lugar;
 
 /**
  * @author Victor Rojas
@@ -61,8 +64,7 @@ public class ReporteDao {
 	public ResultSet consultarReporteElementosVendidos(int mes, int anio){
 		ResultSet result = null;
 		if(conexion.conectar()){
-			Statement sentence;
-			
+			Statement sentence;			
 				try {
 					sentence = conexion.getConexion().createStatement();
 					result = sentence.executeQuery(sqlReporte.selectReporteVendidos(mes, anio));
@@ -73,6 +75,56 @@ public class ReporteDao {
 		}
 		
 		return result;
+	}
+	
+	public ArrayList<String[]> consultarReporteVentasMesElemento(int mes, int anio){
+		ResultSet result = null;
+		ArrayList<String []> resultado = new ArrayList<String[]>();
+		
+		if(conexion.conectar()){
+			Statement sentence;			
+				try {
+					sentence = conexion.getConexion().createStatement();
+					result = sentence.executeQuery(sqlReporte.selectReporteVentaMesElemento(mes, anio));
+					while(result.next()){
+						String [] parcial = new String[3];
+						parcial[0] = result.getString("NOMBRE_PRODUCTO");
+						parcial[1] = result.getString("NOMBRE_PROVEEDOR");
+						parcial[2] = result.getString("SUM(PRECIO_VENTA)");
+						resultado.add(parcial);					
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}			
+		}
+		
+		return resultado;
+	}
+	
+	public ArrayList<String[]> consultarReporteVentasMesProveedor(int mes, int anio){
+		ResultSet result = null;
+		ArrayList<String []> resultado = new ArrayList<String[]>();
+		
+		if(conexion.conectar()){
+			Statement sentence;			
+				try {
+					sentence = conexion.getConexion().createStatement();
+					result = sentence.executeQuery(sqlReporte.selectReporteVentaMesProveedor(mes, anio));
+					while(result.next()){
+						String [] parcial = new String[3];
+						parcial[0] = result.getString("NOMBRE_PRODUCTO");
+						parcial[1] = result.getString("NOMBRE_PROVEEDOR");
+						parcial[2] = result.getString("SUM(PRECIO_VENTA)");
+						resultado.add(parcial);					
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}			
+		}
+		
+		return resultado;
 	}
 	
 	public ResultSet consultarReporteEnviadosLaboratorio(){

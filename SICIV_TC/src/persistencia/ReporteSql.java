@@ -113,8 +113,7 @@ public class ReporteSql {
 				+ "LIKE 'VD' AND MONTH(FECHA_FACTURA) = "+mes+" "
 				+ "AND YEAR(FECHA_FACTURA) = "+anio+" "
 				+ "GROUP BY NOMBRE_PROVEEDOR "
-				+ "ORDER BY SUM(PRECIO_VENTA) DESC;";
-				
+				+ "ORDER BY SUM(PRECIO_VENTA) DESC;";				
 	}
 	
 	public String selectReporteEnviadosLaboratorio(){
