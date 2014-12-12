@@ -286,8 +286,8 @@ public class Reportes {
 	
 	public void verReporteVentasMes(int numeroMes, int numeroAno){
 		try {
-		File jasper=new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/ReporteVentas.jasper"));//		
-		byte[] bytes=JasperRunManager.runReportToPdf(jasper.getPath(), null, new JRResultSetDataSource(reporte.consultarReporteDefectuosos()));			
+		File jasper=new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/ReporteVentasMes.jasper"));//		
+		byte[] bytes=JasperRunManager.runReportToPdf(jasper.getPath(), datosReporteMes(numeroMes, numeroAno), new JRResultSetDataSource(reporte.consultarReporteElementosVendidos(numeroMes, numeroAno)));			
 		HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
 		response.setContentType("application/pdf");
 		response.setContentLength(bytes.length);
@@ -324,6 +324,50 @@ public class Reportes {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
+	}
+	
+	public String elementoMasVendido(int mes, int anio){
+		
+		ArrayList<String[]> listado = new ArrayList<String[]>();
+		listado = reporte.consultarReporteVentasMesElemento(mes, anio);
+		return listado.get(0)[0];
+	}
+	
+	public String proveedorMasVendido(int mes, int anio){
+		
+		ArrayList<String[]> listado = new ArrayList<String[]>();
+		listado = reporte.consultarReporteVentasMesProveedor(mes, anio);
+		return listado.get(0)[1];
+	}
+	
+	public double totalVendidoMes(int mes, int anio){
+		
+		ArrayList<String[]> listado = new ArrayList<String[]>();
+		listado = reporte.consultarReporteVentasMesProveedor(mes, anio);
+		double ventas = 0;
+		for (int i=0;i<listado.size();i++){
+			double aux =0;
+			aux = Double.parseDouble(listado.get(i)[2]);
+			ventas+=aux;
+		}
+		
+		return ventas;
+	}
+	
+	public HashMap<String, Object> datosReporteMes(int mes, int anio){
+		
+		HashMap<String, Object> mapaParametros = new HashMap<String, Object>();
+		double diezmo = totalVendidoMes(mes, anio) * 0.10;
+		double disponible = totalVendidoMes(mes, anio) - diezmo;
+		
+		mapaParametros.put("totalVendido", totalVendidoMes(mes, anio));
+		mapaParametros.put("pagarDiezmo", diezmo);
+		mapaParametros.put("totalDisponible", disponible);
+		mapaParametros.put("productoMasVendido", elementoMasVendido(mes, anio));
+		mapaParametros.put("proveedorMasVendido", proveedorMasVendido(mes, anio));
+		mapaParametros.put("fechaReporte", ""+mes+" / "+ anio);
+				
+		return mapaParametros;
 	}
 }
 
