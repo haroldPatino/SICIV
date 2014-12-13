@@ -107,6 +107,8 @@ public class Reportes {
 	}
 	
 	public void verReporteFactura(int idFactura){
+		System.out.println("entro en ver factura");
+		
 		try {
 		File jasper=new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/ReporteFactura.jasper"));
 		byte[] bytes=JasperRunManager.runReportToPdf(jasper.getPath(), this.datosFactura(idFactura), new JRBeanCollectionDataSource(this.listadoElementosFactura(idFactura)));

@@ -152,6 +152,7 @@ public class ControlVentas implements Serializable{
 				aux.setEstadoProducto("VD");
 				daoS.actualizarDatosProductoSerie(aux);
 			}
+			System.out.println("entro en generar factura");
 			reportes.verReporteFactura(factura.getNumeroFactura());
 		}
 		else{
