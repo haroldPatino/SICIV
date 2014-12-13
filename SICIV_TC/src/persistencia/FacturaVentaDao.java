@@ -64,6 +64,25 @@ public class FacturaVentaDao {
 			return null;
 		}
 		
+		public String consultarMayorNumeroFactura(){
+			ResultSet result;
+			String numerofacturas = "";
+			if(conexion.conectar()){
+				Statement sentence;
+				try {
+					sentence = conexion.getConexion().createStatement();
+					result = sentence.executeQuery(sqlFactura.selectMayorFactura());
+					while(result.next()){						
+						numerofacturas = result.getString("NUMERO_FACTURA");
+					}
+					return numerofacturas;
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 				}			
+			return null;
+		}
+		
 		public int insertarFactura(FacturaVenta factura){
 			if(conexion.conectar()){
 				try{

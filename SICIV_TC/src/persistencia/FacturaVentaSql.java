@@ -19,6 +19,12 @@ public class FacturaVentaSql {
 		return "SELECT * FROM factura_venta WHERE NUMERO_FACTURA != 0;";
 	}
 	
+	public String selectMayorFactura(){
+		return"SELECT NUMERO_FACTURA FROM factura_venta "
+				+ "WHERE NUMERO_FACTURA= (SELECT MAX(NUMERO_FACTURA) "
+				+ "FROM factura_venta);";
+	}
+	
 	public String crearFactura(FacturaVenta factura){
 		DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 		String fechAux=formato.format(factura.getFechaFactura());

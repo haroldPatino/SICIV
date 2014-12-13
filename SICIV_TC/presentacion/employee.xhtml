@@ -291,11 +291,9 @@
             				
             					<h:panelGrid columns="3" cellpadding="4" styleClass="panelGridCenter" style="position:relative; top:5px">
         							<p:outputLabel for="numSerie" value="Numero de Serie:" /> 
-            						<p:inputText id="numSerie" value="#{controlVentas.idProducto}" label="numeroSerie"/>
-            						
+            						<p:inputText id="numSerie" value="#{controlVentas.idProducto}" label="numeroSerie"/>            						
             						<p:commandButton id="btnAddProd" value="Agregar al Carrito" icon="ui-icon-plus" iconPos="left" actionListener="#{controlVentas.cargarProducto}" update="growl"></p:commandButton>	
-      							</h:panelGrid>
-      						
+      							</h:panelGrid>      						
             				</pm:field>
             				<h:commandButton value="Facturar" actionListener="#{controlVentas.generarFactura}" update="growl"></h:commandButton>
             			</h:form>
