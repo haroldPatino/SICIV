@@ -35,6 +35,7 @@ public class ControlVentas implements Serializable{
 	public ControlVentas(){
 		dao=new FacturaVentaDao();
 		productos=new ArrayList<ProductoSerie>();
+		setNumFactura();
 	}
 //Methods-----------------------------------------------------------------
 	/**
@@ -46,8 +47,9 @@ public class ControlVentas implements Serializable{
 	/**
 	 * @param numFactura numFactura a colocar
 	 */
-	public void setNumFactura(String numFactura) {
-		this.numFactura = numFactura;
+	public void setNumFactura() {
+		int num=Integer.parseInt(dao.consultarMayorNumeroFactura())+1;
+		numFactura=String.valueOf(num);
 	}
 	/**
 	 * @return numCliente
@@ -108,12 +110,18 @@ public class ControlVentas implements Serializable{
 		if(idProducto!=""){
 			ProductoSerie product=buscarSerie(idProducto);
 			if(product!=null){
+				if(!product.getEstadoProducto().equals("VD")){
 				if(buscarEnProductos(idProducto)==null){
 					productos.add(product);
 					ctxtMsg.addMessage(null, new FacesMessage("Sucessfull",  "Producto Agregado al carrito"));
 				}
 				else{
 					ctxtMsg.addMessage(null, new FacesMessage("Exception",  "El producto ya esta en el carrito"));
+				}
+			}
+				else{
+					ctxtMsg.addMessage(null, new FacesMessage("Exception",  "El producto ya esta asociado a otra factura"));
+
 				}
 			}
 			else{
@@ -137,6 +145,7 @@ public class ControlVentas implements Serializable{
 		FacesContext ctxtMsg = FacesContext.getCurrentInstance();
 		ProductoSerieDao daoS=new ProductoSerieDao();
 		Reportes reportes=new Reportes();
+		setNumFactura();
 		if(numFactura!=null && numFactura!="" && productos.size()>0){
 			FacturaVenta factura=new FacturaVenta();
 			factura.setIdCliente(Integer.parseInt(numCliente));

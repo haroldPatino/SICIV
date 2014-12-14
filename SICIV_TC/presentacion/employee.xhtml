@@ -273,7 +273,7 @@
             			<p:growl id="growl" showDetail="true" />
             				<pm:field>
             					<p:outputLabel for="idVenta" value="Numero Factura:"></p:outputLabel>
-            					<p:inputText id="idVenta" required="true" value="#{controlVentas.numFactura}"></p:inputText>
+            					<p:inputText id="idVenta" required="true" value="#{controlVentas.numFactura}" disabled="true"></p:inputText>
             				</pm:field>
             				<pm:field>
             					<p:outputLabel for="idCliente" value="Documento Cliente:"></p:outputLabel>
@@ -295,7 +295,7 @@
             						<p:commandButton id="btnAddProd" value="Agregar al Carrito" icon="ui-icon-plus" iconPos="left" actionListener="#{controlVentas.cargarProducto}" update="growl"></p:commandButton>	
       							</h:panelGrid>      						
             				</pm:field>
-            				<h:commandButton value="Facturar" actionListener="#{controlVentas.generarFactura}" update="growl"></h:commandButton>
+            				<h:commandButton value="Facturar" actionListener="#{controlVentas.generarFactura}" update="growl ,idVenta"></h:commandButton>
             			</h:form>
             		</p:tab>
             	</p:accordionPanel>

@@ -4,7 +4,10 @@
 package control;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -37,6 +40,8 @@ public class ControlEmpleados implements Serializable{
 	private String oldPass;
 	private String confPass;
 	private UsuarioDao dao;
+	private Date fechaVenta;
+	
 //Building-----------------------------------------------------------------
 	public ControlEmpleados(){
 		dao=new UsuarioDao();
@@ -293,5 +298,27 @@ public class ControlEmpleados implements Serializable{
 			ctxtMsg.addMessage(null, new FacesMessage("Exception",  "Existen campos obligatorios vacios"));
 
 		}
+	}
+	
+	/**
+	 * @return fechaVenta
+	 */
+	public Date getFechaVenta() {
+		return fechaVenta;
+	}
+	/**
+	 * @param fechaVenta fechaVenta a colocar
+	 */
+	public void setFechaVenta(Date fechaVenta) {
+		this.fechaVenta = fechaVenta;
+	}
+	public void generaReporteVentas(ActionEvent actionEvent){
+		DateFormat formato1 = new SimpleDateFormat("yyyy");
+		DateFormat formato2= new SimpleDateFormat("MM");
+		String mesFecha=formato2.format(getFechaVenta());
+		String anioFecha=formato1.format(getFechaVenta());
+		System.out.println(anioFecha+"------------------"+mesFecha);
+		Reportes report=new Reportes();
+		report.totalVendidoMes(Integer.parseInt(mesFecha), Integer.parseInt(anioFecha));
 	}
 }

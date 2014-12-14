@@ -420,8 +420,9 @@
             	</p:tab>
             	<p:tab title="REPORTE DE VENTAS">
             		 <h:form>
-            			<h:commandButton id="btnRepVen" value="Reporte de Ventas Mes" actionListener="#{reportes.verReporteProveedores}"/>
-            			
+            		 	<p:outputLabel for="fechVent" value="Fecha del Reporte:"></p:outputLabel>
+            			<p:calendar id="fechVent" value="#{controlEmpleados.fechaVenta}" required="true" pattern="yyyy-MM" navigator="true"></p:calendar>
+            			<h:commandButton id="btnRepVen" value="Reporte de Ventas Mes" actionListener="#{controlEmpleados.generaReporteVentas}"/>
            			 </h:form>             	
             	</p:tab>
             </p:accordionPanel>
