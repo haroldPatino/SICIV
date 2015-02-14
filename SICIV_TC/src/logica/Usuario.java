@@ -18,6 +18,7 @@ public class Usuario {
 	private char tipoUsuario;
 	private String nickname;
 	private String contrasena;
+	private String registroMedico = "";
 //Building------------------------------------
 	/**
 	 * 
@@ -133,5 +134,19 @@ public class Usuario {
 	 */
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
-	}		
+	}
+	/**
+	 * @return registroMedico
+	 */
+	public String getRegistroMedico() {
+		return registroMedico;
+	}
+	/**
+	 * @param registroMedico registroMedico a colocar
+	 */
+	public void setRegistroMedico(String registroMedico) {
+		this.registroMedico = registroMedico;
+	}
+	
+	
 }

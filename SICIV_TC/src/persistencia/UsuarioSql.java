@@ -23,7 +23,9 @@ public class UsuarioSql {
 	 * @return
 	 */
 	public String selectUsuarios(){
-		return "SELECT * FROM usuario WHERE ID_USUARIO != 0;";
+		return "SELECT ID_USUARIO, ID_LUGAR, NOMBRES_USUARIO, APELLIDOS_USUARIO,"
+				+ " DIRECCION_USUARIO, TELEFONO_USUARIO, TIPO_USUARIO, CONTRASENA,"
+				+ " NICKNAME_USUARIO FROM usuario WHERE ID_USUARIO != 0;";
 	}
 	
 	/**
@@ -32,7 +34,22 @@ public class UsuarioSql {
 	 */	
 	public String crearUsuario(Usuario usuario){
 				
-		return  "INSERT INTO `siciv`.`usuario` (`ID_USUARIO`, `ID_LUGAR`, `NOMBRES_USUARIO`, `APELLIDOS_USUARIO`, `DIRECCION_USUARIO`, `TELEFONO_USUARIO`, `TIPO_USUARIO`, `CONTRASENA`, `NICKNAME_USUARIO`) VALUES ('"+usuario.getIdUsuario()+"', '"+usuario.getIdLugar()+"', '"+usuario.getNombreUsuario()+"', '"+usuario.getApellidosUsuario()+"', '"+usuario.getDireccionUsuario()+"', '"+usuario.getTelefonoUsuario()+"', '"+usuario.getTipoUsuario()+"', '"+usuario.getContrasena()+"', '"+usuario.getNickname()+"');";		
+		return  "INSERT INTO `siciv`.`usuario` (`ID_USUARIO`, "
+				+ "`ID_LUGAR`, `NOMBRES_USUARIO`, `APELLIDOS_USUARIO`, "
+				+ "`DIRECCION_USUARIO`, `TELEFONO_USUARIO`, "
+				+ "`TIPO_USUARIO`, `CONTRASENA`, `NICKNAME_USUARIO`,"
+				+ " `REGISTRO_MEDICO`) VALUES ("
+				+ "'"+usuario.getIdUsuario()
+				+"', '"+usuario.getIdLugar()
+				+"', '"+usuario.getNombreUsuario()
+				+"', '"+usuario.getApellidosUsuario()
+				+"', '"+usuario.getDireccionUsuario()
+				+"', '"+usuario.getTelefonoUsuario()
+				+"', '"+usuario.getTipoUsuario()
+				+"', '"+usuario.getContrasena()
+				+"', '"+usuario.getNickname()
+				+"', '"+usuario.getRegistroMedico()
+				+"');";		
 	}
 		
 	/**
@@ -40,7 +57,9 @@ public class UsuarioSql {
 	 * @return
 	 */
 	public String buscarUsuarioPorNombre(String nombre){
-		return "SELECT * FROM usuario WHERE NOMBRES_USUARIO LIKE '"+nombre+"';";
+		return "SELECT ID_USUARIO, ID_LUGAR, NOMBRES_USUARIO, APELLIDOS_USUARIO,"
+				+ " DIRECCION_USUARIO, TELEFONO_USUARIO, TIPO_USUARIO, CONTRASENA,"
+				+ " NICKNAME_USUARIO FROM usuario WHERE NOMBRES_USUARIO LIKE '"+nombre+"';";
 	}
 	
 	/**
@@ -48,7 +67,9 @@ public class UsuarioSql {
 	 * @return
 	 */
 	public String buscarUsuarioPorNickname(String nickname){
-		return "SELECT * FROM usuario WHERE NICKNAME_USUARIO LIKE '"+nickname+"';";
+		return "SELECT ID_USUARIO, ID_LUGAR, NOMBRES_USUARIO, APELLIDOS_USUARIO,"
+				+ " DIRECCION_USUARIO, TELEFONO_USUARIO, TIPO_USUARIO, CONTRASENA,"
+				+ " NICKNAME_USUARIO FROM usuario WHERE NICKNAME_USUARIO LIKE '"+nickname+"';";
 	}
 	
 	/**
@@ -56,7 +77,9 @@ public class UsuarioSql {
 	 * @return
 	 */
 	public String buscarUsuarioPorCedula(int cedula){
-		return "SELECT * FROM usuario WHERE ID_USUARIO = "+cedula+";";
+		return "SELECT ID_USUARIO, ID_LUGAR, NOMBRES_USUARIO, APELLIDOS_USUARIO,"
+				+ " DIRECCION_USUARIO, TELEFONO_USUARIO, TIPO_USUARIO, CONTRASENA,"
+				+ " NICKNAME_USUARIO FROM usuario WHERE ID_USUARIO = "+cedula+";";
 	}
 	
 	/**
@@ -89,6 +112,7 @@ public class UsuarioSql {
 				+"', APELLIDOS_USUARIO = '"+usuario.getApellidosUsuario()
 				+"', DIRECCION_USUARIO = '"+usuario.getDireccionUsuario()
 				+"', TELEFONO_USUARIO = "+usuario.getTelefonoUsuario()
+				+"', REGISTRO_MEDICO = "+usuario.getRegistroMedico()
 				+" WHERE ID_USUARIO = "+usuario.getIdUsuario()+";";
 	}
 	
