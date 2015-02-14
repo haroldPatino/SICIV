@@ -28,7 +28,9 @@ public class ClienteSql {
 	 * @return
 	 */
 	public String selectClientes(){
-			return "SELECT * FROM cliente WHERE ID_CLIENTE != 0;";
+			return "SELECT ID_CLIENTE, ID_LUGAR, NOMBRES_CLIENTE, APELLIDOS_CLIENTE, "
+					+ "DIRECCION_CLIENTE, NUMERO_TELEFONICO, FECHA_NACIMIENTO"
+					+ "FROM cliente WHERE ID_CLIENTE != 0;";
 	}
 		
 	/**
@@ -47,7 +49,16 @@ public class ClienteSql {
 				+"','"+cliente.getApellidosCliente()
 				+"','"+cliente.getDireccionCliente()
 				+"',"+cliente.getTelefonoCliente()
-				+",'"+fechAux+"');";
+				+",'"+fechAux
+				+"',"+cliente.getEntidadCliente()
+				+"',"+cliente.getEstadoCivilCliente()
+				+"',"+cliente.geteMailCliente()
+				+"',"+cliente.getOcupacionCliente()
+				+"',"+cliente.getAntecPatologico()
+				+"',"+cliente.getAntecQuirurgico()
+				+"',"+cliente.getAntecFamiliar()
+				+"',"+cliente.getAntecAlergico()
+				+"',"+cliente.getAntecMedicamento()+"');";
 	}
 	
 	/**
@@ -73,6 +84,15 @@ public class ClienteSql {
 				"', DIRECCION_CLIENTE='"+cliente.getDireccionCliente()+
 				"', NUMERO_TELEFONICO="+cliente.getTelefonoCliente()+
 				", FECHA_NACIMIENTO='"+cliente.getFechaNacimiento()+
+				", ENTIDAD='"+cliente.getEntidadCliente()+
+				", ESTADO_CIVIL='"+cliente.getEstadoCivilCliente()+
+				", E_MAIL='"+cliente.geteMailCliente()+
+				", OCUPACION='"+cliente.getOcupacionCliente()+
+				", ANT_PATOLOGICO='"+cliente.getAntecPatologico()+
+				", ANT_QUIRURGICO='"+cliente.getAntecQuirurgico()+
+				", ANT_FAMILIAR='"+cliente.getAntecFamiliar()+
+				", ANT_ALERGICO='"+cliente.getAntecAlergico()+
+				", ANT_MEDICAMENTO='"+cliente.getAntecMedicamento()+
 				"' WHERE ID_CLIENTE = "+cliente.getIdCliente()+";";
 	}
 	
@@ -86,7 +106,8 @@ public class ClienteSql {
 	 * @return
 	 */	
 	public String buscarClientePorNombre(String nombre){
-		return "SELECT *"
+		return "SELECT ID_CLIENTE, ID_LUGAR, NOMBRES_CLIENTE, APELLIDOS_CLIENTE, "
+				+ "DIRECCION_CLIENTE, NUMERO_TELEFONICO, FECHA_NACIMIENTO"
 				+ " FROM cliente "
 				+ " WHERE NOMBRES_CLIENTE = '"+nombre+"';";
 	}
@@ -96,7 +117,8 @@ public class ClienteSql {
 	 * @return
 	 */	
 	public String buscarClientePorCedula(int cedula){
-		return "SELECT *"
+		return "SELECT ID_CLIENTE, ID_LUGAR, NOMBRES_CLIENTE, APELLIDOS_CLIENTE, "
+				+ "DIRECCION_CLIENTE, NUMERO_TELEFONICO, FECHA_NACIMIENTO"
 				+ " FROM cliente "
 				+ " WHERE ID_CLIENTE = "+cedula+";";
 	}

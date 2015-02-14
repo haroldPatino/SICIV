@@ -19,6 +19,15 @@ public class Cliente {
 	private String direccionCliente;
 	private String telefonoCliente;
 	private Date fechaNacimiento;
+	private String ocupacionCliente = "";
+	private String entidadCliente = "";
+	private String estadoCivilCliente = "";
+	private String eMailCliente = "";
+	private String antecPatologico = "";
+	private String antecQuirurgico = "";
+	private String antecFamiliar = "";
+	private String antecAlergico = "";
+	private String antecMedicamento = "";
 //Building-----------------------------------------
 	/**
 	 * 
@@ -112,4 +121,112 @@ public class Cliente {
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
+	/**
+	 * @return ocupacionCliente
+	 */
+	public String getOcupacionCliente() {
+		return ocupacionCliente;
+	}
+	/**
+	 * @param ocupacionCliente ocupacionCliente a colocar
+	 */
+	public void setOcupacionCliente(String ocupacionCliente) {
+		this.ocupacionCliente = ocupacionCliente;
+	}
+	/**
+	 * @return entidadCliente
+	 */
+	public String getEntidadCliente() {
+		return entidadCliente;
+	}
+	/**
+	 * @param entidadCliente entidadCliente a colocar
+	 */
+	public void setEntidadCliente(String entidadCliente) {
+		this.entidadCliente = entidadCliente;
+	}
+	/**
+	 * @return estadoCivilCliente
+	 */
+	public String getEstadoCivilCliente() {
+		return estadoCivilCliente;
+	}
+	/**
+	 * @param estadoCivilCliente estadoCivilCliente a colocar
+	 */
+	public void setEstadoCivilCliente(String estadoCivilCliente) {
+		this.estadoCivilCliente = estadoCivilCliente;
+	}
+	/**
+	 * @return eMailCliente
+	 */
+	public String geteMailCliente() {
+		return eMailCliente;
+	}
+	/**
+	 * @param eMailCliente eMailCliente a colocar
+	 */
+	public void seteMailCliente(String eMailCliente) {
+		this.eMailCliente = eMailCliente;
+	}
+	/**
+	 * @return antecPatologico
+	 */
+	public String getAntecPatologico() {
+		return antecPatologico;
+	}
+	/**
+	 * @param antecPatologico antecPatologico a colocar
+	 */
+	public void setAntecPatologico(String antecPatologico) {
+		this.antecPatologico = antecPatologico;
+	}
+	/**
+	 * @return antecQuirurgico
+	 */
+	public String getAntecQuirurgico() {
+		return antecQuirurgico;
+	}
+	/**
+	 * @param antecQuirurgico antecQuirurgico a colocar
+	 */
+	public void setAntecQuirurgico(String antecQuirurgico) {
+		this.antecQuirurgico = antecQuirurgico;
+	}
+	/**
+	 * @return antecFamiliar
+	 */
+	public String getAntecFamiliar() {
+		return antecFamiliar;
+	}
+	/**
+	 * @param antecFamiliar antecFamiliar a colocar
+	 */
+	public void setAntecFamiliar(String antecFamiliar) {
+		this.antecFamiliar = antecFamiliar;
+	}
+	/**
+	 * @return antecAlergico
+	 */
+	public String getAntecAlergico() {
+		return antecAlergico;
+	}
+	/**
+	 * @param antecAlergico antecAlergico a colocar
+	 */
+	public void setAntecAlergico(String antecAlergico) {
+		this.antecAlergico = antecAlergico;
+	}
+	/**
+	 * @return antecMedicamento
+	 */
+	public String getAntecMedicamento() {
+		return antecMedicamento;
+	}
+	/**
+	 * @param antecMedicamento antecMedicamento a colocar
+	 */
+	public void setAntecMedicamento(String antecMedicamento) {
+		this.antecMedicamento = antecMedicamento;
+	}	
 }
